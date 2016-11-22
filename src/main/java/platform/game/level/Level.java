@@ -10,6 +10,7 @@ import platform.util.Sprite;
  * are requires to override <code>register</code>.
  */
 public abstract class Level extends Actor {
+
 // UNCOMMENT ME WHEN NEEDED
   //  private double fadein;
 //
