@@ -68,6 +68,5 @@ public class Fireball extends Actor
                 velocity = velocity.mirrored(delta);
             }
         }
-
     }
 }

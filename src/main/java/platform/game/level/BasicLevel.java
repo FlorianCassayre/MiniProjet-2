@@ -1,10 +1,5 @@
 package platform.game.level;
 
-import platform.game.World;
-import platform.game.Block;
-import platform.util.Box;
-import platform.util.Vector;
-
 public class BasicLevel extends Level {
     // UNCOMMENT ME WHEN NEEDED
 //    @Override

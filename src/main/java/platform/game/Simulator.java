@@ -3,7 +3,9 @@ package platform.game;
 import java.util.ArrayList;
 import java.util.List;
 
+import platform.game.actors.Block;
 import platform.game.actors.Fireball;
+import platform.game.actors.Player;
 import platform.util.*;
 
 /**
@@ -52,6 +54,8 @@ public class Simulator implements World
         register(new Block(zone2, sprite));
 
         register(new Fireball(new Vector(0, 1), Vector.ZERO));
+
+        register(new Player(new Vector(2, 3), new Vector(0, -1)));
     }
 
     /**

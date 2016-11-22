@@ -1,5 +1,6 @@
-package platform.game;
+package platform.game.actors;
 
+import platform.game.Actor;
 import platform.util.Box;
 import platform.util.Input;
 import platform.util.Sprite;
