@@ -1,6 +1,7 @@
-package platform.game.entities;
+package platform.game;
 
 import platform.game.Actor;
+import platform.game.Damage;
 import platform.game.World;
 import platform.util.*;
 
@@ -10,14 +11,16 @@ public class Fireball extends Actor
     private Vector velocity;
     private Vector location;
     private Sprite sprite;
+    private final Actor owner;
 
-    public Fireball(Vector location, Vector speed)
+    public Fireball(Actor owner, Vector location, Vector speed)
     {
         if(location == null || speed == null)
             throw new NullPointerException();
 
         this.size = 0.4;
 
+        this.owner = owner;
         this.location = location;
         this.velocity = speed;
     }
@@ -70,6 +73,14 @@ public class Fireball extends Actor
             {
                 location = location.add(delta);
                 velocity = velocity.mirrored(delta);
+            }
+        }
+
+        if(other.getBox().isColliding(getBox()))
+        {
+            if(other != owner && other.hurt(this, Damage.FIRE, 1.0, getPosition()))
+            {
+                getWorld().unregister(this);
             }
         }
     }

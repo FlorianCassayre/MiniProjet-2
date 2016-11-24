@@ -1,18 +1,20 @@
-package platform.game.entities;
+package platform.game;
 
-import platform.game.Actor;
-import platform.game.World;
 import platform.util.*;
 
 import java.awt.event.KeyEvent;
 
 public class Player extends Actor
 {
+    private static final double HEALTH_MAX = 10.0;
+
     private Vector size;
     private Vector velocity;
     private Vector location;
     private Sprite sprite;
     private boolean colliding;
+
+    private double health = HEALTH_MAX;
 
     public Player(Vector location, Vector speed)
     {
@@ -111,7 +113,7 @@ public class Player extends Actor
         if(input.getKeyboardButton(KeyEvent.VK_SPACE).isPressed())
         {
             Vector fireballSpeed = velocity.add(velocity.resized(2.0));
-            getWorld().register(new Fireball(getPosition(), fireballSpeed));
+            getWorld().register(new Fireball(this, getPosition(), fireballSpeed));
         }
     }
 
@@ -119,6 +121,12 @@ public class Player extends Actor
     public void postUpdate()
     {
         getWorld().setView(getPosition(), 8.0);
+
+        if(health <= 0)
+        {
+            getWorld().nextLevel();
+            getWorld().unregister(this);
+        }
     }
 
     @Override
@@ -143,5 +151,33 @@ public class Player extends Actor
     public Box getBox()
     {
         return new Box(new Vector(location.getX(), location.getY()), size.getX(), size.getY());
+    }
+
+    @Override
+    public boolean hurt(Actor instigator, Damage type, double amount, Vector location)
+    {
+        switch(type)
+        {
+            case FIRE:
+                return true;
+            case AIR:
+                velocity = getPosition().sub(location).resized(amount);
+                return true;
+            case VOID:
+                health = 0;
+                return true;
+            default:
+                return super.hurt(instigator, type, amount, location);
+        }
+    }
+
+    public double getHealth()
+    {
+        return health;
+    }
+
+    public double getHealthMax()
+    {
+        return HEALTH_MAX;
     }
 }

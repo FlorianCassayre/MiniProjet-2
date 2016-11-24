@@ -41,6 +41,11 @@ public abstract class Actor implements Comparable<Actor>
     public void postUpdate()
     {}
 
+    public boolean hurt(Actor instigator, Damage type, double amount, Vector location)
+    {
+        return false;
+    }
+
     public void draw(Input input, Output output)
     {}
 

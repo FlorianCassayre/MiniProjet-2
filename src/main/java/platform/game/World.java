@@ -1,6 +1,7 @@
 package platform.game;
 
 import platform.game.level.Level;
+import platform.util.Box;
 import platform.util.Loader;
 import platform.util.Vector;
 
@@ -31,4 +32,6 @@ public interface World
     void nextLevel();
 
     void setNextLevel(Level level);
+
+    int hurt(Box area, Actor instigator, Damage type, double amount, Vector location);
 }

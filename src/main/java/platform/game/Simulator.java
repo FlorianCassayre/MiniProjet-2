@@ -3,9 +3,6 @@ package platform.game;
 import java.util.ArrayList;
 import java.util.List;
 
-import platform.game.entities.Block;
-import platform.game.entities.Fireball;
-import platform.game.entities.Player;
 import platform.game.level.Level;
 import platform.util.*;
 
@@ -18,11 +15,14 @@ public class Simulator implements World
 
     private Loader loader;
 
+    private final Vector defaultCenter = Vector.ZERO;
+    private final double defaultRadius = 10.0;
+
     private Vector currentCenter;
     private double currentRadius;
 
-    private Vector expectedCenter = Vector.ZERO;
-    private double expectedRadius = 10.0;
+    private Vector expectedCenter = defaultCenter;
+    private double expectedRadius = defaultRadius;
 
     private boolean transition = false;
     private Level next = null;
@@ -45,8 +45,8 @@ public class Simulator implements World
             throw new NullPointerException();
         }
         this.loader = loader;
-        currentCenter = Vector.ZERO;
-        currentRadius = 10.0;
+        currentCenter = defaultCenter;
+        currentRadius = defaultRadius;
 
         // =-=-=-= TeStS =-=-=-=
 
@@ -102,11 +102,8 @@ public class Simulator implements World
                     actor.interact(other);
 
 
-
         for(Actor a : actors)
             a.update(view);
-
-
 
 
         for(Actor a : actors)
@@ -131,6 +128,10 @@ public class Simulator implements World
             // y compris le Level précédent :
             unregistered.clear();
             register(level);
+
+            currentCenter = defaultCenter;
+            currentRadius = defaultRadius;
+
         }
     }
 
@@ -182,4 +183,16 @@ public class Simulator implements World
         expectedCenter = center;
         expectedRadius = radius;
     }
+
+    @Override
+    public int hurt(Box area, Actor instigator, Damage type, double amount, Vector location)
+    {
+        int victims = 0;
+        for(Actor actor : actors)
+            if(area.isColliding(actor.getBox()))
+                if(actor.hurt(instigator, type, amount, location))
+                    ++victims;
+        return victims;
+    }
+
 }
