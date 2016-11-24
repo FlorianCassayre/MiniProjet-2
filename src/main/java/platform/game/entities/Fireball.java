@@ -1,4 +1,4 @@
-package platform.game.actors;
+package platform.game.entities;
 
 import platform.game.Actor;
 import platform.game.World;
@@ -13,8 +13,6 @@ public class Fireball extends Actor
 
     public Fireball(Vector location, Vector speed)
     {
-        super(666);
-
         if(location == null || speed == null)
             throw new NullPointerException();
 
@@ -52,6 +50,12 @@ public class Fireball extends Actor
     public Box getBox()
     {
         return new Box(new Vector(location.getX(), location.getY()), size, size);
+    }
+
+    @Override
+    public int getPriority()
+    {
+        return 666;
     }
 
     @Override

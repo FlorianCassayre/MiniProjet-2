@@ -1,5 +1,6 @@
 package platform.game;
 
+import platform.game.level.Level;
 import platform.util.Loader;
 import platform.util.Vector;
 
@@ -26,4 +27,8 @@ public interface World
     void unregister(Actor actor);
 
     Vector getGravity();
+
+    void nextLevel();
+
+    void setNextLevel(Level level);
 }

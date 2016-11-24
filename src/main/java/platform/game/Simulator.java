@@ -3,9 +3,10 @@ package platform.game;
 import java.util.ArrayList;
 import java.util.List;
 
-import platform.game.actors.Block;
-import platform.game.actors.Fireball;
-import platform.game.actors.Player;
+import platform.game.entities.Block;
+import platform.game.entities.Fireball;
+import platform.game.entities.Player;
+import platform.game.level.Level;
 import platform.util.*;
 
 /**
@@ -22,6 +23,9 @@ public class Simulator implements World
 
     private Vector expectedCenter = Vector.ZERO;
     private double expectedRadius = 10.0;
+
+    private boolean transition = false;
+    private Level next = null;
 
     private List<Actor> registered = new ArrayList<>();
     private List<Actor> unregistered = new ArrayList<>();
@@ -46,16 +50,7 @@ public class Simulator implements World
 
         // =-=-=-= TeStS =-=-=-=
 
-        Sprite sprite = loader.getSprite("box.empty");
-        Box zone1 = new Box(new Vector(-4, -1), new Vector(4, 0));
-        register(new Block(zone1, sprite));
-
-        Box zone2 = new Box(new Vector(-2, 0), new Vector(-1, 1));
-        register(new Block(zone2, sprite));
-
-        register(new Fireball(new Vector(0, 1), Vector.ZERO));
-
-        register(new Player(new Vector(2, 3), new Vector(0, -1)));
+        register(Level.createDefaultLevel());
     }
 
     /**
@@ -73,8 +68,7 @@ public class Simulator implements World
         View view = new View(input, output);
         view.setTarget(currentCenter, currentRadius);
 
-        if(view.getMouseButton(1).isPressed())
-            setView(view.getMouseLocation(), 10.0);
+        //if(view.getMouseButton(1).isPressed())
 
 
         // Add registered actors
@@ -87,6 +81,7 @@ public class Simulator implements World
             }
         }
         registered.clear();
+
         // Remove unregistered actors
         for(int i = 0; i < unregistered.size(); ++i)
         {
@@ -95,11 +90,11 @@ public class Simulator implements World
         }
         unregistered.clear();
 
-        for(Actor a : actors)
-            a.preUpdate();
+        for(Actor a : actors.descending())
+            a.draw(view, view);
 
         for(Actor a : actors)
-            a.update(view);
+            a.preUpdate();
 
         for(Actor actor : actors)
             for(Actor other : actors)
@@ -107,21 +102,36 @@ public class Simulator implements World
                     actor.interact(other);
 
 
-        for(Actor a : actors.descending())
-            a.draw(view, view);
+
+        for(Actor a : actors)
+            a.update(view);
+
+
 
 
         for(Actor a : actors)
             a.postUpdate();
 
 
-        /*Sprite sprite = loader.getSprite("heart.full");
-        Box zone = new Box(new Vector(0, 0), 32, 32);
-        output.drawSprite(sprite, zone);*/
-
-
-
-
+        // si un acteur a mis transition à true pour demander le passage
+        // à un autre niveau :
+        if(transition)
+        {
+            if(next == null)
+            {
+                next = Level.createDefaultLevel();
+            }
+            // si un acteur a appelé setNextLevel , next ne sera pas null :
+            Level level = next;
+            transition = false;
+            next = null;
+            actors.clear();
+            registered.clear();
+            // tous les anciens acteurs sont désenregistrés ,
+            // y compris le Level précédent :
+            unregistered.clear();
+            register(level);
+        }
     }
 
     @Override
@@ -142,6 +152,18 @@ public class Simulator implements World
     public Vector getGravity()
     {
         return GRAVITY;
+    }
+
+    @Override
+    public void nextLevel()
+    {
+        transition = true;
+    }
+
+    @Override
+    public void setNextLevel(Level level)
+    {
+        next = level;
     }
 
     @Override

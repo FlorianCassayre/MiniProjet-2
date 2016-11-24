@@ -1,4 +1,4 @@
-package platform.game.actors;
+package platform.game.entities;
 
 import platform.game.Actor;
 import platform.game.World;
@@ -16,8 +16,6 @@ public class Player extends Actor
 
     public Player(Vector location, Vector speed)
     {
-        super(42);
-
         if(location == null || speed == null)
             throw new NullPointerException();
 
@@ -31,26 +29,18 @@ public class Player extends Actor
     {
         super.register(world);
 
-        this.sprite = getWorld().getLoader().getSprite("blocker.happy");
+        this.sprite = getSprite("blocker.happy");
     }
 
     @Override
-    public void draw(Input input, Output output)
+    public void preUpdate()
     {
-        output.drawSprite(sprite, getBox());
-    }
-
-    @Override
-    public Box getBox()
-    {
-        return new Box(new Vector(location.getX(), location.getY()), size.getX(), size.getY());
+        colliding = false;
     }
 
     @Override
     public void interact(Actor other)
     {
-        colliding = false;
-
         if(other.isSolid())
         {
             Vector delta = other.getBox().getCollision(getBox());
@@ -61,12 +51,11 @@ public class Player extends Actor
                     velocity = new Vector(0.0, velocity.getY());
                 if(delta.getY() != 0.0)
                     velocity = new Vector(velocity.getX(), 0.0);
+
+                colliding = true;
             }
-            colliding = true;
         }
     }
-
-
 
     @Override
     public void update(Input input)
@@ -74,7 +63,12 @@ public class Player extends Actor
         double delta = input.getDeltaTime();
         Vector acceleration = getWorld().getGravity();
         velocity = velocity.add(acceleration.mul(delta));
-        location = location.add(velocity.mul(delta));
+
+        if(colliding)
+        {
+            double scale = Math.pow(0.001, input.getDeltaTime());
+            velocity = velocity.mul(scale);
+        }
 
         double maxSpeed = 4.0;
         if(input.getKeyboardButton(KeyEvent.VK_RIGHT).isDown())
@@ -88,23 +82,66 @@ public class Player extends Actor
                 velocity = new Vector(speed, velocity.getY());
             }
         }
-        else if(input.getKeyboardButton(KeyEvent.VK_LEFT).isDown())
+        else if(input.getKeyboardButton(KeyEvent.VK_LEFT).isDown()) // FIXME redundant
         {
-            if(velocity.getX() < maxSpeed)
+            if(-velocity.getX() < maxSpeed)
             {
                 double increase = 60.0 * input.getDeltaTime();
                 double speed = velocity.getX() - increase;
-                if(speed > maxSpeed)
-                    speed = maxSpeed;
+                if(-speed > maxSpeed)
+                    speed = -maxSpeed;
                 velocity = new Vector(speed, velocity.getY());
             }
         }
-        if(input.getKeyboardButton(KeyEvent.VK_UP).isPressed() && !colliding)
-            velocity = new Vector(velocity.getX(), 7.0);
 
-        if (colliding) {
-            double scale = Math.pow(0.001, input.getDeltaTime()) ;
-            velocity = velocity.mul(scale) ;
+        if(input.getKeyboardButton(KeyEvent.VK_UP).isPressed() && colliding)
+        {
+            velocity = new Vector(velocity.getX(), 7.0);
         }
+
+        if(colliding)
+        {
+            double scale = Math.pow(0.001, input.getDeltaTime());
+            velocity = velocity.mul(scale);
+        }
+
+        location = location.add(velocity.mul(delta));
+
+
+        if(input.getKeyboardButton(KeyEvent.VK_SPACE).isPressed())
+        {
+            Vector fireballSpeed = velocity.add(velocity.resized(2.0));
+            getWorld().register(new Fireball(getPosition(), fireballSpeed));
+        }
+    }
+
+    @Override
+    public void postUpdate()
+    {
+        getWorld().setView(getPosition(), 8.0);
+    }
+
+    @Override
+    public Vector getPosition()
+    {
+        return new Vector(location.getX(), location.getY());
+    }
+
+    @Override
+    public int getPriority()
+    {
+        return 42;
+    }
+
+    @Override
+    public void draw(Input input, Output output)
+    {
+        output.drawSprite(sprite, getBox());
+    }
+
+    @Override
+    public Box getBox()
+    {
+        return new Box(new Vector(location.getX(), location.getY()), size.getX(), size.getY());
     }
 }

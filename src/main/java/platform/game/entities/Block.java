@@ -1,4 +1,4 @@
-package platform.game.actors;
+package platform.game.entities;
 
 import platform.game.Actor;
 import platform.util.Box;
@@ -17,8 +17,6 @@ public class Block extends Actor
 
     public Block(Box box, Sprite sprite)
     {
-        super(0);
-
         if(box == null)
             throw new IllegalArgumentException();
 
@@ -45,5 +43,11 @@ public class Block extends Actor
     public Box getBox()
     {
         return box;
+    }
+
+    @Override
+    public int getPriority()
+    {
+        return 0;
     }
 }

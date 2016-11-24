@@ -11,34 +11,13 @@ import platform.util.Sprite;
  */
 public abstract class Actor implements Comparable<Actor>
 {
-    private final int priority;
     private World world;
 
-    @Deprecated
+
     public Actor()
     {
-        throw new UnsupportedOperationException();
+
     }
-
-    public Actor(int priority)
-    {
-        this.priority = priority;
-    }
-
-    public void update(Input input)
-    {}
-
-    public void preUpdate()
-    {}
-
-    public void postUpdate()
-    {}
-
-    public void draw(Input input, Output output)
-    {}
-
-    public void interact(Actor other)
-    {}
 
     public void register(World world)
     {
@@ -49,6 +28,21 @@ public abstract class Actor implements Comparable<Actor>
     {
         world = null;
     }
+
+    public void preUpdate()
+    {}
+
+    public void interact(Actor other)
+    {}
+
+    public void update(Input input)
+    {}
+
+    public void postUpdate()
+    {}
+
+    public void draw(Input input, Output output)
+    {}
 
     protected World getWorld()
     {
@@ -73,16 +67,18 @@ public abstract class Actor implements Comparable<Actor>
         return box.getCenter();
     }
 
-    public int getPriority()
+    public abstract int getPriority();
+
+    protected Sprite getSprite(String string)
     {
-        return priority;
+        return getWorld().getLoader().getSprite(string);
     }
 
     public int compareTo(Actor that)
     {
-        if(this.priority < that.priority)
+        if(getPriority() < that.getPriority())
             return 1;
-        else if(this.priority > that.priority)
+        else if(getPriority() > that.getPriority())
             return -1;
         return 0;
     }
