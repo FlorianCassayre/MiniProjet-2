@@ -57,6 +57,12 @@ public class Player extends Actor
                 colliding = true;
             }
         }
+        if(other instanceof Torch)
+        {
+            if(other.getBox().getCollision(getBox()) != null)
+                other.hurt(this, Damage.AIR, 0, getPosition());
+        }
+
     }
 
     @Override

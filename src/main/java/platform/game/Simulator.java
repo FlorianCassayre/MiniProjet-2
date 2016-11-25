@@ -16,7 +16,7 @@ public class Simulator implements World
     private Loader loader;
 
     private final Vector defaultCenter = Vector.ZERO;
-    private final double defaultRadius = 10.0;
+    private final double defaultRadius = 5.0;
 
     private Vector currentCenter;
     private double currentRadius;
