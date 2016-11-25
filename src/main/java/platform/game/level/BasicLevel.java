@@ -19,12 +19,11 @@ public class BasicLevel extends Level
         //world.register(new Block(new Box(new Vector(0, 0), 4, 2), world.getLoader().getSprite("stone.broken.2")));
         ///world.register(new Block(new Box(new Vector(-1.5, 1.5), 1, 1), world.getLoader().getSprite("stone.broken.1")));
 
-        Sprite sprite = getSprite("box.empty");
         Box zone1 = new Box(new Vector(-4, -1), new Vector(4, 0));
-        world.register(new Block(zone1, sprite));
+        world.register(new Block(zone1, "box.empty"));
 
         Box zone2 = new Box(new Vector(-2, 0), new Vector(-1, 1));
-        world.register(new Block(zone2, sprite));
+        world.register(new Block(zone2, "box.empty"));
 
         //world.register(new Fireball(new Vector(0, 1), Vector.ZERO));
 
@@ -35,7 +34,7 @@ public class BasicLevel extends Level
 
         world.register(new Overlay(player));
 
-        world.register(new Heart(new Vector(-1, 0)));
+        world.register(new Spike(new Vector(-1, 0)));
 
         world.register(new Limits(new Box(Vector.ZERO, 40, 30)));
     }

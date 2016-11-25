@@ -158,16 +158,20 @@ public class Player extends Actor
     {
         switch(type)
         {
+            case VOID:
+                health = 0;
+                return true;
             case FIRE:
                 return true;
             case AIR:
                 velocity = getPosition().sub(location).resized(amount);
                 return true;
-            case VOID:
-                health = 0;
-                return true;
             case HEAL:
                 health = Math.min(getHealth() + amount, getHealthMax());
+                return true;
+            case PHYSICAL:
+                health = Math.max(getHealth() - amount, 0);
+                velocity = getPosition().sub(location).normalized().mul(5);
                 return true;
             default:
                 return super.hurt(instigator, type, amount, location);

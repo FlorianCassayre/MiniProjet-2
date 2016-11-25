@@ -12,10 +12,9 @@ import platform.util.Output;
 public class Block extends Actor
 {
     private final Box box;
-    private final Sprite sprite;
+    private final String sprite;
 
-
-    public Block(Box box, Sprite sprite)
+    public Block(Box box, String sprite)
     {
         if(box == null)
             throw new IllegalArgumentException();
@@ -29,7 +28,7 @@ public class Block extends Actor
     {
         if(sprite != null)
         {
-            output.drawSprite(sprite, box);
+            output.drawSprite(getSprite(sprite), box);
         }
     }
 

@@ -123,6 +123,7 @@ public class Simulator implements World
         for(int i = 0; i < unregistered.size(); ++i)
         {
             Actor actor = unregistered.get(i);
+            actor.unregister();
             actors.remove(actor);
         }
         unregistered.clear();
@@ -143,7 +144,6 @@ public class Simulator implements World
     @Override
     public void unregister(Actor actor)
     {
-        actor.unregister();
         unregistered.add(actor);
     }
 

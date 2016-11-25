@@ -43,7 +43,14 @@ public abstract class Actor implements Comparable<Actor>
 
     public boolean hurt(Actor instigator, Damage type, double amount, Vector location)
     {
-        return false;
+        switch(type)
+        {
+            case VOID:
+                getWorld().unregister(this);
+                return true;
+            default:
+                return false;
+        }
     }
 
     public void draw(Input input, Output output)
