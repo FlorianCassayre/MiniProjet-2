@@ -49,6 +49,6 @@ public class Overlay extends Actor
     @Override
     public int getPriority()
     {
-        return 43;
+        return Priority.OVERLAY;
     }
 }

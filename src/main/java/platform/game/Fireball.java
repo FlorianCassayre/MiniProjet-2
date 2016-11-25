@@ -58,7 +58,7 @@ public class Fireball extends Actor
     @Override
     public int getPriority()
     {
-        return 666;
+        return Priority.FIREBALL;
     }
 
     @Override

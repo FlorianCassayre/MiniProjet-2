@@ -47,6 +47,6 @@ public class Block extends Actor
     @Override
     public int getPriority()
     {
-        return 0;
+        return Priority.BLOCK;
     }
 }

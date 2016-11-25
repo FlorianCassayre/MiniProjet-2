@@ -144,7 +144,7 @@ public class Player extends Actor
     @Override
     public int getPriority()
     {
-        return 42;
+        return Priority.PLAYER;
     }
 
     @Override

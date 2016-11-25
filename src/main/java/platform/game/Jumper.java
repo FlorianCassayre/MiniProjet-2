@@ -17,7 +17,7 @@ public class Jumper extends Block
     @Override
     public int getPriority()
     {
-        return 1000;
+        return Priority.JUMPER;
     }
 
     @Override

@@ -17,7 +17,7 @@ public class Limits extends Actor
     @Override
     public int getPriority()
     {
-        return 2000;
+        return Priority.LIMITS;
     }
 
     @Override

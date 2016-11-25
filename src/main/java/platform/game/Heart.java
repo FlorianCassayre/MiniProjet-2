@@ -16,7 +16,7 @@ public class Heart extends Actor
     @Override
     public int getPriority()
     {
-        return 3000;
+        return Priority.HEART;
     }
 
     @Override
