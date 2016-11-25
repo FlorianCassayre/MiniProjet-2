@@ -129,10 +129,13 @@ public class Player extends Actor
         getWorld().setView(getPosition(), 8.0);
 
         if(health <= 0)
-        {
-            getWorld().nextLevel();
-            getWorld().unregister(this);
-        }
+            onDeath();
+    }
+
+    private void onDeath()
+    {
+        getWorld().nextLevel();
+        getWorld().unregister(this);
     }
 
     @Override

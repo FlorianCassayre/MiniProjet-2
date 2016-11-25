@@ -13,7 +13,6 @@ public abstract class Actor implements Comparable<Actor>
 {
     private World world;
 
-
     public Actor()
     {
 
