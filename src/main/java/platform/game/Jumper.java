@@ -63,7 +63,7 @@ public class Jumper extends Actor
     @Override
     public Box getBox()
     {
-        return new Box(new Vector(position.getX(), position.getY()), 1, 1);
+        return new Box(new Vector(position.getX(), position.getY() - 0.5), new Vector(position.getX() + 1, position.getY() + 0.5));
     }
 
     @Override

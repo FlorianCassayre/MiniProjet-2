@@ -68,7 +68,44 @@ public class Simulator implements World
         View view = new View(input, output);
         view.setTarget(currentCenter, currentRadius);
 
-        //if(view.getMouseButton(1).isPressed())
+
+        for(Actor a : actors)
+            a.preUpdate();
+
+        for(Actor actor : actors)
+            for(Actor other : actors)
+                if(actor.getPriority() > other.getPriority())
+                    actor.interact(other);
+
+        for(Actor a : actors)
+            a.update(view);
+
+        for(Actor a : actors)
+            a.postUpdate();
+
+        // si un acteur a mis transition à true pour demander le passage
+        // à un autre niveau :
+        if(transition)
+        {
+            if(next == null)
+            {
+                next = Level.createDefaultLevel();
+            }
+            // si un acteur a appelé setNextLevel , next ne sera pas null :
+            Level level = next;
+            transition = false;
+            next = null;
+
+            actors.clear();
+            registered.clear();
+            unregistered.clear();
+
+            actors.add(level);
+            level.register(this);
+
+            currentCenter = defaultCenter;
+            currentRadius = defaultRadius;
+        }
 
 
         // Add registered actors
@@ -90,49 +127,10 @@ public class Simulator implements World
         }
         unregistered.clear();
 
+
+
         for(Actor a : actors.descending())
             a.draw(view, view);
-
-        for(Actor a : actors)
-            a.preUpdate();
-
-        for(Actor actor : actors)
-            for(Actor other : actors)
-                if(actor.getPriority() > other.getPriority())
-                    actor.interact(other);
-
-
-        for(Actor a : actors)
-            a.update(view);
-
-
-        for(Actor a : actors)
-            a.postUpdate();
-
-
-        // si un acteur a mis transition à true pour demander le passage
-        // à un autre niveau :
-        if(transition)
-        {
-            if(next == null)
-            {
-                next = Level.createDefaultLevel();
-            }
-            // si un acteur a appelé setNextLevel , next ne sera pas null :
-            Level level = next;
-            transition = false;
-            next = null;
-            actors.clear();
-            registered.clear();
-            // tous les anciens acteurs sont désenregistrés ,
-            // y compris le Level précédent :
-            unregistered.clear();
-            register(level);
-
-            currentCenter = defaultCenter;
-            currentRadius = defaultRadius;
-
-        }
     }
 
     @Override

@@ -6,7 +6,7 @@ import java.awt.event.KeyEvent;
 
 public class Player extends Actor
 {
-    private static final double HEALTH_MAX = 10.0;
+    private static final double HEALTH_MAX = 5.0 + 2;
 
     private Vector size;
     private Vector velocity;
@@ -14,7 +14,7 @@ public class Player extends Actor
     private Sprite sprite;
     private boolean colliding;
 
-    private double health = HEALTH_MAX;
+    private double health = HEALTH_MAX - 1;
 
     public Player(Vector location, Vector speed)
     {
@@ -165,6 +165,9 @@ public class Player extends Actor
                 return true;
             case VOID:
                 health = 0;
+                return true;
+            case HEAL:
+                health = Math.min(getHealth() + amount, getHealthMax());
                 return true;
             default:
                 return super.hurt(instigator, type, amount, location);
