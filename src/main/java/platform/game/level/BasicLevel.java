@@ -31,9 +31,11 @@ public class BasicLevel extends Level
         final Player player = new Player(new Vector(2, 3), new Vector(0, -1));
         world.register(player);
 
-        world.register(new Jumper(new Vector(1, 0)));
+        world.register(new Jumper(new Vector(0, 0)));
 
         world.register(new Overlay(player));
+
+        world.register(new Heart(new Vector(-1, 0)));
 
         world.register(new Limits(new Box(Vector.ZERO, 40, 30)));
     }
