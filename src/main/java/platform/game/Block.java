@@ -16,8 +16,8 @@ public class Block extends Actor
 
     public Block(Box box, String sprite)
     {
-        if(box == null)
-            throw new IllegalArgumentException();
+        //if(box == null)
+           // throw new IllegalArgumentException();
 
         this.box = box;
         this.sprite = sprite;
@@ -28,7 +28,7 @@ public class Block extends Actor
     {
         if(sprite != null)
         {
-            output.drawSprite(getSprite(sprite), box);
+            output.drawSprite(getSprite(sprite), getBox());
         }
     }
 

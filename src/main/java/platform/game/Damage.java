@@ -6,19 +6,9 @@ public enum Damage
     PHYSICAL,
     AIR,
     VOID,
+    TOUCH,
+    JUMPER,
 
-    ACTIVATION(false),
-    HEAL(false);
-
-    final boolean damageable;
-
-    Damage(boolean damageable)
-    {
-        this.damageable = damageable;
-    }
-
-    Damage()
-    {
-        this(true);
-    }
+    ACTIVATION,
+    HEAL;
 }

@@ -45,6 +45,7 @@ public class Player extends Actor
     {
         if(other.isSolid())
         {
+
             Vector delta = other.getBox().getCollision(getBox());
             if(delta != null)
             {
@@ -57,12 +58,6 @@ public class Player extends Actor
                 colliding = true;
             }
         }
-        if(other instanceof Torch)
-        {
-            if(other.getBox().getCollision(getBox()) != null)
-                other.hurt(this, Damage.AIR, 0, getPosition());
-        }
-
     }
 
     @Override
@@ -121,6 +116,18 @@ public class Player extends Actor
             Vector fireballSpeed = velocity.add(velocity.resized(2.0));
             getWorld().register(new Fireball(this, getPosition(), fireballSpeed));
         }
+
+        if(input.getKeyboardButton(KeyEvent.VK_B).isPressed())
+        {
+            getWorld().hurt(getBox(), this, Damage.AIR, 1.0, getPosition());
+        }
+
+        getWorld().hurt(getBox(), this, Damage.TOUCH, 1.0, getPosition());
+
+        if(input.getKeyboardButton(KeyEvent.VK_E).isPressed())
+        {
+            getWorld().hurt(getBox(), this, Damage.ACTIVATION, 1.0, getPosition());
+        }
     }
 
     @Override
@@ -173,8 +180,12 @@ public class Player extends Actor
             case FIRE:
                 return true;
             case AIR:
-                velocity = getPosition().sub(location).resized(amount);
-                return true;
+                if(!(instigator instanceof Player))
+                {
+                    velocity = getPosition().sub(location).resized(amount);
+                    return true;
+                }
+
             case HEAL:
                 health = Math.min(getHealth() + amount, getHealthMax());
                 return true;
@@ -182,6 +193,7 @@ public class Player extends Actor
                 health = Math.max(getHealth() - amount, 0);
                 velocity = getPosition().sub(location).normalized().mul(5);
                 return true;
+                //
             default:
                 return super.hurt(instigator, type, amount, location);
         }
