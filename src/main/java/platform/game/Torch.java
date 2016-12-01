@@ -1,14 +1,22 @@
 package platform.game;
 
+import platform.game.signal.Signal;
 import platform.util.*;
 
-public class  Torch extends Block
+public class  Torch extends Block implements Signal
 {
-    private boolean lit = false;
+    private boolean lit;
+
+    public Torch(Vector position, boolean isActive)
+    {
+        super(new Box(position.add(new Vector(0.25, 0.25)), position.add(new Vector(0.75, 0.75))), "torch");
+
+        this.lit = isActive;
+    }
 
     public Torch(Vector position)
     {
-        super(new Box(position.add(new Vector(0.25, 0.25)), position.add(new Vector(0.75, 0.75))), "torch");
+        this(position, false);
     }
 
     @Override
@@ -56,4 +64,9 @@ public class  Torch extends Block
         return false;
     }
 
+    @Override
+    public boolean isActive()
+    {
+        return lit;
+    }
 }
