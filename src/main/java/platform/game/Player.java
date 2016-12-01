@@ -45,7 +45,6 @@ public class Player extends Actor
     {
         if(other.isSolid())
         {
-
             Vector delta = other.getBox().getCollision(getBox());
             if(delta != null)
             {
@@ -102,15 +101,6 @@ public class Player extends Actor
             velocity = new Vector(velocity.getX(), 7.0);
         }
 
-        if(colliding)
-        {
-            double scale = Math.pow(0.001, input.getDeltaTime());
-            velocity = velocity.mul(scale);
-        }
-
-        location = location.add(velocity.mul(delta));
-
-
         if(input.getKeyboardButton(KeyEvent.VK_SPACE).isPressed())
         {
             Vector fireballSpeed = velocity.add(velocity.resized(2.0));
@@ -128,6 +118,8 @@ public class Player extends Actor
         {
             getWorld().hurt(getBox(), this, Damage.ACTIVATION, 1.0, getPosition());
         }
+
+        location = location.add(velocity.mul(delta));
     }
 
     @Override
@@ -185,15 +177,13 @@ public class Player extends Actor
                     velocity = getPosition().sub(location).resized(amount);
                     return true;
                 }
-
             case HEAL:
                 health = Math.min(getHealth() + amount, getHealthMax());
                 return true;
             case PHYSICAL:
                 health = Math.max(getHealth() - amount, 0);
-                velocity = getPosition().sub(location).normalized().mul(5);
+                //velocity = getPosition().sub(location).normalized().mul(5);
                 return true;
-                //
             default:
                 return super.hurt(instigator, type, amount, location);
         }

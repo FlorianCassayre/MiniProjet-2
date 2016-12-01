@@ -7,15 +7,33 @@ import platform.util.Vector;
 
 public class Spike extends Block
 {
+    private Direction direction;
+    private Vector position;
+    private double cooldown;
+
+    public Spike(Vector position, Direction direction)
+    {
+        super(null, null);
+
+        this.position = position;
+        this.direction = direction;
+    }
+
     public Spike(Vector position)
     {
-        super(new Box(position, position.add(new Vector(1, 0.5))), "spike");
+        this(position, Direction.UP);
     }
 
     @Override
     public void draw(Input input, Output output)
     {
-        output.drawSprite(getSprite("spikes"), getBox());
+        output.drawSprite(getSprite("spikes"), getBox(), (direction.getAngle() - Direction.UP.getAngle()) * Math.PI / 2.0);
+    }
+
+    @Override
+    public void update(Input input)
+    {
+        cooldown -= input.getDeltaTime();
     }
 
     @Override
@@ -23,9 +41,31 @@ public class Spike extends Block
     {
         super.interact(other);
 
-        if(other instanceof Player && getBox().isColliding(other.getBox()))
+        if(other instanceof Player && getBox().isColliding(other.getBox()) && cooldown <= 0)
         {
-            other.hurt(other, Damage.PHYSICAL, 0.5, other.getPosition().add(new Vector(0, -1)));
+            cooldown = 0.5;
+            other.hurt(other, Damage.PHYSICAL, 0.5, getPosition().add(new Vector(0, -10))); // other.getPosition().add(new Vector(0, -1)
+        }
+    }
+
+    @Override
+    public Box getBox()
+    {
+        Vector position = this.position;
+        switch(direction)
+        {
+            case UP:
+                return new Box(position, position.add(new Vector(1, 0.5)));
+            case DOWN:
+                position = position.add(new Vector(0, 0.5));
+                return new Box(position, position.add(new Vector(1, 0.5)));
+            case LEFT:
+                position = position.add(new Vector(0.5, 0));
+                return new Box(position, position.add(new Vector(0.5, 1)));
+            case RIGHT:
+                return new Box(position, position.add(new Vector(0.5, 1)));
+            default:
+                throw new IllegalStateException("Someone is messing with the dimensions!");
         }
     }
 
@@ -33,5 +73,11 @@ public class Spike extends Block
     public int getPriority()
     {
         return 4000;
+    }
+
+    @Override
+    public boolean isSolid()
+    {
+        return false;
     }
 }

@@ -38,7 +38,7 @@ public class Exit extends Block
     @Override
     public boolean hurt(Actor instigator, Damage type, double amount, Vector location)
     {
-        if(type == Damage.TOUCH)
+        if(signal.isActive() && type == Damage.TOUCH)
         {
             getWorld().setNextLevel(level);
             getWorld().nextLevel();
