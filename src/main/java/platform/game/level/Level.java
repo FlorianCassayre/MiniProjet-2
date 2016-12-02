@@ -44,6 +44,6 @@ public abstract class Level extends Actor
      */
     public static Level createDefaultLevel()
     {
-        return new Level2();
+        return new Level3();
     }
 }
