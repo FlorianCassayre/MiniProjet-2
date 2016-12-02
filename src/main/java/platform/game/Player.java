@@ -180,8 +180,8 @@ public class Player extends Actor
                 if(!(instigator instanceof Player))
                 {
                     velocity = getPosition().sub(location).resized(amount);
-                    return true;
                 }
+                return true;
             case HEAL:
                 health = Math.min(getHealth() + amount, getHealthMax());
                 return true;
