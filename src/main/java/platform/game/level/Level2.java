@@ -17,11 +17,12 @@ public class Level2 extends Level
 
         world.register(BlockGenerator.BLOCK_3X1.createBlock(new Vector(-1, 1)));
         world.register(BlockGenerator.BLOCK_2X2.createBlock(new Vector(0, -1)));
-        world.register(BlockGenerator.BLOCK_1X2.createBlock(new Vector(2, 0)));
+        world.register(BlockGenerator.BLOCK_1X3.createBlock(new Vector(2, -1)));
         world.register(BlockGenerator.BLOCK_3X1.createBlock(new Vector(-1, -3)));
         world.register(BlockGenerator.BLOCK_3X2.createBlock(new Vector(-4, -3)));
         world.register(BlockGenerator.BLOCK_3X2.createBlock(new Vector(2, -6)));
         world.register(BlockGenerator.BLOCK_2X3.createBlock(new Vector(5, -3)));
+        world.register(BlockGenerator.BLOCK_1X1.createBlock(new Vector(-1, 0)));
 
         world.register(new Jumper(new Vector(4, -4)));
         world.register(new Jumper(new Vector(6, 0)));
@@ -30,7 +31,8 @@ public class Level2 extends Level
         world.register(lever);
 
         world.register(new Spike(new Vector(-1, 2)));
-        world.register(new Spike(new Vector(-1, 0), Direction.DOWN));
+        world.register(new Spike(new Vector(-1, -1), Direction.DOWN));
+        world.register(new Spike(new Vector(2, -2), Direction.DOWN));
 
         world.register(new Exit(new Vector(-4, -1), null, lever));
 

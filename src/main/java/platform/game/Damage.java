@@ -7,7 +7,6 @@ public enum Damage
     AIR,
     VOID,
     TOUCH,
-    JUMPER,
 
     ACTIVATION,
     HEAL;
