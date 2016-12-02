@@ -1,9 +1,9 @@
 package platform.game.level;
 
 import platform.game.Actor;
-import platform.game.Overlay;
-import platform.game.Player;
 import platform.game.World;
+import platform.game.living.Player;
+import platform.game.overlay.Overlay;
 import platform.util.Input;
 import platform.util.Output;
 import platform.util.Sprite;
@@ -60,6 +60,6 @@ public abstract class Level extends Actor
      */
     public static Level createDefaultLevel()
     {
-        return new Level3();
+        return new BasicLevel();
     }
 }

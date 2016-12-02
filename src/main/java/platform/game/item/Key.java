@@ -32,7 +32,7 @@ public class Key extends Actor implements Signal
     public void draw(Input input, Output output)
     {
         if(!taken)
-            super.draw(input, output);
+            output.drawSprite(getSprite(color.getKeySprite()), getBox());
     }
 
     @Override
