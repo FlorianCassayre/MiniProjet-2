@@ -33,7 +33,7 @@ public class BasicLevel extends Level
 
         world.register(new Jumper(new Vector(0, 0)));
 
-        world.register(new Door(new Box(new Vector(2, 0), new Vector(3, 1)), KeyDoorColor.BLUE, lever));
+        //world.register(new Door(new Box(new Vector(2, 0), new Vector(3, 1)), KeyDoorColor.BLUE, lever));
 
         //world.register(new Fireball(new Vector(0, 1), Vector.ZERO));
 
