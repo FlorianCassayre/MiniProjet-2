@@ -11,11 +11,6 @@ public class Level3 extends Level
     {
         super.register(world);
 
-        //player registration
-        final Player player = new Player(new Vector(1, 2), new Vector(0, 0));
-        world.register(player);
-        world.register(new Overlay(player));
-
         //block registration
         //1
 
@@ -66,5 +61,11 @@ public class Level3 extends Level
         //Door door4 = new Door(new Box(Vector.ZERO,4,4),KeyDoorColor.YELLOW,yellowKey);
 
         world.register(new Limits(new Box(Vector.ZERO, 40, 20)));
+    }
+
+    @Override
+    public Vector getSpawn()
+    {
+        return new Vector(1, 2);
     }
 }

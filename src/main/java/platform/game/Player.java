@@ -26,7 +26,12 @@ public class Player extends Actor
         this.velocity = speed;
     }
 
-    @Override
+    public Player(Vector location)
+    {
+        this(location, Vector.ZERO);
+    }
+
+        @Override
     public void register(World world)
     {
         super.register(world);

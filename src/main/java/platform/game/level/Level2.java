@@ -11,10 +11,6 @@ public class Level2 extends Level
     {
         super.register(world);
 
-        final Player player = new Player(new Vector(1, 2), new Vector(0, 0));
-        world.register(player);
-        world.register(new Overlay(player));
-
         world.register(BlockGenerator.BLOCK_3X1.createBlock(new Vector(-1, 1)));
         world.register(BlockGenerator.BLOCK_2X2.createBlock(new Vector(0, -1)));
         world.register(BlockGenerator.BLOCK_1X3.createBlock(new Vector(2, -1)));
@@ -38,5 +34,11 @@ public class Level2 extends Level
 
 
         world.register(new Limits(new Box(Vector.ZERO, 40, 20)));
+    }
+
+    @Override
+    public Vector getSpawn()
+    {
+        return new Vector(1, 2);
     }
 }

@@ -37,12 +37,7 @@ public class BasicLevel extends Level
 
         //world.register(new Fireball(new Vector(0, 1), Vector.ZERO));
 
-        final Player player = new Player(new Vector(2, 3), new Vector(0, -1));
-        world.register(player);
-
         //world.register(new Jumper(new Vector(0, 0)));
-
-        world.register(new Overlay(player));
 
         //world.register(new Spike(new Vector(-1, 0)));
 
@@ -57,4 +52,9 @@ public class BasicLevel extends Level
         world.register(new Limits(new Box(Vector.ZERO, 40, 30)));
     }
 
+    @Override
+    public Vector getSpawn()
+    {
+        return new Vector(2, 3);
+    }
 }

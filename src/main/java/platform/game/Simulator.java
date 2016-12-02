@@ -101,6 +101,7 @@ public class Simulator implements World
             unregistered.clear();
 
             actors.add(level);
+
             level.register(this);
 
             currentCenter = defaultCenter;
