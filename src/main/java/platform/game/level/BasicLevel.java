@@ -4,7 +4,7 @@ import platform.game.*;
 import platform.game.block.*;
 import platform.game.item.Key;
 import platform.game.overlay.Limits;
-import platform.game.util.KeyDoorColor;
+import platform.game.util.ColoredItem;
 import platform.util.Box;
 import platform.util.Vector;
 
@@ -28,7 +28,7 @@ public class BasicLevel extends Level
         Box zone2 = new Box(new Vector(-2, 0), new Vector(-1, 1));
         world.register(new Block(zone2, "box.empty"));
 
-        final Key key = new Key(new Vector(-2, 1), KeyDoorColor.BLUE);
+        final Key key = new Key(new Vector(-2, 1), ColoredItem.BLUE);
 
         final Lever lever = new Lever(new Vector(4, 0));
 
@@ -36,7 +36,7 @@ public class BasicLevel extends Level
 
         world.register(new Jumper(new Vector(0, 0)));
 
-        world.register(new Door(new Vector(2, 0), KeyDoorColor.BLUE, lever));
+        world.register(new Door(new Vector(2, 0), ColoredItem.BLUE, lever));
 
         //world.register(new Fireball(new Vector(0, 1), Vector.ZERO));
 
@@ -47,6 +47,8 @@ public class BasicLevel extends Level
         world.register(new Torch(new Vector(-1, 0)));
 
         world.register(lever);
+
+        world.register(new Button(new Vector(7, 0), ColoredItem.BLUE));
 
         world.register(new Mover("box.empty", new Vector(10, 0), new Vector(10, 5), new Vector(2, 1), lever));
 

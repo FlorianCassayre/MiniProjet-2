@@ -2,10 +2,9 @@ package platform.game.item;
 
 import platform.game.Actor;
 import platform.game.util.Damage;
-import platform.game.util.KeyDoorColor;
+import platform.game.util.ColoredItem;
 import platform.game.living.Player;
 import platform.game.signal.Signal;
-import platform.util.Box;
 import platform.util.Input;
 import platform.util.Output;
 import platform.util.Vector;
@@ -14,7 +13,7 @@ public class VariableKey extends Key
 {
     private Signal signal;
     private Key key, key1, key2;
-    private KeyDoorColor color1, color2;
+    private ColoredItem color1, color2;
 
     public VariableKey(Key key1, Key key2, Signal signal)
     {

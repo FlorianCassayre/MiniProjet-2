@@ -9,7 +9,7 @@ import platform.game.item.VariableKey;
 import platform.game.overlay.Limits;
 import platform.game.registry.BlockGenerator;
 import platform.game.signal.Not;
-import platform.game.util.KeyDoorColor;
+import platform.game.util.ColoredItem;
 import platform.util.Box;
 import platform.util.Vector;
 
@@ -28,15 +28,15 @@ public class Level4 extends Level
         world.register(torch);
 
         //creating keys
-        final Key redKey = new Key(new Vector(0, -0.5), KeyDoorColor.RED);
-        final Key greenKey = new Key(new Vector(0, -0.5), KeyDoorColor.GREEN);
+        final Key redKey = new Key(new Vector(0, -0.5), ColoredItem.RED);
+        final Key greenKey = new Key(new Vector(0, -0.5), ColoredItem.GREEN);
         VariableKey variableKey= new VariableKey(redKey, greenKey, torch);
         world.register(variableKey);
 
         //creating doors
-        Door redDoor=new Door(new Vector(4,1), KeyDoorColor.RED, new Not(redKey));
+        Door redDoor=new Door(new Vector(4,1), ColoredItem.RED, new Not(redKey));
         world.register(redDoor);
-        Door greenDoor=new Door(new Vector(8,3), KeyDoorColor.GREEN, new Not(greenKey));
+        Door greenDoor=new Door(new Vector(8,3), ColoredItem.GREEN, new Not(greenKey));
         world.register(greenDoor);
 
 

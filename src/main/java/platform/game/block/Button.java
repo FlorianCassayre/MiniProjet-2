@@ -1,30 +1,24 @@
 package platform.game.block;
 
 import platform.game.Actor;
-import platform.game.util.ColoredItem;
-import platform.game.item.Key;
 import platform.game.signal.Signal;
+import platform.game.util.ColoredItem;
+import platform.game.util.Damage;
 import platform.util.Box;
 import platform.util.Input;
 import platform.util.Output;
 import platform.util.Vector;
 
-public class Door extends Actor implements Signal
+public class Button extends Actor implements Signal
 {
-    private final Box box;
+    private boolean isPressed = false;
     private final ColoredItem color;
-    private Signal signal;
+    private final Box box;
 
-    public Door(Vector position, ColoredItem color, Signal signal)
+    public Button(Vector position, ColoredItem color)
     {
         this.box = new Box(position, position.add(new Vector(1, 1)));
         this.color = color;
-        this.signal = signal;
-    }
-
-    public Door(Vector position, Key key)
-    {
-        this(position, key.getColor(), key);
     }
 
     @Override
@@ -36,19 +30,23 @@ public class Door extends Actor implements Signal
     @Override
     public void draw(Input input, Output output)
     {
-        if(!isActive())
-            output.drawSprite(getSprite(color.getDoorSprite()), getBox());
+        output.drawSprite(getSprite(color.getButtonSprite(isPressed)), getBox());
     }
 
     @Override
-    public boolean isSolid()
+    public boolean hurt(Actor instigator, Damage type, double amount, Vector location)
     {
-        return !isActive();
+        if(type == Damage.TOUCH && !isPressed)
+        {
+            isPressed = true;
+            return true;
+        }
+        return false;
     }
 
     @Override
     public boolean isActive()
     {
-        return signal.isActive();
+        return isPressed;
     }
 }

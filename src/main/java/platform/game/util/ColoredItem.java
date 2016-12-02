@@ -1,6 +1,6 @@
 package platform.game.util;
 
-public enum KeyDoorColor
+public enum ColoredItem
 {
     BLUE("blue"),
     GREEN("green"),
@@ -9,7 +9,7 @@ public enum KeyDoorColor
 
     private final String sprite;
 
-    KeyDoorColor(String sprite)
+    ColoredItem(String sprite)
     {
         this.sprite = sprite;
     }
@@ -22,5 +22,10 @@ public enum KeyDoorColor
     public String getDoorSprite()
     {
         return "lock." + sprite;
+    }
+
+    public String getButtonSprite(boolean isPressed)
+    {
+        return "button." + sprite + "." + (isPressed ? "down" : "up");
     }
 }
