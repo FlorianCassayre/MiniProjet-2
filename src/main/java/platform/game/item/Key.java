@@ -14,7 +14,7 @@ public class Key extends Actor implements Signal
 {
     private final Box box;
     private KeyDoorColor color;
-    private boolean taken;
+    protected boolean taken;
 
     public Key(Vector position, KeyDoorColor color)
     {
@@ -32,7 +32,7 @@ public class Key extends Actor implements Signal
     public void draw(Input input, Output output)
     {
         if(!taken)
-            output.drawSprite(getSprite(color.getKeySprite()), getBox());
+            output.drawSprite(getSprite(this.color.getKeySprite()), getBox());
     }
 
     @Override
