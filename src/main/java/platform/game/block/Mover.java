@@ -1,9 +1,8 @@
-package platform.game;
+package platform.game.block;
 
 import platform.game.signal.Signal;
 import platform.util.Box;
 import platform.util.Input;
-import platform.util.Sprite;
 import platform.util.Vector;
 
 public class Mover extends Block
@@ -14,7 +13,7 @@ public class Mover extends Block
 
     public Mover(String sprite, Vector vectorOff, Vector vectorOn, Vector size, Signal signal)
     {
-        super(null, sprite); // FIXME
+        super(new Box(vectorOff, vectorOff.add(size)), sprite);
 
         this.vectorOff = vectorOff;
         this.vectorOn = vectorOn;

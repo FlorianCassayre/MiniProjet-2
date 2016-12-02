@@ -1,9 +1,9 @@
-package platform.game;
+package platform.game.block;
 
 import platform.game.Actor;
+import platform.game.util.Priority;
 import platform.util.Box;
 import platform.util.Input;
-import platform.util.Sprite;
 import platform.util.Output;
 
 /**

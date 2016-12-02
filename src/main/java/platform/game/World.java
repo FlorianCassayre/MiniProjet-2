@@ -1,6 +1,7 @@
 package platform.game;
 
 import platform.game.level.Level;
+import platform.game.util.Damage;
 import platform.util.Box;
 import platform.util.Loader;
 import platform.util.Vector;

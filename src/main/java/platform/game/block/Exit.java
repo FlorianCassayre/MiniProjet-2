@@ -1,19 +1,21 @@
-package platform.game;
+package platform.game.block;
 
+import platform.game.Actor;
+import platform.game.util.Damage;
 import platform.game.level.Level;
 import platform.game.signal.ConstantSignal;
 import platform.game.signal.Signal;
 import platform.util.*;
 
-public class Exit extends Block
+public class Exit extends Actor
 {
+    private final Box box;
     private Level level;
     private Signal signal;
 
     public Exit(Vector vector, Level level, Signal signal)
     {
-        super(new Box(vector, vector.add(new Vector(1, 1))), null);
-
+        this.box = new Box(vector, vector.add(new Vector(1, 1)));
         this.level = level;
         this.signal = signal;
     }
@@ -21,6 +23,12 @@ public class Exit extends Block
     public Exit(Vector vector, Level level)
     {
         this(vector, level, new ConstantSignal(true));
+    }
+
+    @Override
+    public Box getBox()
+    {
+        return box;
     }
 
     @Override
@@ -44,12 +52,6 @@ public class Exit extends Block
             getWorld().nextLevel();
             return true;
         }
-        return false;
-    }
-
-        @Override
-    public boolean isSolid()
-    {
         return false;
     }
 }

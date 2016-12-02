@@ -1,6 +1,12 @@
 package platform.game.level;
 
 import platform.game.*;
+import platform.game.block.Lever;
+import platform.game.block.Torch;
+import platform.game.item.Key;
+import platform.game.overlay.Limits;
+import platform.game.registry.BlockGenerator;
+import platform.game.util.KeyDoorColor;
 import platform.util.Box;
 import platform.util.Vector;
 
@@ -41,7 +47,7 @@ public class Level3 extends Level
         //creating keys
 
         //yellow key
-        Key yellowKey= new Key(new Vector(-2,1),KeyDoorColor.YELLOW);
+        Key yellowKey= new Key(new Vector(-2,1), KeyDoorColor.YELLOW);
         world.register(yellowKey);
         //red key
         Key redKey= new Key(new Vector(-3,1),KeyDoorColor.RED);

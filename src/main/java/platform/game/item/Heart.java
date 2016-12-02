@@ -1,16 +1,21 @@
-package platform.game;
+package platform.game.item;
 
+import platform.game.Actor;
+import platform.game.util.Damage;
+import platform.game.living.Player;
+import platform.game.util.Priority;
 import platform.util.*;
 
 public class Heart extends Actor
 {
-    private Vector position;
+    private final Box box;
     private static final int COOLDOWN_DEFAULT = 10;
     private double cooldown = 0;
 
     public Heart(Vector position)
     {
-        this.position = position;
+        position = position.add(new Vector(0.25, 0.25));
+        this.box = new Box(position, position.add(new Vector(0.5, 0.5)));
     }
 
     @Override
@@ -49,14 +54,8 @@ public class Heart extends Actor
     }
 
     @Override
-    public Vector getPosition()
-    {
-        return position;
-    }
-
-    @Override
     public Box getBox()
     {
-        return new Box(new Vector(position.getX() + 0.25, position.getY() + 0.25), new Vector(position.getX() + 0.75, position.getY() + 0.75));
+        return box;
     }
 }

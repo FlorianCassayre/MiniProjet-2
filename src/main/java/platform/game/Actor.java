@@ -1,5 +1,6 @@
 package platform.game;
 
+import platform.game.util.Damage;
 import platform.util.Box;
 import platform.util.Input;
 import platform.util.Vector;
@@ -78,7 +79,10 @@ public abstract class Actor implements Comparable<Actor>
         return box.getCenter();
     }
 
-    public abstract int getPriority();
+    public int getPriority()
+    {
+        return 0;
+    }
 
     protected Sprite getSprite(String string)
     {

@@ -1,5 +1,8 @@
-package platform.game;
+package platform.game.overlay;
 
+import platform.game.Actor;
+import platform.game.util.Priority;
+import platform.game.living.Player;
 import platform.util.*;
 
 public class Overlay extends Actor
@@ -14,7 +17,7 @@ public class Overlay extends Actor
     @Override
     public void update(Input input)
     {
-        if(player.getWorld() == null)
+        if(player.getHealth() <= 0.0)
         {
             getWorld().unregister(this);
         }

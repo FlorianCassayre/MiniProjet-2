@@ -1,7 +1,10 @@
 package platform.game.level;
 
 import platform.game.*;
-import platform.game.signal.ConstantSignal;
+import platform.game.block.*;
+import platform.game.item.Key;
+import platform.game.overlay.Limits;
+import platform.game.util.KeyDoorColor;
 import platform.util.Box;
 import platform.util.Vector;
 
@@ -33,7 +36,7 @@ public class BasicLevel extends Level
 
         world.register(new Jumper(new Vector(0, 0)));
 
-        world.register(new Door(new Box(new Vector(2, 0), new Vector(3, 1)), KeyDoorColor.BLUE, lever));
+        world.register(new Door(new Vector(2, 0), KeyDoorColor.BLUE, lever));
 
         //world.register(new Fireball(new Vector(0, 1), Vector.ZERO));
 

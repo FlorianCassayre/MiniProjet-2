@@ -1,4 +1,4 @@
-package platform.game;
+package platform.game.util;
 
 public enum Damage
 {

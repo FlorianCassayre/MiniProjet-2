@@ -1,7 +1,8 @@
-package platform.game;
+package platform.game.overlay;
 
 import platform.game.Actor;
-import platform.game.Damage;
+import platform.game.util.Damage;
+import platform.game.util.Priority;
 import platform.util.Box;
 import platform.util.Vector;
 

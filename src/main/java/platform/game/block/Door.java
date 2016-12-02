@@ -1,19 +1,24 @@
-package platform.game;
+package platform.game.block;
 
+import platform.game.Actor;
+import platform.game.util.KeyDoorColor;
+import platform.game.item.Key;
 import platform.game.signal.Signal;
 import platform.util.Box;
 import platform.util.Input;
 import platform.util.Output;
 import platform.util.Vector;
 
-public class Door extends Block implements Signal
+public class Door extends Actor implements Signal
 {
+    private final Box box;
+    private final KeyDoorColor color;
     private Signal signal;
 
     public Door(Vector position, KeyDoorColor color, Signal signal)
     {
-        super(new Box(position, position.add(new Vector(1, 1))), color.getDoorSprite());
-
+        this.box = new Box(position, position.add(new Vector(1, 1)));
+        this.color = color;
         this.signal = signal;
     }
 
@@ -23,10 +28,16 @@ public class Door extends Block implements Signal
     }
 
     @Override
+    public Box getBox()
+    {
+        return box;
+    }
+
+    @Override
     public void draw(Input input, Output output)
     {
         if(!isActive())
-            super.draw(input, output);
+            output.drawSprite(getSprite(color.getDoorSprite()), getBox());
     }
 
     @Override

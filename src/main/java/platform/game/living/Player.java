@@ -1,5 +1,9 @@
-package platform.game;
+package platform.game.living;
 
+import platform.game.Actor;
+import platform.game.util.Damage;
+import platform.game.util.Priority;
+import platform.game.World;
 import platform.util.*;
 
 import java.awt.event.KeyEvent;

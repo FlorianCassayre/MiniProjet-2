@@ -1,17 +1,24 @@
-package platform.game;
+package platform.game.block;
 
 import platform.game.Actor;
-import platform.game.Damage;
-import platform.game.World;
+import platform.game.util.Damage;
+import platform.game.util.Priority;
 import platform.util.*;
 
-public class Jumper extends Block
+public class Jumper extends Actor
 {
+    private final Box box;
     private double cooldown;
 
     public Jumper(Vector position)
     {
-        super(new Box(position, position.add(new Vector(1, 0.5))), "jumper.normal");
+        this.box = new Box(position, position.add(new Vector(1, 0.5)));
+    }
+
+    @Override
+    public Box getBox()
+    {
+        return box;
     }
 
     @Override

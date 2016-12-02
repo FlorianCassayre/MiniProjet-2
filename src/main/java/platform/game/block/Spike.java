@@ -1,11 +1,15 @@
-package platform.game;
+package platform.game.block;
 
+import platform.game.Actor;
+import platform.game.util.Damage;
+import platform.game.util.Direction;
+import platform.game.living.Player;
 import platform.util.Box;
 import platform.util.Input;
 import platform.util.Output;
 import platform.util.Vector;
 
-public class Spike extends Block
+public class Spike extends Actor
 {
     private Direction direction;
     private Vector position;
@@ -13,8 +17,6 @@ public class Spike extends Block
 
     public Spike(Vector position, Direction direction)
     {
-        super(null, null);
-
         this.position = position;
         this.direction = direction;
     }
@@ -73,11 +75,5 @@ public class Spike extends Block
     public int getPriority()
     {
         return 4000;
-    }
-
-    @Override
-    public boolean isSolid()
-    {
-        return false;
     }
 }

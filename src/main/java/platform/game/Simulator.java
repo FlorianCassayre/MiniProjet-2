@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import platform.game.level.Level;
+import platform.game.util.Damage;
 import platform.util.*;
 
 /**

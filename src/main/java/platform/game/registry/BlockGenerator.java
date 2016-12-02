@@ -1,5 +1,6 @@
-package platform.game;
+package platform.game.registry;
 
+import platform.game.block.Block;
 import platform.util.Box;
 import platform.util.Vector;
 

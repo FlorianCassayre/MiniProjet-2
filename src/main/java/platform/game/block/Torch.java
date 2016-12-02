@@ -1,22 +1,30 @@
-package platform.game;
+package platform.game.block;
 
+import platform.game.Actor;
+import platform.game.util.Damage;
 import platform.game.signal.Signal;
 import platform.util.*;
 
-public class  Torch extends Block implements Signal
+public class  Torch extends Actor implements Signal
 {
+    private final Box box;
     private boolean lit;
 
     public Torch(Vector position, boolean isActive)
     {
-        super(new Box(position.add(new Vector(0.25, 0.25)), position.add(new Vector(0.75, 0.75))), "torch");
-
+        this.box = new Box(position.add(new Vector(0.25, 0.25)), position.add(new Vector(0.75, 0.75)));
         this.lit = isActive;
     }
 
     public Torch(Vector position)
     {
         this(position, false);
+    }
+
+    @Override
+    public Box getBox()
+    {
+        return box;
     }
 
     @Override
@@ -56,12 +64,6 @@ public class  Torch extends Block implements Signal
             default:
                 return super.hurt(instigator, type, amount, location);
         }
-    }
-
-    @Override
-    public boolean isSolid()
-    {
-        return false;
     }
 
     @Override

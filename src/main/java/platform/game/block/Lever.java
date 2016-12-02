@@ -1,18 +1,27 @@
-package platform.game;
+package platform.game.block;
 
+import platform.game.Actor;
+import platform.game.util.Damage;
 import platform.game.signal.Signal;
 import platform.util.Box;
 import platform.util.Input;
 import platform.util.Output;
 import platform.util.Vector;
 
-public class Lever extends Block implements Signal
+public class Lever extends Actor implements Signal
 {
+    private final Box box;
     private boolean state = false;
 
     public Lever(Vector vector)
     {
-        super(new Box(vector, vector.add(new Vector(1, 1))), null); // FIXME
+        this.box = new Box(vector, vector.add(new Vector(1, 1)));
+    }
+
+    @Override
+    public Box getBox()
+    {
+        return box;
     }
 
     @Override
@@ -41,11 +50,5 @@ public class Lever extends Block implements Signal
     public boolean isActive()
     {
         return state;
-    }
-
-    @Override
-    public boolean isSolid()
-    {
-        return false;
     }
 }

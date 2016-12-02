@@ -1,21 +1,31 @@
-package platform.game;
+package platform.game.item;
 
+import platform.game.Actor;
+import platform.game.util.Damage;
+import platform.game.util.KeyDoorColor;
+import platform.game.living.Player;
 import platform.game.signal.Signal;
 import platform.util.Box;
 import platform.util.Input;
 import platform.util.Output;
 import platform.util.Vector;
 
-public class Key extends Block implements Signal
+public class Key extends Actor implements Signal
 {
+    private final Box box;
     private KeyDoorColor color;
     private boolean taken;
 
     public Key(Vector position, KeyDoorColor color)
     {
-        super(new Box(position.add(new Vector(0.25, 0.25)), position.add(new Vector(0.75, 0.75))), color.getKeySprite());
-
+        this.box = new Box(position.add(new Vector(0.25, 0.25)), position.add(new Vector(0.75, 0.75)));
         this.color = color;
+    }
+
+    @Override
+    public Box getBox()
+    {
+        return box;
     }
 
     @Override

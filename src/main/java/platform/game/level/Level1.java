@@ -1,6 +1,10 @@
 package platform.game.level;
 
 import platform.game.*;
+import platform.game.block.Exit;
+import platform.game.block.Jumper;
+import platform.game.overlay.Limits;
+import platform.game.registry.BlockGenerator;
 import platform.util.Box;
 import platform.util.Vector;
 
