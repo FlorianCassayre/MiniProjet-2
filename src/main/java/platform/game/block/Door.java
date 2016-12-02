@@ -1,54 +1,21 @@
 package platform.game.block;
 
-import platform.game.Actor;
-import platform.game.util.ColoredItem;
 import platform.game.item.Key;
+import platform.game.signal.Not;
 import platform.game.signal.Signal;
+import platform.game.util.ColoredItem;
 import platform.util.Box;
-import platform.util.Input;
-import platform.util.Output;
 import platform.util.Vector;
 
-public class Door extends Actor implements Signal
+public class Door extends HideableBlock
 {
-    private final Box box;
-    private final ColoredItem color;
-    private Signal signal;
-
     public Door(Vector position, ColoredItem color, Signal signal)
     {
-        this.box = new Box(position, position.add(new Vector(1, 1)));
-        this.color = color;
-        this.signal = signal;
+        super(new Box(position, position.add(new Vector(1, 1))), color.getDoorSprite(), new Not(signal)); // Reverting the signal since the door must be invisible when the key is taken
     }
 
     public Door(Vector position, Key key)
     {
         this(position, key.getColor(), key);
-    }
-
-    @Override
-    public Box getBox()
-    {
-        return box;
-    }
-
-    @Override
-    public void draw(Input input, Output output)
-    {
-        if(!isActive())
-            output.drawSprite(getSprite(color.getDoorSprite()), getBox());
-    }
-
-    @Override
-    public boolean isSolid()
-    {
-        return !isActive();
-    }
-
-    @Override
-    public boolean isActive()
-    {
-        return signal.isActive();
     }
 }
