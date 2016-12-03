@@ -41,12 +41,15 @@ public class Player extends LivingEntity
             if(delta != null)
             {
                 setPosition(getPosition().add(delta));
-                if(delta.getX() != 0.0)
+                if(delta.getX() != 0.0) // Player hit a wall (sideway)
+                {
                     setVelocity(new Vector(0.0, getVelocity().getY()));
-                if(delta.getY() != 0.0)
+                }
+                if(delta.getY() != 0.0) // Player hit the ground/ceiling
+                {
                     setVelocity(new Vector(getVelocity().getX(), 0.0));
-
-                colliding = true;
+                    colliding = true;
+                }
             }
         }
     }
