@@ -47,7 +47,8 @@ public class Player extends LivingEntity
                 }
                 if(delta.getY() != 0.0) // Player hit the ground/ceiling
                 {
-                    setVelocity(new Vector(getVelocity().getX(), 0.0));
+                    setVelocity(new Vector(getVelocity().getX(), getVelocity().getY() * 0.9));
+                    //setVelocity(new Vector(getVelocity().getX(), 0.0));
                     colliding = true;
                 }
             }
@@ -160,7 +161,7 @@ public class Player extends LivingEntity
                 return true;
             case PHYSICAL:
                 setHealth(Math.max(getHealth() - amount, 0));
-                //velocity = getPosition().sub(location).normalized().mul(5);
+                setVelocity(getVelocity().mul(0.2).add(getPosition().sub(location).normalized().mul(5)));
                 return true;
             default:
                 return super.hurt(instigator, type, amount, location);

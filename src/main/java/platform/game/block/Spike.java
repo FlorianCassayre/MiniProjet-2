@@ -46,7 +46,7 @@ public class Spike extends Actor
         if(other instanceof Player && getBox().isColliding(other.getBox()) && cooldown <= 0)
         {
             cooldown = 0.5;
-            other.hurt(other, Damage.PHYSICAL, 0.5, getPosition().add(new Vector(0, -10))); // other.getPosition().add(new Vector(0, -1)
+            other.hurt(other, Damage.PHYSICAL, 0.5, getPosition()); // other.getPosition().add(new Vector(0, -1)
         }
     }
 
