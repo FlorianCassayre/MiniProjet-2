@@ -4,7 +4,6 @@ import platform.game.Actor;
 import platform.game.World;
 import platform.game.living.Player;
 import platform.game.overlay.Limits;
-import platform.game.overlay.Overlay;
 import platform.util.*;
 
 /**
@@ -48,7 +47,6 @@ public abstract class Level extends Actor
 
         final Player player = new Player(getSpawn());
         world.register(player);
-        world.register(new Overlay(player));
 
         world.register(new Limits(new Box(Vector.ZERO, getLimits().getX(), getLimits().getY())));
     }
@@ -68,6 +66,6 @@ public abstract class Level extends Actor
      */
     public static Level createDefaultLevel()
     {
-        return new Level2();
+        return new BasicLevel();
     }
 }

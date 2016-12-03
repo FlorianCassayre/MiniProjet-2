@@ -7,7 +7,7 @@ import platform.util.Input;
 import platform.util.Output;
 import platform.util.Vector;
 
-public class Fireball extends LivingEntity
+public class Fireball extends Entity
 {
     private static final int MAX_BOUNCES = 10;
     private static final double SIZE = 0.4;

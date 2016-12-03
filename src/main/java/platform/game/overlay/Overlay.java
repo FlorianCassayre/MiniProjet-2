@@ -1,23 +1,23 @@
 package platform.game.overlay;
 
 import platform.game.Actor;
+import platform.game.living.Entity;
 import platform.game.util.Priority;
-import platform.game.living.Player;
 import platform.util.*;
 
 public class Overlay extends Actor
 {
-    public Player player;
+    public Entity entity;
 
-    public Overlay(Player player)
+    public Overlay(Entity entity)
     {
-        this.player = player;
+        this.entity = entity;
     }
 
     @Override
     public void update(Input input)
     {
-        if(player.getHealth() <= 0.0)
+        if(entity.getHealth() <= 0.0)
         {
             getWorld().unregister(this);
         }
@@ -26,8 +26,8 @@ public class Overlay extends Actor
     @Override
     public void draw(Input input, Output output)
     {
-        double health = player.getHealth();
-        for(int i = 1; i <= player.getMaxHealth(); ++i)
+        double health = entity.getHealth();
+        for(int i = 1; i <= entity.getMaxHealth(); ++i)
         {
             String name;
             if(health >= i)
@@ -38,14 +38,14 @@ public class Overlay extends Actor
                 name = "heart.empty";
 
             Sprite sprite = getSprite(name);
-            output.drawSprite(sprite, new Box(player.getPosition().add(new Vector(0.25 * (i - player.getMaxHealth() / 2) - 0.25 / 2 , 0.5)), 0.25, 0.25));
+            output.drawSprite(sprite, new Box(entity.getPosition().add(new Vector(0.25 * (i - entity.getMaxHealth() / 2) - 0.25 / 2 , 0.5)), 0.25, 0.25));
         }
     }
 
     @Override
     public Box getBox()
     {
-        return player.getBox();
+        return entity.getBox();
     }
 
     @Override
