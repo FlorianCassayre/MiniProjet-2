@@ -12,6 +12,8 @@ public class Fireball extends Entity
     private static final int MAX_BOUNCES = 10;
     private static final double SIZE = 0.4;
 
+    private double rotation = 0;
+
     private final Actor owner;
 
     public Fireball(Actor owner, Vector location, Vector speed)
@@ -24,13 +26,21 @@ public class Fireball extends Entity
     @Override
     public void draw(Input input, Output output)
     {
-        output.drawSprite(getSprite("fireball"), getBox(), 20 * input.getTime());
+        output.drawSprite(getSprite("fireball"), getBox(), 30 * rotation);
     }
 
     @Override
     public int getPriority()
     {
         return Priority.FIREBALL;
+    }
+
+    @Override
+    public void update(Input input)
+    {
+        super.update(input);
+
+        rotation += input.getDeltaTime();
     }
 
     @Override
@@ -44,7 +54,8 @@ public class Fireball extends Entity
             if(delta != null)
             {
                 setPosition(getPosition().add(delta));
-                setVelocity(getVelocity().mirrored(delta));
+                Vector velocity = getVelocity().mirrored(delta);
+                setVelocity(new Vector(velocity.getX(), velocity.getY() * 0.9));
                 setHealth(getHealth() - 1);
             }
         }
