@@ -3,44 +3,27 @@ package platform.game.living;
 import platform.game.Actor;
 import platform.game.util.Damage;
 import platform.game.util.Priority;
-import platform.game.World;
-import platform.util.*;
+import platform.util.Input;
+import platform.util.Output;
+import platform.util.Vector;
 
 import java.awt.event.KeyEvent;
 
-public class Player extends Actor
+public class Player extends LivingEntity
 {
-    private static final double HEALTH_MAX = 5.0 + 2;
+    private static final int HEALTH_MAX = 5;
+    private static final double SIZE = 0.5;
 
-    private Vector size;
-    private Vector velocity;
-    private Vector location;
-    private Sprite sprite;
     private boolean colliding;
 
-    private double health = HEALTH_MAX - 1;
-
-    public Player(Vector location, Vector speed)
+    public Player(Vector position, Vector velocity)
     {
-        if(location == null || speed == null)
-            throw new NullPointerException();
-
-        this.size = new Vector(0.5, 0.5);
-        this.location = location;
-        this.velocity = speed;
+        super(position, new Vector(SIZE, SIZE), velocity, HEALTH_MAX);
     }
 
-    public Player(Vector location)
+    public Player(Vector position)
     {
-        this(location, Vector.ZERO);
-    }
-
-        @Override
-    public void register(World world)
-    {
-        super.register(world);
-
-        this.sprite = getSprite("blocker.happy");
+        this(position, Vector.ZERO);
     }
 
     @Override
@@ -57,11 +40,11 @@ public class Player extends Actor
             Vector delta = other.getBox().getCollision(getBox());
             if(delta != null)
             {
-                location = location.add(delta);
+                setPosition(getPosition().add(delta));
                 if(delta.getX() != 0.0)
-                    velocity = new Vector(0.0, velocity.getY());
+                    setVelocity(new Vector(0.0, getVelocity().getY()));
                 if(delta.getY() != 0.0)
-                    velocity = new Vector(velocity.getX(), 0.0);
+                    setVelocity(new Vector(getVelocity().getX(), 0.0));
 
                 colliding = true;
             }
@@ -69,50 +52,52 @@ public class Player extends Actor
     }
 
     @Override
+    public void draw(Input input, Output output)
+    {
+        output.drawSprite(getSprite("blocker.happy"), getBox());
+    }
+
+    @Override
     public void update(Input input)
     {
-        double delta = input.getDeltaTime();
-        Vector acceleration = getWorld().getGravity();
-        velocity = velocity.add(acceleration.mul(delta));
-
         if(colliding)
         {
             double scale = Math.pow(0.001, input.getDeltaTime());
-            velocity = velocity.mul(scale);
+            setVelocity(getVelocity().mul(scale));
         }
 
         double maxSpeed = 4.0;
         if(input.getKeyboardButton(KeyEvent.VK_RIGHT).isDown())
         {
-            if(velocity.getX() < maxSpeed)
+            if(getVelocity().getX() < maxSpeed)
             {
                 double increase = 60.0 * input.getDeltaTime();
-                double speed = velocity.getX() + increase;
+                double speed = getVelocity().getX() + increase;
                 if(speed > maxSpeed)
                     speed = maxSpeed;
-                velocity = new Vector(speed, velocity.getY());
+                setVelocity(new Vector(speed, getVelocity().getY()));
             }
         }
         else if(input.getKeyboardButton(KeyEvent.VK_LEFT).isDown()) // FIXME redundant
         {
-            if(-velocity.getX() < maxSpeed)
+            if(-getVelocity().getX() < maxSpeed)
             {
                 double increase = 60.0 * input.getDeltaTime();
-                double speed = velocity.getX() - increase;
+                double speed = getVelocity().getX() - increase;
                 if(-speed > maxSpeed)
                     speed = -maxSpeed;
-                velocity = new Vector(speed, velocity.getY());
+                setVelocity(new Vector(speed, getVelocity().getY()));
             }
         }
 
         if(input.getKeyboardButton(KeyEvent.VK_UP).isPressed() && colliding)
         {
-            velocity = new Vector(velocity.getX(), 7.0);
+            setVelocity(new Vector(getVelocity().getX(), 7.0));
         }
 
         if(input.getKeyboardButton(KeyEvent.VK_SPACE).isPressed())
         {
-            Vector fireballSpeed = velocity.add(velocity.resized(2.0));
+            Vector fireballSpeed = getVelocity().add(getVelocity().resized(2.0));
             getWorld().register(new Fireball(this, getPosition(), fireballSpeed));
         }
 
@@ -128,28 +113,21 @@ public class Player extends Actor
             getWorld().hurt(getBox(), this, Damage.ACTIVATION, 1.0, getPosition());
         }
 
-        location = location.add(velocity.mul(delta));
+        super.update(input);
     }
 
     @Override
     public void postUpdate()
     {
+        super.postUpdate();
+
         getWorld().setView(getPosition(), 8.0);
-
-        if(health <= 0)
-            onDeath();
-    }
-
-    private void onDeath()
-    {
-        getWorld().nextLevel();
-        getWorld().unregister(this);
     }
 
     @Override
-    public Vector getPosition()
+    public void onDeath()
     {
-        return new Vector(location.getX(), location.getY());
+        getWorld().nextLevel();
     }
 
     @Override
@@ -159,52 +137,30 @@ public class Player extends Actor
     }
 
     @Override
-    public void draw(Input input, Output output)
-    {
-        output.drawSprite(sprite, getBox());
-    }
-
-    @Override
-    public Box getBox()
-    {
-        return new Box(new Vector(location.getX(), location.getY()), size.getX(), size.getY());
-    }
-
-    @Override
     public boolean hurt(Actor instigator, Damage type, double amount, Vector location)
     {
         switch(type)
         {
             case VOID:
-                health = 0;
+                kill();
                 return true;
             case FIRE:
                 return true;
             case AIR:
                 if(!(instigator instanceof Player))
                 {
-                    velocity = getPosition().sub(location).resized(amount);
+                    setVelocity(getPosition().sub(location).resized(amount));
                 }
                 return true;
             case HEAL:
-                health = Math.min(getHealth() + amount, getHealthMax());
+                setHealth(Math.min(getHealth() + amount, getMaxHealth()));
                 return true;
             case PHYSICAL:
-                health = Math.max(getHealth() - amount, 0);
+                setHealth(Math.max(getHealth() - amount, 0));
                 //velocity = getPosition().sub(location).normalized().mul(5);
                 return true;
             default:
                 return super.hurt(instigator, type, amount, location);
         }
-    }
-
-    public double getHealth()
-    {
-        return health;
-    }
-
-    public double getHealthMax()
-    {
-        return HEALTH_MAX;
     }
 }

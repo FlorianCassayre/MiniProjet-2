@@ -27,7 +27,7 @@ public class Overlay extends Actor
     public void draw(Input input, Output output)
     {
         double health = player.getHealth();
-        for(int i = 1; i <= player.getHealthMax(); ++i)
+        for(int i = 1; i <= player.getMaxHealth(); ++i)
         {
             String name;
             if(health >= i)
@@ -38,8 +38,7 @@ public class Overlay extends Actor
                 name = "heart.empty";
 
             Sprite sprite = getSprite(name);
-            output.drawSprite(sprite, new Box(player.getPosition().add(new Vector(0.25 * (i - player.getHealthMax() / 2) - 0.25 / 2 , 0.5)), 0.25, 0.25));
-
+            output.drawSprite(sprite, new Box(player.getPosition().add(new Vector(0.25 * (i - player.getMaxHealth() / 2) - 0.25 / 2 , 0.5)), 0.25, 0.25));
         }
     }
 

@@ -5,7 +5,7 @@ public final class Priority
     public static final int BLOCK = 0;
 
     public static final int PLAYER = 10;
-    public static final int OVERLAY = 11;
+    public static final int OVERLAY = 1000;
 
     public static final int HEART = 20;
     public static final int JUMPER = 50;

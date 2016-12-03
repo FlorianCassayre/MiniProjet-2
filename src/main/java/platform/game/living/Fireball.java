@@ -3,57 +3,28 @@ package platform.game.living;
 import platform.game.Actor;
 import platform.game.util.Damage;
 import platform.game.util.Priority;
-import platform.game.World;
-import platform.util.*;
+import platform.util.Input;
+import platform.util.Output;
+import platform.util.Vector;
 
-public class Fireball extends Actor
+public class Fireball extends LivingEntity
 {
-    private final double size;
-    private Vector velocity;
-    private Vector location;
-    private Sprite sprite;
+    private static final int MAX_BOUNCES = 10;
+    private static final double SIZE = 0.4;
+
     private final Actor owner;
 
     public Fireball(Actor owner, Vector location, Vector speed)
     {
-        if(location == null || speed == null)
-            throw new NullPointerException();
-
-        this.size = 0.4;
+        super(location, new Vector(SIZE, SIZE), speed, MAX_BOUNCES);
 
         this.owner = owner;
-        this.location = location;
-        this.velocity = speed;
-    }
-
-    @Override
-    public void update(Input input)
-    {
-        super.update(input);
-        double delta = input.getDeltaTime();
-        Vector acceleration = getWorld().getGravity();
-        velocity = velocity.add(acceleration.mul(delta));
-        location = location.add(velocity.mul(delta));
-    }
-
-    @Override
-    public void register(World world)
-    {
-        super.register(world);
-
-        this.sprite = getWorld().getLoader().getSprite("fireball");
     }
 
     @Override
     public void draw(Input input, Output output)
     {
-        output.drawSprite(sprite, getBox(), 20 * input.getTime());
-    }
-
-    @Override
-    public Box getBox()
-    {
-        return new Box(new Vector(location.getX(), location.getY()), size, size);
+        output.drawSprite(getSprite("fireball"), getBox(), 20 * input.getTime());
     }
 
     @Override
@@ -69,11 +40,12 @@ public class Fireball extends Actor
 
         if(other.isSolid())
         {
-            Vector delta = other.getBox().getCollision(location);
+            Vector delta = other.getBox().getCollision(getPosition());
             if(delta != null)
             {
-                location = location.add(delta);
-                velocity = velocity.mirrored(delta);
+                setPosition(getPosition().add(delta));
+                setVelocity(getVelocity().mirrored(delta));
+                setHealth(getHealth() - 1);
             }
         }
 
@@ -81,7 +53,7 @@ public class Fireball extends Actor
         {
             if(other != owner && other.hurt(this, Damage.FIRE, 1.0, getPosition()))
             {
-                getWorld().unregister(this);
+                kill();
             }
         }
     }

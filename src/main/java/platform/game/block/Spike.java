@@ -74,6 +74,6 @@ public class Spike extends Actor
     @Override
     public int getPriority()
     {
-        return 4000;
+        return 400;
     }
 }
