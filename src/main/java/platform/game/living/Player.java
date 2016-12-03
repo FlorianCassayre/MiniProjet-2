@@ -14,6 +14,8 @@ public class Player extends LivingEntity
     private static final int HEALTH_MAX = 5;
     private static final double SIZE = 0.5;
 
+    private double sadCooldown;
+
     private boolean colliding;
 
     public Player(Vector position, Vector velocity)
@@ -58,12 +60,14 @@ public class Player extends LivingEntity
     @Override
     public void draw(Input input, Output output)
     {
-        output.drawSprite(getSprite("blocker.happy"), getBox());
+        output.drawSprite(getSprite("blocker." + (sadCooldown < 0 ? (getHealth() > 1 ? "happy" : "sad") : "dead")), getBox());
     }
 
     @Override
     public void update(Input input)
     {
+        sadCooldown -= input.getDeltaTime();
+
         if(colliding)
         {
             double scale = Math.pow(0.001, input.getDeltaTime());
@@ -138,6 +142,14 @@ public class Player extends LivingEntity
     public int getPriority()
     {
         return Priority.PLAYER;
+    }
+
+    @Override
+    public void setHealth(double health)
+    {
+        super.setHealth(health);
+
+        sadCooldown = 1;
     }
 
     @Override
