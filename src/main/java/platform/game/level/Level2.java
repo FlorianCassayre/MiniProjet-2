@@ -1,14 +1,12 @@
 package platform.game.level;
 
-import platform.game.*;
+import platform.game.World;
 import platform.game.block.Exit;
 import platform.game.block.Jumper;
 import platform.game.block.Lever;
 import platform.game.block.Spike;
-import platform.game.overlay.Limits;
 import platform.game.registry.BlockGenerator;
 import platform.game.util.Direction;
-import platform.util.Box;
 import platform.util.Vector;
 
 public class Level2 extends Level
@@ -38,9 +36,6 @@ public class Level2 extends Level
         world.register(new Spike(new Vector(2, -2), Direction.DOWN));
 
         world.register(new Exit(new Vector(-4, -1), null, lever));
-
-
-        world.register(new Limits(new Box(Vector.ZERO, 40, 20)));
     }
 
     @Override

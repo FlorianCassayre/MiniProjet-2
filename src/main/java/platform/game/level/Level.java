@@ -3,11 +3,9 @@ package platform.game.level;
 import platform.game.Actor;
 import platform.game.World;
 import platform.game.living.Player;
+import platform.game.overlay.Limits;
 import platform.game.overlay.Overlay;
-import platform.util.Input;
-import platform.util.Output;
-import platform.util.Sprite;
-import platform.util.Vector;
+import platform.util.*;
 
 /**
  * Base class for level factories, which provides fade in transition. Subclasses
@@ -51,15 +49,25 @@ public abstract class Level extends Actor
         final Player player = new Player(getSpawn());
         world.register(player);
         world.register(new Overlay(player));
+
+        world.register(new Limits(new Box(Vector.ZERO, getLimits().getX(), getLimits().getY())));
     }
 
-    public abstract Vector getSpawn();
+    public Vector getSpawn()
+    {
+        return Vector.ZERO;
+    }
+
+    public Vector getLimits()
+    {
+        return new Vector(40, 20);
+    }
 
     /**
      * @return a new instance of default level
      */
     public static Level createDefaultLevel()
     {
-        return new BasicLevel();
+        return new Level2();
     }
 }

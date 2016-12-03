@@ -1,16 +1,10 @@
 package platform.game.level;
 
-import platform.game.*;
-import platform.game.block.Door;
-import platform.game.block.Exit;
-import platform.game.block.Jumper;
-import platform.game.block.Lever;
-import platform.game.block.Spike;
+import platform.game.World;
+import platform.game.block.*;
 import platform.game.item.Key;
-import platform.game.overlay.Limits;
 import platform.game.registry.BlockGenerator;
 import platform.game.util.ColoredItem;
-import platform.util.Box;
 import platform.util.Vector;
 
 public class Level3 extends Level
@@ -61,9 +55,6 @@ public class Level3 extends Level
         //creating spikes
         world.register(new Spike(new Vector(1.5, 0)));
         world.register(new Spike(new Vector(4.5, 1)));
-
-        //world limits
-        world.register(new Limits(new Box(Vector.ZERO, 40, 20)));
     }
 
     @Override

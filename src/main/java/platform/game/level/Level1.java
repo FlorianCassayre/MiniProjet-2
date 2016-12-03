@@ -1,11 +1,9 @@
 package platform.game.level;
 
-import platform.game.*;
+import platform.game.World;
 import platform.game.block.Exit;
 import platform.game.block.Jumper;
-import platform.game.overlay.Limits;
 import platform.game.registry.BlockGenerator;
-import platform.util.Box;
 import platform.util.Vector;
 
 public class Level1 extends Level
@@ -22,9 +20,6 @@ public class Level1 extends Level
         world.register(new Jumper(new Vector(1, 0)));
 
         world.register(new Exit(new Vector(3, 4), null));
-
-
-        world.register(new Limits(new Box(Vector.ZERO, 40, 20)));
     }
 
     @Override

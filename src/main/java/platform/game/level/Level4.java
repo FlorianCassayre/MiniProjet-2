@@ -1,16 +1,14 @@
 package platform.game.level;
 
-import platform.game.*;
+import platform.game.World;
 import platform.game.block.Door;
 import platform.game.block.Exit;
 import platform.game.block.Torch;
 import platform.game.item.Key;
 import platform.game.item.VariableKey;
-import platform.game.overlay.Limits;
 import platform.game.registry.BlockGenerator;
 import platform.game.signal.Not;
 import platform.game.util.ColoredItem;
-import platform.util.Box;
 import platform.util.Vector;
 
 public class Level4 extends Level
@@ -41,9 +39,6 @@ public class Level4 extends Level
 
 
         world.register(new Exit(new Vector(14, 6), null));
-
-
-        world.register(new Limits(new Box(Vector.ZERO, 40, 20)));
     }
 
     @Override

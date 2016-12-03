@@ -1,9 +1,8 @@
 package platform.game.level;
 
-import platform.game.*;
+import platform.game.World;
 import platform.game.block.*;
 import platform.game.item.Key;
-import platform.game.overlay.Limits;
 import platform.game.util.ColoredItem;
 import platform.util.Box;
 import platform.util.Vector;
@@ -53,8 +52,6 @@ public class BasicLevel extends Level
         world.register(new Mover("box.empty", new Vector(10, 0), new Vector(10, 5), new Vector(2, 1), lever));
 
         world.register(new Exit(new Vector(10, 0), new BasicLevel()));
-
-        world.register(new Limits(new Box(Vector.ZERO, 40, 30)));
     }
 
     @Override
