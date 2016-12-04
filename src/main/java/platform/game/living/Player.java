@@ -11,7 +11,7 @@ import java.awt.event.KeyEvent;
 
 public class Player extends LivingEntity
 {
-    private static final int HEALTH_MAX = 5;
+    private static final int HEALTH_MAX = 3;
     private static final double SIZE = 0.5;
 
     private double sadCooldown;

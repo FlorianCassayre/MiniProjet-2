@@ -11,11 +11,18 @@ public class Heart extends Actor
     private final Box box;
     private static final int COOLDOWN_DEFAULT = 10;
     private double cooldown = 0;
+    private boolean respawn;
 
-    public Heart(Vector position)
+    public Heart(Vector position, boolean respawn)
     {
         position = position.add(new Vector(0.25, 0.25));
         this.box = new Box(position, position.add(new Vector(0.5, 0.5)));
+        this.respawn = respawn;
+    }
+
+    public Heart(Vector position)
+    {
+        this(position, false);
     }
 
     @Override
@@ -36,7 +43,6 @@ public class Heart extends Actor
     {
         if(cooldown <= 0)
         {
-
             output.drawSprite(getSprite("heart.full"), getBox());
         }
     }
@@ -49,7 +55,7 @@ public class Heart extends Actor
         if(cooldown <= 0 && other instanceof Player && getBox().isColliding(other.getBox()))
         {
             other.hurt(this, Damage.HEAL, 1.0, getPosition());
-            cooldown = COOLDOWN_DEFAULT;
+            cooldown = respawn ? COOLDOWN_DEFAULT : Double.POSITIVE_INFINITY;
         }
     }
 
