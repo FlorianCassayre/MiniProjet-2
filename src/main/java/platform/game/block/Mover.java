@@ -25,7 +25,7 @@ public class Mover extends Block
     @Override
     public Box getBox()
     {
-        Vector position = new Vector((vectorOn.getX() - vectorOff.getX()) * current, (vectorOn.getY() - vectorOff.getY()) * current);
+        Vector position = new Vector((vectorOn.getX() - vectorOff.getX()) * current + vectorOff.getX(), (vectorOn.getY() - vectorOff.getY()) * current + vectorOff.getY());
         return new Box(position, position.add(size));
     }
 
