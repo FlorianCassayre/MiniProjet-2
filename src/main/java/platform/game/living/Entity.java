@@ -50,7 +50,7 @@ public abstract class Entity extends Actor
             onDeath();
     }
 
-    public void onDeath()
+    protected void onDeath()
     {
         getWorld().unregister(this);
     }
