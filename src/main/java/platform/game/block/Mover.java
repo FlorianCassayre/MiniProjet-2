@@ -1,6 +1,7 @@
 package platform.game.block;
 
 import platform.game.signal.Signal;
+import platform.game.util.InterpolationType;
 import platform.util.Box;
 import platform.util.Input;
 import platform.util.Vector;
@@ -9,9 +10,11 @@ public class Mover extends Block
 {
     private final Vector vectorOff, vectorOn, size;
     private Signal signal;
+    private final InterpolationType interpolation;
+    private final double duration;
     private double current;
 
-    public Mover(String sprite, Vector vectorOff, Vector vectorOn, Vector size, Signal signal)
+    public Mover(String sprite, Vector vectorOff, Vector vectorOn, Vector size, Signal signal, double duration, InterpolationType interpolation)
     {
         super(new Box(vectorOff, vectorOff.add(size)), sprite);
 
@@ -20,12 +23,22 @@ public class Mover extends Block
         this.size = size;
 
         this.signal = signal;
+
+        this.interpolation = interpolation;
+        this.duration = duration;
+    }
+
+    public Mover(String sprite, Vector vectorOff, Vector vectorOn, Vector size, Signal signal)
+    {
+        this(sprite, vectorOff, vectorOn, size, signal, 1.0, InterpolationType.CUBIC);
     }
 
     @Override
     public Box getBox()
     {
-        Vector position = new Vector((vectorOn.getX() - vectorOff.getX()) * current + vectorOff.getX(), (vectorOn.getY() - vectorOff.getY()) * current + vectorOff.getY());
+        final double currentInterpolation = interpolation.interpolate(current / duration);
+
+        Vector position = new Vector((vectorOn.getX() - vectorOff.getX()) * currentInterpolation + vectorOff.getX(), (vectorOn.getY() - vectorOff.getY()) * currentInterpolation + vectorOff.getY());
         return new Box(position, position.add(size));
     }
 
@@ -36,8 +49,8 @@ public class Mover extends Block
         if(signal.isActive())
         {
             current += input.getDeltaTime();
-            if(current > 1.0)
-                current = 1.0;
+            if(current > duration)
+                current = duration;
         }
         else
         {
