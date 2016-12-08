@@ -1,24 +1,18 @@
 package platform.game.block;
 
 import platform.game.Actor;
+import platform.game.FixedActor;
 import platform.game.util.Damage;
 import platform.game.util.Priority;
 import platform.util.*;
 
-public class Jumper extends Actor
+public class Jumper extends FixedActor
 {
-    private final Box box;
     private double cooldown;
 
     public Jumper(Vector position)
     {
-        this.box = new Box(position, position.add(new Vector(1, 0.5)));
-    }
-
-    @Override
-    public Box getBox()
-    {
-        return box;
+        super(new Box(position, position.add(new Vector(1, 0.5))));
     }
 
     @Override

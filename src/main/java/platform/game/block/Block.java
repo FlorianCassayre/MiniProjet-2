@@ -1,6 +1,7 @@
 package platform.game.block;
 
 import platform.game.Actor;
+import platform.game.FixedActor;
 import platform.game.util.Priority;
 import platform.util.Box;
 import platform.util.Input;
@@ -9,17 +10,17 @@ import platform.util.Output;
 /**
  * Simple solid actor that does nothing.
  */
-public class Block extends Actor
+public class Block extends FixedActor
 {
-    private final Box box;
     private final String sprite;
 
     public Block(Box box, String sprite)
     {
-        //if(box == null)
-           // throw new IllegalArgumentException();
+        super(box);
 
-        this.box = box;
+        if(sprite == null)
+            throw new IllegalArgumentException("The sprite cannot be null.");
+
         this.sprite = sprite;
     }
 
@@ -36,12 +37,6 @@ public class Block extends Actor
     public boolean isSolid()
     {
         return true;
-    }
-
-    @Override
-    public Box getBox()
-    {
-        return box;
     }
 
     @Override

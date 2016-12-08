@@ -17,40 +17,46 @@ public class VariableKey extends Key
 
     public VariableKey(Key key1, Key key2, Signal signal)
     {
-            super(key1.getPosition(), key1.getColor());
-            this.signal = signal;
-            this.key1 = key1;
-            this.key2 = key2;
-            this.color1= key1.getColor();
-            this.color2= key2.getColor();
+        super(key1.getPosition(), key1.getColor());
+        this.signal = signal;
+        this.key1 = key1;
+        this.key2 = key2;
+        this.color1 = key1.getColor();
+        this.color2 = key2.getColor();
     }
 
-    public void update(Input input){
-        if (signal.isActive()){
-            this.key=key2;
+    public void update(Input input)
+    {
+        if(signal.isActive())
+        {
+            this.key = key2;
         }
-        else {
-            this.key=key1;
+        else
+        {
+            this.key = key1;
         }
     }
 
     @Override
     public void draw(Input input, Output output)
     {
-        if(!key1.taken && this.key==this.key1)
+        if(!key1.taken && this.key == this.key1)
             output.drawSprite(getSprite(this.color1.getKeySprite()), getBox());
-        else if (!key2.taken && this.key==this.key2)
+        else if(!key2.taken && this.key == this.key2)
             output.drawSprite(getSprite(this.color2.getKeySprite()), getBox());
     }
+
     @Override
     public boolean hurt(Actor instigator, Damage type, double amount, Vector location)
     {
         if(instigator instanceof Player && type == Damage.TOUCH)
         {
-            if (this.key==key1) {
+            if(this.key == key1)
+            {
                 key1.taken = true;
             }
-            if (this.key==key2) {
+            if(this.key == key2)
+            {
                 key2.taken = true;
             }
             return true;
@@ -59,6 +65,9 @@ public class VariableKey extends Key
     }
 
     @Override
-    public boolean isActive() {return key1.taken&&key2.taken;}
+    public boolean isActive()
+    {
+        return key1.taken && key2.taken;
+    }
 
 }

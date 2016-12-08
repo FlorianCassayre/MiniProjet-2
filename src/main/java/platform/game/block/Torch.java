@@ -1,30 +1,25 @@
 package platform.game.block;
 
 import platform.game.Actor;
+import platform.game.FixedActor;
 import platform.game.util.Damage;
 import platform.game.signal.Signal;
 import platform.util.*;
 
-public class  Torch extends Actor implements Signal
+public class Torch extends FixedActor implements Signal
 {
-    private final Box box;
     private boolean lit;
 
     public Torch(Vector position, boolean isActive)
     {
-        this.box = new Box(position.add(new Vector(0.25, 0.25)), position.add(new Vector(0.75, 0.75)));
+        super(new Box(position.add(new Vector(0.25, 0.25)), position.add(new Vector(0.75, 0.75))));
+
         this.lit = isActive;
     }
 
     public Torch(Vector position)
     {
         this(position, false);
-    }
-
-    @Override
-    public Box getBox()
-    {
-        return box;
     }
 
     @Override

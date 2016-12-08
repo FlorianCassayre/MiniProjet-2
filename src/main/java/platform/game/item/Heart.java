@@ -1,22 +1,22 @@
 package platform.game.item;
 
 import platform.game.Actor;
+import platform.game.FixedActor;
 import platform.game.util.Damage;
 import platform.game.living.Player;
 import platform.game.util.Priority;
 import platform.util.*;
 
-public class Heart extends Actor
+public class Heart extends FixedActor
 {
-    private final Box box;
     private static final int COOLDOWN_DEFAULT = 10;
     private double cooldown = 0;
     private boolean respawn;
 
     public Heart(Vector position, boolean respawn)
     {
-        position = position.add(new Vector(0.25, 0.25));
-        this.box = new Box(position, position.add(new Vector(0.5, 0.5)));
+        super(new Box(position.add(new Vector(0.25, 0.25)), position.add(new Vector(0.75, 0.75))));
+
         this.respawn = respawn;
     }
 
@@ -57,11 +57,5 @@ public class Heart extends Actor
             other.hurt(this, Damage.HEAL, 1.0, getPosition());
             cooldown = respawn ? COOLDOWN_DEFAULT : Double.POSITIVE_INFINITY;
         }
-    }
-
-    @Override
-    public Box getBox()
-    {
-        return box;
     }
 }

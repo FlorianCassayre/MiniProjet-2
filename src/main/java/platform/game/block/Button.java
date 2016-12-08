@@ -1,6 +1,7 @@
 package platform.game.block;
 
 import platform.game.Actor;
+import platform.game.FixedActor;
 import platform.game.signal.Signal;
 import platform.game.util.ColoredItem;
 import platform.game.util.Damage;
@@ -9,22 +10,15 @@ import platform.util.Input;
 import platform.util.Output;
 import platform.util.Vector;
 
-public class Button extends Actor implements Signal
+public class Button extends FixedActor implements Signal
 {
     private boolean isPressed = false;
     private final ColoredItem color;
-    private final Box box;
 
     public Button(Vector position, ColoredItem color)
     {
-        this.box = new Box(position, position.add(new Vector(1, 1)));
+        super(new Box(position, position.add(new Vector(1, 1))));
         this.color = color;
-    }
-
-    @Override
-    public Box getBox()
-    {
-        return box;
     }
 
     @Override

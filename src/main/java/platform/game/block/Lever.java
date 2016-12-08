@@ -1,6 +1,7 @@
 package platform.game.block;
 
 import platform.game.Actor;
+import platform.game.FixedActor;
 import platform.game.util.Damage;
 import platform.game.signal.Signal;
 import platform.util.Box;
@@ -8,20 +9,13 @@ import platform.util.Input;
 import platform.util.Output;
 import platform.util.Vector;
 
-public class Lever extends Actor implements Signal
+public class Lever extends FixedActor implements Signal
 {
-    private final Box box;
     private boolean state = false;
 
     public Lever(Vector vector)
     {
-        this.box = new Box(vector, vector.add(new Vector(1, 1)));
-    }
-
-    @Override
-    public Box getBox()
-    {
-        return box;
+        super(new Box(vector, vector.add(new Vector(1, 1))));
     }
 
     @Override

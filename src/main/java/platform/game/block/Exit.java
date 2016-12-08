@@ -1,21 +1,22 @@
 package platform.game.block;
 
 import platform.game.Actor;
+import platform.game.FixedActor;
 import platform.game.util.Damage;
 import platform.game.level.Level;
 import platform.game.signal.ConstantSignal;
 import platform.game.signal.Signal;
 import platform.util.*;
 
-public class Exit extends Actor
+public class Exit extends FixedActor
 {
-    private final Box box;
     private Level level;
     private Signal signal;
 
     public Exit(Vector vector, Level level, Signal signal)
     {
-        this.box = new Box(vector, vector.add(new Vector(1, 1)));
+        super(new Box(vector, vector.add(new Vector(1, 1))));
+
         this.level = level;
         this.signal = signal;
     }
@@ -23,12 +24,6 @@ public class Exit extends Actor
     public Exit(Vector vector, Level level)
     {
         this(vector, level, new ConstantSignal(true));
-    }
-
-    @Override
-    public Box getBox()
-    {
-        return box;
     }
 
     @Override
