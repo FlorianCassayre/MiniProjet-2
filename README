@@ -1,1 +1,32 @@
-TODO
+//TODO: Comment lancer le programme
+
+COMMANDES:
+↑: Sauter
+E: activer ou désactiver le levier
+B: souffler
+ESPACE: lancer des boules de feu
+
+LEVELS:
+
+-Level 0:
+Des tests et encore des tests.
+
+-Level 1: "A l'abordage!"
+Bienvenue dans le monde merveilleux de notre jeu. C'est aussi l'occasion de découvrir le Jumper. :-)
+
+-Level 2: "Effet de Levier"
+Tiens, mais à quoi sert donc ce levier? Faites attention à ne pas vous blesser avec les Spikes!
+Comment sortir cette fois-ci? Actionnez le levier et la porte s'ouvre merveilleusement vers le prochain niveau.
+
+-Level 3: "Surprise"
+Surprise! Et oui, vous n'atterissez pas sur la terre ferme cette fois-ci. Et oui, la clé bleue que vous prenez au passage fait disparaitre le bloc bleu! Vous en déduisez que pour faire disparaitre les autres blocs et sortir de ce niveau, il faut prendre les autres clés.
+
+-Level 4: "La Torche Mystérieuse"
+Que se passe-t-il quand vous prenez la clé rouge? Magie, un bloc rouge apparait!
+Mais à quoi sert donc cette torche? Essayez donc de l'allumer en lançant des boules de feu! Tiens, une autre clé, verte cette fois-ci. Que se passe-t-il si on la prend? Un autre bloc vert apparait, évidemment. Il est maintenant temps de voir où ces blocs nous mènent, en faisant attention de ne pas tomber dans le vide. Quoi, la fin du niveau? Finalement, c'est plus simple que ce à quoi on s'attendait. :-)
+
+-Level 5: "Le casse-tête chinois"
+//TODO
+
+-Level 6: ""
+//TODO

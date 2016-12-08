@@ -94,6 +94,7 @@ public class Level5 extends Level
         world.register(keyBlue);
 
         world.register(new Door(new Vector(-5, 0), keyBlue));
+        world.register(new Door(new Vector(-5, 1), keyBlue));
 
         final Key keyRed = new Key(new Vector(-7, -1), ColoredItem.RED);
         world.register(keyRed);
