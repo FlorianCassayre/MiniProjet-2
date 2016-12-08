@@ -2,6 +2,9 @@ package platform.game;
 
 import platform.util.Box;
 
+/**
+ * An actor whose position and size is fixed throughout the time.
+ */
 public class FixedActor extends Actor
 {
     private final Box box;

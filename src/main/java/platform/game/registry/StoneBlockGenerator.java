@@ -4,7 +4,10 @@ import platform.game.block.Block;
 import platform.util.Box;
 import platform.util.Vector;
 
-public enum BlockGenerator
+/**
+ * Utility class to generate blocks by their size.
+ */
+public enum StoneBlockGenerator
 {
     BLOCK_1X1(1, 1, 1),
     BLOCK_2X1(2, 2, 1),
@@ -18,7 +21,7 @@ public enum BlockGenerator
     private final String spriteNormal, spriteBroken;
     private final int width, height;
 
-    BlockGenerator(int id, int width, int height)
+    StoneBlockGenerator(int id, int width, int height)
     {
         final String prefix = "stone.";
 

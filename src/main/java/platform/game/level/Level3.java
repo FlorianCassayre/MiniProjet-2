@@ -3,7 +3,7 @@ package platform.game.level;
 import platform.game.World;
 import platform.game.block.*;
 import platform.game.item.Key;
-import platform.game.registry.BlockGenerator;
+import platform.game.registry.StoneBlockGenerator;
 import platform.game.util.ColoredItem;
 import platform.util.Vector;
 
@@ -15,13 +15,13 @@ public class Level3 extends Level
         super.register(world);
 
         //block registration
-        world.register(BlockGenerator.BLOCK_1X1.createBlock(new Vector(4.5, 0)));
-        world.register(BlockGenerator.BLOCK_3X1.createBlock(new Vector(5.5, 0)));
-        world.register(BlockGenerator.BLOCK_1X3.createBlock(new Vector(1.5, -3)));
-        world.register(BlockGenerator.BLOCK_1X3.createBlock(new Vector(1.5, -6)));
-        world.register(BlockGenerator.BLOCK_1X3.createBlock(new Vector(3.5, -3)));
-        world.register(BlockGenerator.BLOCK_1X3.createBlock(new Vector(3.5, -6)));
-        world.register(BlockGenerator.BLOCK_3X1.createBlock(new Vector(1.5, -7)));
+        world.register(StoneBlockGenerator.BLOCK_1X1.createBlock(new Vector(4.5, 0)));
+        world.register(StoneBlockGenerator.BLOCK_3X1.createBlock(new Vector(5.5, 0)));
+        world.register(StoneBlockGenerator.BLOCK_1X3.createBlock(new Vector(1.5, -3)));
+        world.register(StoneBlockGenerator.BLOCK_1X3.createBlock(new Vector(1.5, -6)));
+        world.register(StoneBlockGenerator.BLOCK_1X3.createBlock(new Vector(3.5, -3)));
+        world.register(StoneBlockGenerator.BLOCK_1X3.createBlock(new Vector(3.5, -6)));
+        world.register(StoneBlockGenerator.BLOCK_3X1.createBlock(new Vector(1.5, -7)));
 
         //creating keys
         final Key redKey = new Key(new Vector(2.5, 3), ColoredItem.RED);

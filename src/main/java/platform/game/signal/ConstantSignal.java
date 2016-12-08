@@ -1,5 +1,8 @@
 package platform.game.signal;
 
+/**
+ * A constant signal.
+ */
 public final class ConstantSignal implements Signal
 {
     private final boolean isActive;

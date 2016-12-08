@@ -45,6 +45,7 @@ public class Simulator implements World
         {
             throw new NullPointerException();
         }
+
         this.loader = loader;
         currentCenter = defaultCenter;
         currentRadius = defaultRadius;

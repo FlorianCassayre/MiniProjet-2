@@ -8,8 +8,8 @@ import platform.game.environment.Limits;
 import platform.util.*;
 
 /**
- * Base class for level factories, which provides fade in transition. Subclasses
- * are requires to override <code>register</code>.
+ * Base class for level factories, which provides fade in transition.
+ * Subclasses must override <code>register</code>.
  */
 public abstract class Level extends Actor
 {
@@ -54,23 +54,36 @@ public abstract class Level extends Actor
         world.register(new Limits(new Box(Vector.ZERO, getLimits().getX(), getLimits().getY())));
     }
 
+    /**
+     * Returns the location of the level spawn.
+     * @return a position vector
+     */
     public Vector getSpawn()
     {
         return Vector.ZERO;
     }
 
+    /**
+     * Returns the bounds of this level.
+     * Every actor that exits these limits will be deleted.
+     * @return a box
+     */
     public Vector getLimits()
     {
         return new Vector(40, 20);
     }
 
+    /**
+     * Returns the image to be used for the background.
+     * @return the sprite name
+     */
     public String getBackgroundSprite()
     {
         return "pixel.white";
     }
 
     /**
-     * @return a new instance of default level
+     * @return a new instance of the default level.
      */
     public static Level createDefaultLevel()
     {

@@ -7,6 +7,9 @@ import platform.util.Input;
 import platform.util.Output;
 import platform.util.Vector;
 
+/**
+ * A background image.
+ */
 public class Background extends Actor
 {
     private final String sprite;

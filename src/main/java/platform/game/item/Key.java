@@ -11,6 +11,9 @@ import platform.util.Input;
 import platform.util.Output;
 import platform.util.Vector;
 
+/**
+ * A colored key returning a signal if it has been taken.
+ */
 public class Key extends FixedActor implements Signal
 {
     private ColoredItem color;

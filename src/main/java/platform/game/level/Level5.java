@@ -4,7 +4,7 @@ import platform.game.World;
 import platform.game.block.*;
 import platform.game.item.Heart;
 import platform.game.item.Key;
-import platform.game.registry.BlockGenerator;
+import platform.game.registry.StoneBlockGenerator;
 import platform.game.signal.And;
 import platform.game.signal.Not;
 import platform.game.signal.Xor;
@@ -19,42 +19,42 @@ public class Level5 extends Level
     {
         super.register(world);
 
-        world.register(BlockGenerator.BLOCK_3X1.createBlock(new Vector(-1, -1)));
-        world.register(BlockGenerator.BLOCK_2X3.createBlock(new Vector(2, -3)));
-        world.register(BlockGenerator.BLOCK_1X3.createBlock(new Vector(3, 0)));
-        world.register(BlockGenerator.BLOCK_1X3.createBlock(new Vector(3, 3)));
-        world.register(BlockGenerator.BLOCK_2X3.createBlock(new Vector(3, 6)));
+        world.register(StoneBlockGenerator.BLOCK_3X1.createBlock(new Vector(-1, -1)));
+        world.register(StoneBlockGenerator.BLOCK_2X3.createBlock(new Vector(2, -3)));
+        world.register(StoneBlockGenerator.BLOCK_1X3.createBlock(new Vector(3, 0)));
+        world.register(StoneBlockGenerator.BLOCK_1X3.createBlock(new Vector(3, 3)));
+        world.register(StoneBlockGenerator.BLOCK_2X3.createBlock(new Vector(3, 6)));
 
-        world.register(BlockGenerator.BLOCK_2X2.createBlock(new Vector(0, 9)));
+        world.register(StoneBlockGenerator.BLOCK_2X2.createBlock(new Vector(0, 9)));
 
-        world.register(BlockGenerator.BLOCK_2X3.createBlock(new Vector(-5, 10)));
-        world.register(BlockGenerator.BLOCK_3X1.createBlock(new Vector(-4, 13)));
-        world.register(BlockGenerator.BLOCK_2X1.createBlock(new Vector(-6, 13)));
+        world.register(StoneBlockGenerator.BLOCK_2X3.createBlock(new Vector(-5, 10)));
+        world.register(StoneBlockGenerator.BLOCK_3X1.createBlock(new Vector(-4, 13)));
+        world.register(StoneBlockGenerator.BLOCK_2X1.createBlock(new Vector(-6, 13)));
 
-        world.register(BlockGenerator.BLOCK_2X1.createBlock(new Vector(1, 6)));
+        world.register(StoneBlockGenerator.BLOCK_2X1.createBlock(new Vector(1, 6)));
 
-        world.register(BlockGenerator.BLOCK_3X1.createBlock(new Vector(-2, 2)));
+        world.register(StoneBlockGenerator.BLOCK_3X1.createBlock(new Vector(-2, 2)));
 
-        world.register(BlockGenerator.BLOCK_1X1.createBlock(new Vector(-1, 3)));
+        world.register(StoneBlockGenerator.BLOCK_1X1.createBlock(new Vector(-1, 3)));
 
-        world.register(BlockGenerator.BLOCK_3X1.createBlock(new Vector(-1, -3)));
+        world.register(StoneBlockGenerator.BLOCK_3X1.createBlock(new Vector(-1, -3)));
 
-        world.register(BlockGenerator.BLOCK_3X1.createBlock(new Vector(-6, -1)));
+        world.register(StoneBlockGenerator.BLOCK_3X1.createBlock(new Vector(-6, -1)));
 
-        world.register(BlockGenerator.BLOCK_2X3.createBlock(new Vector(-8, 2)));
+        world.register(StoneBlockGenerator.BLOCK_2X3.createBlock(new Vector(-8, 2)));
 
-        world.register(BlockGenerator.BLOCK_2X2.createBlock(new Vector(-3, 6)));
-        world.register(BlockGenerator.BLOCK_2X1.createBlock(new Vector(-6, 7)));
+        world.register(StoneBlockGenerator.BLOCK_2X2.createBlock(new Vector(-3, 6)));
+        world.register(StoneBlockGenerator.BLOCK_2X1.createBlock(new Vector(-6, 7)));
 
-        world.register(BlockGenerator.BLOCK_3X2.createBlock(new Vector(-10, 7)));
+        world.register(StoneBlockGenerator.BLOCK_3X2.createBlock(new Vector(-10, 7)));
 
-        world.register(BlockGenerator.BLOCK_1X2.createBlock(new Vector(-2, 8)));
+        world.register(StoneBlockGenerator.BLOCK_1X2.createBlock(new Vector(-2, 8)));
 
-        world.register(BlockGenerator.BLOCK_2X2.createBlock(new Vector(5, 3)));
-        world.register(BlockGenerator.BLOCK_2X1.createBlock(new Vector(4, -1)));
-        world.register(BlockGenerator.BLOCK_3X2.createBlock(new Vector(6, -1)));
+        world.register(StoneBlockGenerator.BLOCK_2X2.createBlock(new Vector(5, 3)));
+        world.register(StoneBlockGenerator.BLOCK_2X1.createBlock(new Vector(4, -1)));
+        world.register(StoneBlockGenerator.BLOCK_3X2.createBlock(new Vector(6, -1)));
 
-        world.register(BlockGenerator.BLOCK_1X3.createBlock(new Vector(-2, 3)));
+        world.register(StoneBlockGenerator.BLOCK_1X3.createBlock(new Vector(-2, 3)));
 
 
         world.register(new Spike(new Vector(2, 5), Direction.DOWN));

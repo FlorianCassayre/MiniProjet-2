@@ -1,5 +1,8 @@
 package platform.game.signal;
 
+/**
+ * The logic XOR gate.
+ */
 public final class Xor extends LogicGate
 {
     public Xor(Signal left, Signal right)

@@ -1,5 +1,8 @@
 package platform.game.util;
 
+/**
+ * A final class containing the priorities of all the actors.
+ */
 public final class Priority
 {
     public static final int BLOCK = 0;

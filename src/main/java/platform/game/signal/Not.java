@@ -1,5 +1,8 @@
 package platform.game.signal;
 
+/**
+ * The logic NOT operator.
+ */
 public final class Not implements Signal
 {
     private final Signal signal;

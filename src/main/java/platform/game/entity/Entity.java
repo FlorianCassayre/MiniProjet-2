@@ -5,6 +5,11 @@ import platform.util.Box;
 import platform.util.Input;
 import platform.util.Vector;
 
+/**
+ * Base class of every entity.
+ * An entity is an actor defined by a position and a momentum (velocity).
+ * It also has an amount of health. If its health hits 0 (or less), the entity dies and is removed from the world.
+ */
 public abstract class Entity extends Actor
 {
     private Vector position;
@@ -50,46 +55,71 @@ public abstract class Entity extends Actor
             onDeath();
     }
 
+    /**
+     * Called when the entity dies.
+     */
     protected void onDeath()
     {
         getWorld().unregister(this);
     }
 
+    /**
+     * Sets the position of this entity.
+     * @param position a position vector
+     */
     public void setPosition(Vector position)
     {
         this.position = position;
     }
 
-    public Vector getSize()
-    {
-        return size;
-    }
-
+    /**
+     * Returns the entity's velocity.
+     * @return a velocity vector.
+     */
     public Vector getVelocity()
     {
         return velocity;
     }
 
+    /**
+     * Sets the velocity of this entity.
+     * @param velocity a velocity vetor
+     */
     public void setVelocity(Vector velocity)
     {
         this.velocity = velocity;
     }
 
+    /**
+     * Returns the current amount of health of this entity.
+     * @return the health amount
+     */
     public double getHealth()
     {
         return health;
     }
 
+    /**
+     * Sets the current health of this entity.
+     * @param health the health amount
+     */
     public void setHealth(double health)
     {
         this.health = health;
     }
 
+    /**
+     * Returns the maximum health of this entity.
+     * @return the maximum health amount
+     */
     public double getMaxHealth()
     {
         return maxHealth;
     }
 
+    /**
+     * Kills the entity.
+     */
     public void kill()
     {
         setHealth(0);

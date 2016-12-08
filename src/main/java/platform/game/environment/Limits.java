@@ -6,6 +6,9 @@ import platform.game.util.Priority;
 import platform.util.Box;
 import platform.util.Vector;
 
+/**
+ * A world border.
+ */
 public class Limits extends Actor
 {
     private Box box;

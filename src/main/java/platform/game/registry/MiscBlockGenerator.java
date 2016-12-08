@@ -4,7 +4,10 @@ import platform.game.block.Block;
 import platform.util.Box;
 import platform.util.Vector;
 
-public enum SimpleBlockGenerator
+/**
+ * Utility class to generate 1x1 blocks.
+ */
+public enum MiscBlockGenerator
 {
     GRASS_LEFT("grass.left"),
     GRASS_MIDDLE("grass.middle"),
@@ -25,7 +28,7 @@ public enum SimpleBlockGenerator
 
     private final String sprite;
 
-    SimpleBlockGenerator(String sprite)
+    MiscBlockGenerator(String sprite)
     {
         this.sprite = sprite;
     }

@@ -6,7 +6,7 @@ import platform.game.block.Exit;
 import platform.game.block.Torch;
 import platform.game.item.Key;
 import platform.game.item.VariableKey;
-import platform.game.registry.BlockGenerator;
+import platform.game.registry.StoneBlockGenerator;
 import platform.game.signal.Not;
 import platform.game.util.ColoredItem;
 import platform.util.Vector;
@@ -18,9 +18,9 @@ public class Level4 extends Level
     {
         super.register(world);
 
-        world.register(BlockGenerator.BLOCK_3X1.createBlock(new Vector(-1, -1), false));
+        world.register(StoneBlockGenerator.BLOCK_3X1.createBlock(new Vector(-1, -1), false));
 
-        world.register(BlockGenerator.BLOCK_3X2.createBlock(new Vector(13, 4)));
+        world.register(StoneBlockGenerator.BLOCK_3X2.createBlock(new Vector(13, 4)));
 
         Torch torch= new Torch(new Vector(-1,0));
         world.register(torch);

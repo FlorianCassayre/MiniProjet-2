@@ -7,6 +7,9 @@ import platform.game.entity.living.Player;
 import platform.game.util.Priority;
 import platform.util.*;
 
+/**
+ * An item that adds one heart to the player who takes it.
+ */
 public class Heart extends FixedActor
 {
     private static final int COOLDOWN_DEFAULT = 10;
