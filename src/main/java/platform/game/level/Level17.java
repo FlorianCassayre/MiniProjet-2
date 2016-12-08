@@ -120,4 +120,10 @@ public class Level17 extends Level
     {
         return new Vector(30, 30);
     }
+
+    @Override
+    public String getBackgroundSprite()
+    {
+        return "background.castle";
+    }
 }

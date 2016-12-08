@@ -3,6 +3,7 @@ package platform.game.level;
 import platform.game.Actor;
 import platform.game.World;
 import platform.game.living.Player;
+import platform.game.overlay.Background;
 import platform.game.overlay.Limits;
 import platform.util.*;
 
@@ -45,6 +46,8 @@ public abstract class Level extends Actor
     {
         super.register(world);
 
+        world.register(new Background(getBackgroundSprite()));
+
         final Player player = new Player(getSpawn());
         world.register(player);
 
@@ -59,6 +62,11 @@ public abstract class Level extends Actor
     public Vector getLimits()
     {
         return new Vector(40, 20);
+    }
+
+    public String getBackgroundSprite()
+    {
+        return "pixel.white";
     }
 
     /**
