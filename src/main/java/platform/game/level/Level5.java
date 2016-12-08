@@ -12,7 +12,7 @@ import platform.game.util.ColoredItem;
 import platform.game.util.Direction;
 import platform.util.Vector;
 
-public class Level17 extends Level
+public class Level5 extends Level
 {
     @Override
     public void register(World world)
