@@ -1,0 +1,66 @@
+[//]: # (Pour voir la mise en page de ce fichier, veuillez utiliser un lecteur Markdown comme par exemple http://dillinger.io)
+
+
+
+# Mini-Projet 2
+
+Groupe : _Florian CASSAYRE_ & _Moussa PRINCE_.
+
+## Composants du jeu
+
+xxx
+
+### Block *
+
+Tous les Ã©lÃ©ments qui sont dessinÃ©s en fond et qui intÃ©ragissent avec les entitÃ©s lorsque ces derniÃ¨res entrent en collision avec eux. Leur texture ne change pas.
+
+#### HideableBlock
+
+Classe abstraite reprÃ©sentant un bloc pouvant Ãªtre cachÃ© du monde (et qui, par la mÃªme occasion, n'intÃ©ragit plus avec ce monde).
+
+##### Door *
+
+Porte qui est liÃ©e Ã  une clÃ©e colorÃ©e. La couleur de la porte est naturellement dÃ©finie par la clÃ© passÃ©e en constructeur.
+
+#### Mover *
+
+Un bloc qui se dÃ©place d'une position Ã  une autre en fonction du signal passÃ© en argument. Il est possible de choisir parmi deux modes d'interpolation, linÃ©aire ou cubique (par dÃ©faut).
+
+##### MetalMover
+
+TrÃ¨s similaire Ã  Mover, utilisant une texture prÃ©dÃ©finie.
+
+### Signal *
+
+Interface qui possÃ¨de une mÃ©thode retournant un boolÃ©en si l'objet est "actif" ou non. Peut reprÃ©senter un Ã©lÃ©ment d'activation tel qu'un interrupteur ou un bouton.
+
+#### ConstantSignal *
+
+Un signal constant retournant le boolÃ©en passÃ© en argument.
+
+#### Not *
+
+Inverse le signal passÃ© en argument.
+
+#### LogicGate
+
+Classe intermÃ©diaire reprÃ©sentant une porte logique (deux entrÃ©es, une sortie).
+
+##### And *
+
+"ET" logique ; les deux signaux doivent Ãªtre vrais en mÃªme temps.
+
+##### Or *
+
+"OU" logique ; un des deux signaux au moins doit Ãªtre vrai.
+
+##### Xor
+
+"OU Exclusif" logique ; un des deux signaux mais pas les deux, doit Ãªtre vrai.
+
+
+
+
+----------
+
+Â * : Classes obligatoires. Les autres composants ont Ã©tÃ© ajoutÃ©s en plus pour complÃ©ter le jeu.
