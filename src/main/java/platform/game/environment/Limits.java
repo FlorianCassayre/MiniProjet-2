@@ -1,4 +1,4 @@
-package platform.game.overlay;
+package platform.game.environment;
 
 import platform.game.Actor;
 import platform.game.util.Damage;

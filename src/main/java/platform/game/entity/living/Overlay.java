@@ -1,7 +1,7 @@
-package platform.game.overlay;
+package platform.game.entity.living;
 
 import platform.game.Actor;
-import platform.game.living.Entity;
+import platform.game.entity.Entity;
 import platform.game.util.Priority;
 import platform.util.*;
 

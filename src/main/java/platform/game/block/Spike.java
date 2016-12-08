@@ -3,7 +3,7 @@ package platform.game.block;
 import platform.game.Actor;
 import platform.game.util.Damage;
 import platform.game.util.Direction;
-import platform.game.living.Player;
+import platform.game.entity.living.Player;
 import platform.util.Box;
 import platform.util.Input;
 import platform.util.Output;

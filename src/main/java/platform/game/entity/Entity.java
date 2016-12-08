@@ -1,4 +1,4 @@
-package platform.game.living;
+package platform.game.entity;
 
 import platform.game.Actor;
 import platform.util.Box;

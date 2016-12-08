@@ -3,7 +3,7 @@ package platform.game.item;
 import platform.game.Actor;
 import platform.game.util.Damage;
 import platform.game.util.ColoredItem;
-import platform.game.living.Player;
+import platform.game.entity.living.Player;
 import platform.game.signal.Signal;
 import platform.util.Input;
 import platform.util.Output;

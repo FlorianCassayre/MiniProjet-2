@@ -3,7 +3,7 @@ package platform.game.item;
 import platform.game.Actor;
 import platform.game.FixedActor;
 import platform.game.util.Damage;
-import platform.game.living.Player;
+import platform.game.entity.living.Player;
 import platform.game.util.Priority;
 import platform.util.*;
 

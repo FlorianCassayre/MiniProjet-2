@@ -1,7 +1,7 @@
-package platform.game.living;
+package platform.game.entity.living;
 
 import platform.game.World;
-import platform.game.overlay.Overlay;
+import platform.game.entity.Entity;
 import platform.util.Vector;
 
 public class LivingEntity extends Entity

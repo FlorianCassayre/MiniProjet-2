@@ -2,9 +2,9 @@ package platform.game.level;
 
 import platform.game.Actor;
 import platform.game.World;
-import platform.game.living.Player;
-import platform.game.overlay.Background;
-import platform.game.overlay.Limits;
+import platform.game.entity.living.Player;
+import platform.game.environment.Background;
+import platform.game.environment.Limits;
 import platform.util.*;
 
 /**

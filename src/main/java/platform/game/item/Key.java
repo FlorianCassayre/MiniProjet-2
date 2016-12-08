@@ -4,7 +4,7 @@ import platform.game.Actor;
 import platform.game.FixedActor;
 import platform.game.util.Damage;
 import platform.game.util.ColoredItem;
-import platform.game.living.Player;
+import platform.game.entity.living.Player;
 import platform.game.signal.Signal;
 import platform.util.Box;
 import platform.util.Input;

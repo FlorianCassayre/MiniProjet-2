@@ -1,4 +1,4 @@
-package platform.game.living;
+package platform.game.entity.living;
 
 import platform.game.Actor;
 import platform.game.util.Priority;
