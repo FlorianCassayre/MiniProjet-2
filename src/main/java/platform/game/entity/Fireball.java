@@ -68,4 +68,12 @@ public class Fireball extends Entity
             }
         }
     }
+
+    @Override
+    protected void onDeath()
+    {
+        super.onDeath();
+
+        getWorld().register(new Smoke(getPosition()));
+    }
 }

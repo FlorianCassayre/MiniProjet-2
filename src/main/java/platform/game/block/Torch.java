@@ -2,6 +2,7 @@ package platform.game.block;
 
 import platform.game.Actor;
 import platform.game.FixedActor;
+import platform.game.entity.Smoke;
 import platform.game.util.Damage;
 import platform.game.signal.Signal;
 import platform.util.*;
@@ -52,6 +53,9 @@ public class Torch extends FixedActor implements Signal
             case AIR:
                 if(lit)
                 {
+                    for(int i = 0; i < 3; i++)
+                        getWorld().register(new Smoke(getPosition().add(new Vector((0.5 - Math.random()) * 0.2, (0.5 - Math.random()) * 0.2))));
+
                     lit = false;
                     return true;
                 }
