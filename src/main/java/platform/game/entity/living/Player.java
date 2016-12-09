@@ -148,9 +148,10 @@ public class Player extends LivingEntity
     @Override
     public void setHealth(double health)
     {
-        super.setHealth(health);
+        if(health < getHealth())
+            sadCooldown = 1;
 
-        sadCooldown = 1;
+        super.setHealth(health);
     }
 
     @Override
