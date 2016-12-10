@@ -44,7 +44,7 @@ public class Exit extends FixedActor
     {
         if(signal.isActive() && type == Damage.TOUCH)
         {
-            Level.addDoneLevel(level);
+            getWorld().addDoneLevel(level);
             getWorld().setNextLevel(level.getNextLevelOnClear());
             getWorld().nextLevel();
             return true;

@@ -1,6 +1,7 @@
 package platform.game;
 
 import platform.game.level.Level;
+import platform.game.level.PlayableLevel;
 import platform.game.util.Damage;
 import platform.util.Box;
 import platform.util.Loader;
@@ -62,4 +63,17 @@ public interface World
      * @return the number of actors hurt
      */
     int hurt(Box area, Actor instigator, Damage type, double amount, Vector location);
+
+    /**
+     * Adds a level to the cleared levels.
+     * @param level the level to add
+     */
+    void addDoneLevel(PlayableLevel level);
+
+    /**
+     * Checks if the specified level has been cleared.
+     * @param level the level to check
+     * @return true if the was cleared, false else
+     */
+    boolean isDone(PlayableLevel level);
 }

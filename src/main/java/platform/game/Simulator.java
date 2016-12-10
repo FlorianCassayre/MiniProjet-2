@@ -1,9 +1,12 @@
 package platform.game;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import platform.game.level.Level;
+import platform.game.level.PlayableLevel;
 import platform.game.util.Damage;
 import platform.util.*;
 
@@ -32,6 +35,8 @@ public class Simulator implements World
     private List<Actor> unregistered = new ArrayList<>();
 
     private final SortedCollection<Actor> actors = new SortedCollection<>();
+
+    private final Set<Integer> levelsDone = new HashSet<>();
 
     /**
      * Create a new simulator.
@@ -199,4 +204,18 @@ public class Simulator implements World
         return victims;
     }
 
+    @Override
+    public void addDoneLevel(PlayableLevel level)
+    {
+        if(level == null)
+            throw new NullPointerException("Level cannot be null!");
+
+        levelsDone.add(level.getId());
+    }
+
+    @Override
+    public boolean isDone(PlayableLevel level)
+    {
+        return levelsDone.contains(level.getId());
+    }
 }

@@ -68,7 +68,7 @@ public class SelectionLevel extends Level
 
                     final int key = keys.get(index);
                     final PlayableLevel level = levels.get(key);
-                    world.register(new LevelButton(new Vector(posX, posY), key, isDone(level), level));
+                    world.register(new LevelButton(new Vector(posX, posY), key, getWorld().isDone(level), level));
                 }
             }
         }

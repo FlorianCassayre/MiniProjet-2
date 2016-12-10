@@ -17,8 +17,6 @@ import java.util.Set;
  */
 public abstract class Level extends Actor
 {
-    private static final Set<Integer> levelsDone = new HashSet<>();
-
     private double fadein;
 
     public Level()
@@ -51,27 +49,5 @@ public abstract class Level extends Actor
     public static Level createDefaultLevel()
     {
         return new SelectionLevel();
-    }
-
-    /**
-     * Adds a level to the cleared levels.
-     * @param level the level to add
-     */
-    public static void addDoneLevel(PlayableLevel level)
-    {
-        if(level == null)
-            throw new NullPointerException("Level cannot be null!");
-
-        levelsDone.add(level.getId());
-    }
-
-    /**
-     * Checks if the specified level has been cleared.
-     * @param level the level to check
-     * @return true if the was cleared, false else
-     */
-    public static boolean isDone(PlayableLevel level)
-    {
-        return levelsDone.contains(level.getId());
     }
 }
