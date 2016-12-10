@@ -11,7 +11,7 @@ import platform.game.signal.Not;
 import platform.game.util.ColoredItem;
 import platform.util.Vector;
 
-public class Level4 extends Level
+public class Level4 extends PlayableLevel
 {
     @Override
     public void register(World world)
@@ -38,7 +38,19 @@ public class Level4 extends Level
         world.register(greenDoor);
 
 
-        world.register(new Exit(new Vector(14, 6), null));
+        world.register(new Exit(new Vector(14, 6), this));
+    }
+
+    @Override
+    public int getId()
+    {
+        return 4;
+    }
+
+    @Override
+    public Level getNextLevelOnDeath()
+    {
+        return new Level4();
     }
 
     @Override

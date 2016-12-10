@@ -9,7 +9,7 @@ import platform.game.registry.StoneBlockGenerator;
 import platform.game.util.Direction;
 import platform.util.Vector;
 
-public class Level2 extends Level
+public class Level2 extends PlayableLevel
 {
     @Override
     public void register(World world)
@@ -35,7 +35,19 @@ public class Level2 extends Level
         world.register(new Spike(new Vector(-1, -1), Direction.DOWN));
         world.register(new Spike(new Vector(2, -2), Direction.DOWN));
 
-        world.register(new Exit(new Vector(-4, -1), null, lever));
+        world.register(new Exit(new Vector(-4, -1), this, lever));
+    }
+
+    @Override
+    public int getId()
+    {
+        return 2;
+    }
+
+    @Override
+    public Level getNextLevelOnDeath()
+    {
+        return new Level2();
     }
 
     @Override

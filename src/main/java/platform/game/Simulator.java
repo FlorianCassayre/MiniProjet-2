@@ -106,6 +106,9 @@ public class Simulator implements World
 
             level.register(this);
 
+            expectedRadius = defaultRadius;
+            expectedCenter = defaultCenter;
+
             currentCenter = defaultCenter;
             currentRadius = defaultRadius;
         }

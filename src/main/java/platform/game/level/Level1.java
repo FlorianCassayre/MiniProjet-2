@@ -6,7 +6,7 @@ import platform.game.block.Jumper;
 import platform.game.registry.StoneBlockGenerator;
 import platform.util.Vector;
 
-public class Level1 extends Level
+public class Level1 extends PlayableLevel
 {
     @Override
     public void register(World world)
@@ -19,7 +19,19 @@ public class Level1 extends Level
 
         world.register(new Jumper(new Vector(1, 0)));
 
-        world.register(new Exit(new Vector(3, 4), null));
+        world.register(new Exit(new Vector(3, 4), this));
+    }
+
+    @Override
+    public int getId()
+    {
+        return 1;
+    }
+
+    @Override
+    public Level getNextLevelOnDeath()
+    {
+        return new Level1();
     }
 
     @Override

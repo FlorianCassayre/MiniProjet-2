@@ -7,12 +7,18 @@ import platform.game.environment.Background;
 import platform.game.environment.Limits;
 import platform.util.*;
 
+import java.awt.event.KeyEvent;
+import java.util.HashSet;
+import java.util.Set;
+
 /**
- * Base class for level factories, which provides fade in transition.
- * Subclasses must override <code>register</code>.
+ * Base class for level factories, which provides a fading transition effect.
+ * Subclasses must override <code>register(World)</code> in order to register their actors.
  */
 public abstract class Level extends Actor
 {
+    private static final Set<Integer> levelsDone = new HashSet<>();
+
     private double fadein;
 
     public Level()
@@ -30,8 +36,6 @@ public abstract class Level extends Actor
     public void update(Input input)
     {
         fadein -= input.getDeltaTime();
-        if(fadein <= 0.0)
-            getWorld().unregister(this);
     }
 
     @Override
@@ -41,52 +45,33 @@ public abstract class Level extends Actor
         output.drawSprite(sprite, output.getBox(), 0.0, fadein);
     }
 
-    @Override
-    public void register(World world)
-    {
-        super.register(world);
-
-        world.register(new Background(getBackgroundSprite()));
-
-        final Player player = new Player(getSpawn());
-        world.register(player);
-
-        world.register(new Limits(new Box(Vector.ZERO, getLimits().getX(), getLimits().getY())));
-    }
-
     /**
-     * Returns the location of the level spawn.
-     * @return a position vector
-     */
-    public Vector getSpawn()
-    {
-        return Vector.ZERO;
-    }
-
-    /**
-     * Returns the bounds of this level.
-     * Every actor that exits these limits will be deleted.
-     * @return a box
-     */
-    public Vector getLimits()
-    {
-        return new Vector(40, 20);
-    }
-
-    /**
-     * Returns the image to be used for the background.
-     * @return the sprite name
-     */
-    public String getBackgroundSprite()
-    {
-        return "pixel.white";
-    }
-
-    /**
-     * @return a new instance of the default level.
+     * @return a new instance of the default level (here, the level selection GUI).
      */
     public static Level createDefaultLevel()
     {
-        return new Level5();
+        return new SelectionLevel();
+    }
+
+    /**
+     * Adds a level to the cleared levels.
+     * @param level the level to add
+     */
+    public static void addDoneLevel(PlayableLevel level)
+    {
+        if(level == null)
+            throw new NullPointerException("Level cannot be null!");
+
+        levelsDone.add(level.getId());
+    }
+
+    /**
+     * Checks if the specified level has been cleared.
+     * @param level the level to check
+     * @return true if the was cleared, false else
+     */
+    public static boolean isDone(PlayableLevel level)
+    {
+        return levelsDone.contains(level.getId());
     }
 }

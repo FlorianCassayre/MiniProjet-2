@@ -7,7 +7,7 @@ import platform.game.util.ColoredItem;
 import platform.util.Box;
 import platform.util.Vector;
 
-public class Level0 extends Level
+public class Level0 extends PlayableLevel
 {
     @Override
     public void register(World world)
@@ -51,7 +51,19 @@ public class Level0 extends Level
 
         world.register(new Mover("box.empty", new Vector(10, 0), new Vector(10, 5), new Vector(2, 1), lever));
 
-        world.register(new Exit(new Vector(10, 0), new Level0()));
+        world.register(new Exit(new Vector(10, 0), this));
+    }
+
+    @Override
+    public int getId()
+    {
+        return 0;
+    }
+
+    @Override
+    public Level getNextLevelOnDeath()
+    {
+        return new Level0();
     }
 
     @Override
