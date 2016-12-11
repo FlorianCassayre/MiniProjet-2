@@ -42,10 +42,10 @@ public class Level3 extends PlayableLevel
         world.register(lever);
 
         //creating doors
-        final Door door1 = new Door(new Vector(2.5, -1), ColoredItem.RED, redKey);
-        final Door door2 = new Door(new Vector(2.5, -3), ColoredItem.GREEN, greenKey);
-        final Door door4 = new Door(new Vector(2.5, -5), ColoredItem.YELLOW, yellowKey);
-        final Door door3 = new Door(new Vector(0, 0), ColoredItem.BLUE, blueKey);
+        final Door door1 = new Door(new Vector(2.5, -1), redKey);
+        final Door door2 = new Door(new Vector(2.5, -3), greenKey);
+        final Door door4 = new Door(new Vector(2.5, -5), yellowKey);
+        final Door door3 = new Door(new Vector(0, 0), blueKey);
         final Exit exit = new Exit(new Vector(2.5, -6), this, lever);
         world.register(door1);
         world.register(door2);

@@ -38,7 +38,7 @@ public class Level0 extends PlayableLevel
 
         world.register(new Jumper(new Vector(0, 0)));
 
-        world.register(new Door(new Vector(2, 0), ColoredItem.BLUE, lever));
+        world.register(new Door(new Vector(2, 0), key));
 
         //world.register(new Fireball(new Vector(0, 1), Vector.ZERO));
 
