@@ -31,12 +31,12 @@ public class SelectionLevel extends Level
 
         // Register your levels from here
 
-        registerLevel(new Level0());
-        registerLevel(new Level1());
-        registerLevel(new Level2());
-        registerLevel(new Level3());
-        registerLevel(new Level4());
-        registerLevel(new Level5());
+        registerLevel(0, new Level0());
+        registerLevel(1, new Level1());
+        registerLevel(2, new Level2());
+        registerLevel(3, new Level3());
+        registerLevel(4, new Level4());
+        registerLevel(5, new Level5());
 
         // Until here
 
@@ -77,13 +77,14 @@ public class SelectionLevel extends Level
     /**
      * Registers a level.
      * The level will be displayed in the selection menu.
+     * @param id the level id
      * @param level the level to be registered
      */
-    private void registerLevel(PlayableLevel level)
+    private void registerLevel(int id, PlayableLevel level)
     {
-        if(levels.containsKey(level.getId()))
-            throw new IllegalArgumentException("Another level is using the same id (" + level.getId() + ")!");
+        if(levels.containsKey(id))
+            throw new IllegalArgumentException("Another level is using the same id (" + id + ")!");
 
-        levels.put(level.getId(), level);
+        levels.put(id, level);
     }
 }

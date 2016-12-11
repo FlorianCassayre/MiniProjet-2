@@ -36,7 +36,7 @@ public class Simulator implements World
 
     private final SortedCollection<Actor> actors = new SortedCollection<>();
 
-    private final Set<Integer> levelsDone = new HashSet<>();
+    private final Set<Class<? extends PlayableLevel>> levelsDone = new HashSet<>();
 
     /**
      * Create a new simulator.
@@ -210,12 +210,12 @@ public class Simulator implements World
         if(level == null)
             throw new NullPointerException("Level cannot be null!");
 
-        levelsDone.add(level.getId());
+        levelsDone.add(level.getClass());
     }
 
     @Override
     public boolean isDone(PlayableLevel level)
     {
-        return levelsDone.contains(level.getId());
+        return levelsDone.contains(level.getClass());
     }
 }

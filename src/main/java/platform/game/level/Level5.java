@@ -116,12 +116,6 @@ public class Level5 extends PlayableLevel
     }
 
     @Override
-    public int getId()
-    {
-        return 5;
-    }
-
-    @Override
     public Level getNextLevelOnDeath()
     {
         return new Level5();

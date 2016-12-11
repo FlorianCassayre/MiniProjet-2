@@ -38,12 +38,6 @@ public abstract class PlayableLevel extends Level
     }
 
     /**
-     * Returns the level id. Each level id must be unique.
-     * @return the level id
-     */
-    public abstract int getId();
-
-    /**
      * Returns the next level to run when the player dies.
      * @return the next level
      */
