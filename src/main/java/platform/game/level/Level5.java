@@ -1,7 +1,9 @@
 package platform.game.level;
 
 import platform.game.World;
-import platform.game.block.*;
+import platform.game.block.solid.Door;
+import platform.game.block.solid.MetalMover;
+import platform.game.block.transparent.*;
 import platform.game.item.Heart;
 import platform.game.item.Key;
 import platform.game.registry.StoneBlockGenerator;

@@ -1,6 +1,6 @@
 package platform.game.registry;
 
-import platform.game.block.Block;
+import platform.game.block.solid.Block;
 import platform.util.Box;
 import platform.util.Vector;
 

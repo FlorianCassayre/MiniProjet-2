@@ -1,9 +1,9 @@
 package platform.game.level;
 
 import platform.game.World;
-import platform.game.block.Door;
-import platform.game.block.Exit;
-import platform.game.block.Torch;
+import platform.game.block.solid.Door;
+import platform.game.block.transparent.Exit;
+import platform.game.block.transparent.Torch;
 import platform.game.item.Key;
 import platform.game.item.VariableKey;
 import platform.game.registry.StoneBlockGenerator;

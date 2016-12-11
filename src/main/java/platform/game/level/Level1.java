@@ -1,8 +1,8 @@
 package platform.game.level;
 
 import platform.game.World;
-import platform.game.block.Exit;
-import platform.game.block.Jumper;
+import platform.game.block.transparent.Exit;
+import platform.game.block.transparent.Jumper;
 import platform.game.registry.StoneBlockGenerator;
 import platform.util.Vector;
 

@@ -1,6 +1,6 @@
 package platform.game.gui;
 
-import platform.game.block.Block;
+import platform.game.block.solid.Block;
 import platform.game.level.Level;
 import platform.util.*;
 

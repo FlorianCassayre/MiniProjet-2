@@ -1,4 +1,4 @@
-package platform.game.block;
+package platform.game.block.solid;
 
 import platform.game.signal.ConstantSignal;
 import platform.game.signal.Signal;

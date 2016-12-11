@@ -1,4 +1,4 @@
-package platform.game.block;
+package platform.game.block.transparent;
 
 import platform.game.Actor;
 import platform.game.FixedActor;

@@ -1,7 +1,10 @@
 package platform.game.level;
 
 import platform.game.World;
-import platform.game.block.*;
+import platform.game.block.solid.Block;
+import platform.game.block.solid.Door;
+import platform.game.block.solid.Mover;
+import platform.game.block.transparent.*;
 import platform.game.item.Key;
 import platform.game.util.ColoredItem;
 import platform.util.Box;
