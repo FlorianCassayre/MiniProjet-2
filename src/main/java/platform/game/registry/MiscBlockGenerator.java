@@ -33,6 +33,11 @@ public enum MiscBlockGenerator
         this.sprite = sprite;
     }
 
+    /**
+     * Creates a new instance of this block, at a given position.
+     * @param position where should the block be
+     * @return a new instance of this block
+     */
     public Block createBlock(Vector position)
     {
         return new Block(new Box(position, position.add(new Vector(1, 1))), sprite);

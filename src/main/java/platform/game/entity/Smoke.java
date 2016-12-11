@@ -5,6 +5,9 @@ import platform.util.Input;
 import platform.util.Output;
 import platform.util.Vector;
 
+/**
+ * An animated white smoke effect.
+ */
 public class Smoke extends Particle
 {
     private final double duration;
@@ -15,16 +18,16 @@ public class Smoke extends Particle
     {
         super(position, new Vector(0.5, 0.5));
 
-        duration = Math.random() * 0.75 + 0.5;
+        duration = Math.random() * 0.75 + 0.5; // Randomize the duration
         lifetime = duration;
 
-        offset = Math.random() * 2 * Math.PI;
+        offset = Math.random() * 2 * Math.PI; // Randomize the rotation offset
     }
 
     @Override
     public void update(Input input)
     {
-        // No super
+        // No super here, the particle is static
 
         lifetime -= input.getDeltaTime();
 

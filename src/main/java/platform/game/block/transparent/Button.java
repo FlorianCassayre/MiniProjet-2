@@ -10,6 +10,10 @@ import platform.util.Input;
 import platform.util.Output;
 import platform.util.Vector;
 
+/**
+ * A ground button signal.
+ * When activated, the button stays in its state (one-way switch).
+ */
 public class Button extends FixedActor implements Signal
 {
     private boolean isPressed = false;

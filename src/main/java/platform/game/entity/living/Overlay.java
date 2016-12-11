@@ -5,9 +5,12 @@ import platform.game.entity.Entity;
 import platform.game.util.Priority;
 import platform.util.*;
 
+/**
+ * Displays the current health of the entity.
+ */
 public class Overlay extends Actor
 {
-    public Entity entity;
+    private final Entity entity;
 
     public Overlay(Entity entity)
     {
@@ -17,7 +20,7 @@ public class Overlay extends Actor
     @Override
     public void update(Input input)
     {
-        if(entity.getHealth() <= 0.0)
+        if(entity.getHealth() <= 0.0) // Remove the overlay if the entity is dead
         {
             getWorld().unregister(this);
         }

@@ -9,6 +9,9 @@ import platform.util.Input;
 import platform.util.Output;
 import platform.util.Vector;
 
+/**
+ * A flip-flop lever signal.
+ */
 public class Lever extends FixedActor implements Signal
 {
     private boolean state = false;

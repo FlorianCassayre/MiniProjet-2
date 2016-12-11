@@ -5,7 +5,7 @@ import platform.util.Box;
 import platform.util.Vector;
 
 /**
- * Utility class to generate blocks by their size.
+ * Utility class to generate stone blocks by their size.
  */
 public enum StoneBlockGenerator
 {
@@ -32,26 +32,49 @@ public enum StoneBlockGenerator
         this.height = height;
     }
 
+    /**
+     * Returns the sprite of the normal version of this stone block.
+     * @return the sprite name
+     */
     public String getNormalSprite()
     {
         return spriteNormal;
     }
 
+    /**
+     * Returns the sprite of the broken version of this stone block.
+     * @return the sprite name
+     */
     public String getBrokenSprite()
     {
         return spriteBroken;
     }
 
+    /**
+     * Returns the size of this block.
+     * @return a vector representing the size
+     */
     public Vector getSize()
     {
         return new Vector(width, height);
     }
 
+    /**
+     * Creates a new instance of this block, at a given position.
+     * @param position where should the block be
+     * @param broken true if the block is broken, false else
+     * @return a new instance of this block
+     */
     public Block createBlock(Vector position, boolean broken)
     {
         return new Block(new Box(position, position.add(getSize())), broken ? getBrokenSprite() : getNormalSprite());
     }
 
+    /**
+     * Creates a new instance of this block, at a given position.
+     * @param position where should the block be
+     * @return a new instance of this block
+     */
     public Block createBlock(Vector position)
     {
         return createBlock(position, false);

@@ -3,6 +3,9 @@ package platform.game.entity;
 import platform.util.Input;
 import platform.util.Vector;
 
+/**
+ * Represents a particle effect.
+ */
 public class Particle extends Entity
 {
     public Particle(Vector position, Vector size, Vector velocity)

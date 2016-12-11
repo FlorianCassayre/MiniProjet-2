@@ -74,6 +74,6 @@ public class Fireball extends Entity
     {
         super.onDeath();
 
-        getWorld().register(new Smoke(getPosition()));
+        getWorld().register(new Smoke(getPosition())); // Smoke effect when the fireball burns
     }
 }

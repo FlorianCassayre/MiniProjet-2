@@ -4,6 +4,10 @@ import platform.game.World;
 import platform.game.entity.Entity;
 import platform.util.Vector;
 
+/**
+ * A living entity, such as a player or a mob.
+ * Every living entity will have an overlay.
+ */
 public class LivingEntity extends Entity
 {
     private final Overlay overlay;

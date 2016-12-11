@@ -6,6 +6,9 @@ import platform.game.util.Damage;
 import platform.game.util.Priority;
 import platform.util.*;
 
+/**
+ * A block that gives some vertical velocity to a player when touched.
+ */
 public class Jumper extends FixedActor
 {
     private double cooldown;

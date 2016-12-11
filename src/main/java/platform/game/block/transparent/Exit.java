@@ -9,6 +9,9 @@ import platform.game.signal.ConstantSignal;
 import platform.game.signal.Signal;
 import platform.util.*;
 
+/**
+ * A world exit that leads to another level when a player enters it.
+ */
 public class Exit extends FixedActor
 {
     private PlayableLevel level;

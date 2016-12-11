@@ -6,6 +6,10 @@ import platform.util.Input;
 import platform.util.Output;
 import platform.util.Vector;
 
+/**
+ * A frog that jumps randomly.
+ * Decorative only.
+ */
 public class Frog extends LivingEntity
 {
     private static final int MAX_HEALTH = 4;
@@ -61,11 +65,17 @@ public class Frog extends LivingEntity
         output.drawSprite(getSprite(sprite), getBox());
     }
 
+    /**
+     * Resets the jump cooldown.
+     */
     private void setJumpCooldown()
     {
         jumpCooldown = Math.random() * 3 + 2;
     }
 
+    /**
+     * Resets the direction changing cooldown.
+     */
     private void setDirectionCooldown()
     {
         directionCooldown = Math.random() * 5 + 1;

@@ -10,6 +10,9 @@ import platform.util.Vector;
 
 import java.awt.event.KeyEvent;
 
+/**
+ * A player that can be controlled using a keyboard.
+ */
 public class Player extends LivingEntity
 {
     private static final int HEALTH_MAX = 3;

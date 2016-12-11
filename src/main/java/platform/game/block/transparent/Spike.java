@@ -1,6 +1,7 @@
 package platform.game.block.transparent;
 
 import platform.game.Actor;
+import platform.game.entity.living.LivingEntity;
 import platform.game.util.Damage;
 import platform.game.util.Direction;
 import platform.game.entity.living.Player;
@@ -9,6 +10,9 @@ import platform.util.Input;
 import platform.util.Output;
 import platform.util.Vector;
 
+/**
+ * Spikes that hurt any living entity that gets to close.
+ */
 public class Spike extends Actor
 {
     private Direction direction;
@@ -43,7 +47,7 @@ public class Spike extends Actor
     {
         super.interact(other);
 
-        if(other instanceof Player && getBox().isColliding(other.getBox()) && cooldown <= 0)
+        if(other instanceof LivingEntity && getBox().isColliding(other.getBox()) && cooldown <= 0)
         {
             cooldown = 0.5;
             other.hurt(other, Damage.PHYSICAL, 0.5, getPosition()); // other.getPosition().add(new Vector(0, -1)

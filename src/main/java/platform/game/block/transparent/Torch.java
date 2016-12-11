@@ -7,6 +7,10 @@ import platform.game.util.Damage;
 import platform.game.signal.Signal;
 import platform.util.*;
 
+/**
+ * A flip-flop torch signal.
+ * It can be activated using a fireball and disabled by blowing on it.
+ */
 public class Torch extends FixedActor implements Signal
 {
     private boolean lit;
