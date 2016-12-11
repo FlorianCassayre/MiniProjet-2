@@ -1,4 +1,4 @@
-package platform.game.entity;
+package platform.game.entity.particle;
 
 import platform.util.Box;
 import platform.util.Input;

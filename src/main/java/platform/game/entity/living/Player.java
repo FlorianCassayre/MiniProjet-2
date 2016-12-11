@@ -1,7 +1,7 @@
 package platform.game.entity.living;
 
 import platform.game.Actor;
-import platform.game.entity.Fireball;
+import platform.game.entity.projectile.Fireball;
 import platform.game.util.Damage;
 import platform.game.util.Priority;
 import platform.util.Input;

@@ -1,5 +1,6 @@
-package platform.game.entity;
+package platform.game.entity.particle;
 
+import platform.game.entity.Entity;
 import platform.util.Input;
 import platform.util.Vector;
 

@@ -1,6 +1,8 @@
-package platform.game.entity;
+package platform.game.entity.projectile;
 
 import platform.game.Actor;
+import platform.game.entity.Entity;
+import platform.game.entity.particle.Smoke;
 import platform.game.util.Damage;
 import platform.game.util.Priority;
 import platform.util.Input;
