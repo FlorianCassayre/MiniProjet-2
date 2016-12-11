@@ -6,6 +6,7 @@ import platform.game.util.Damage;
 import platform.game.util.ColoredItem;
 import platform.game.entity.living.Player;
 import platform.game.signal.Signal;
+import platform.game.util.Priority;
 import platform.util.Box;
 import platform.util.Input;
 import platform.util.Output;
@@ -59,5 +60,11 @@ public class Key extends FixedActor implements Signal
     public ColoredItem getColor()
     {
         return color;
+    }
+
+    @Override
+    public int getPriority()
+    {
+        return Priority.GROUND_ITEM;
     }
 }
