@@ -1,4 +1,4 @@
-package platform.game.block;
+package platform.game.block.solid;
 
 import platform.game.signal.ConstantSignal;
 import platform.game.signal.Signal;
@@ -6,6 +6,10 @@ import platform.util.Box;
 import platform.util.Input;
 import platform.util.Output;
 
+/**
+ * A block that can be hidden by a signal.
+ * When hidden, the block becomes invisible and entity can walk through it.
+ */
 public class HideableBlock extends Block
 {
     private Signal isVisible;

@@ -1,13 +1,16 @@
 package platform.game.level;
 
 import platform.game.World;
-import platform.game.block.*;
+import platform.game.block.solid.Block;
+import platform.game.block.solid.Door;
+import platform.game.block.solid.Mover;
+import platform.game.block.transparent.*;
 import platform.game.item.Key;
 import platform.game.util.ColoredItem;
 import platform.util.Box;
 import platform.util.Vector;
 
-public class Level0 extends Level
+public class Level0 extends PlayableLevel
 {
     @Override
     public void register(World world)
@@ -35,7 +38,7 @@ public class Level0 extends Level
 
         world.register(new Jumper(new Vector(0, 0)));
 
-        world.register(new Door(new Vector(2, 0), ColoredItem.BLUE, lever));
+        world.register(new Door(new Vector(2, 0), key));
 
         //world.register(new Fireball(new Vector(0, 1), Vector.ZERO));
 
@@ -51,7 +54,13 @@ public class Level0 extends Level
 
         world.register(new Mover("box.empty", new Vector(10, 0), new Vector(10, 5), new Vector(2, 1), lever));
 
-        world.register(new Exit(new Vector(10, 0), new Level0()));
+        world.register(new Exit(new Vector(10, 0), this));
+    }
+
+    @Override
+    public Level getNextLevelOnDeath()
+    {
+        return new Level0();
     }
 
     @Override

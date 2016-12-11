@@ -31,7 +31,7 @@ public class Heart extends FixedActor
     @Override
     public int getPriority()
     {
-        return Priority.HEART;
+        return Priority.GROUND_ITEM;
     }
 
     @Override

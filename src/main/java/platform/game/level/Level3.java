@@ -1,13 +1,17 @@
 package platform.game.level;
 
 import platform.game.World;
-import platform.game.block.*;
+import platform.game.block.solid.Door;
+import platform.game.block.transparent.Exit;
+import platform.game.block.transparent.Jumper;
+import platform.game.block.transparent.Lever;
+import platform.game.block.transparent.Spike;
 import platform.game.item.Key;
 import platform.game.registry.StoneBlockGenerator;
 import platform.game.util.ColoredItem;
 import platform.util.Vector;
 
-public class Level3 extends Level
+public class Level3 extends PlayableLevel
 {
     @Override
     public void register(World world)
@@ -38,11 +42,11 @@ public class Level3 extends Level
         world.register(lever);
 
         //creating doors
-        final Door door1 = new Door(new Vector(2.5, -1), ColoredItem.RED, redKey);
-        final Door door2 = new Door(new Vector(2.5, -3), ColoredItem.GREEN, greenKey);
-        final Door door4 = new Door(new Vector(2.5, -5), ColoredItem.YELLOW, yellowKey);
-        final Door door3 = new Door(new Vector(0, 0), ColoredItem.BLUE, blueKey);
-        final Exit exit = new Exit(new Vector(2.5, -6), null, lever);
+        final Door door1 = new Door(new Vector(2.5, -1), redKey);
+        final Door door2 = new Door(new Vector(2.5, -3), greenKey);
+        final Door door4 = new Door(new Vector(2.5, -5), yellowKey);
+        final Door door3 = new Door(new Vector(0, 0), blueKey);
+        final Exit exit = new Exit(new Vector(2.5, -6), this, lever);
         world.register(door1);
         world.register(door2);
         world.register(door3);
@@ -55,6 +59,12 @@ public class Level3 extends Level
         //creating spikes
         world.register(new Spike(new Vector(1.5, 0)));
         world.register(new Spike(new Vector(4.5, 1)));
+    }
+
+    @Override
+    public Level getNextLevelOnDeath()
+    {
+        return new Level3();
     }
 
     @Override

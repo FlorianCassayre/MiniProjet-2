@@ -1,4 +1,4 @@
-package platform.game.block;
+package platform.game.block.transparent;
 
 import platform.game.Actor;
 import platform.game.FixedActor;
@@ -9,6 +9,9 @@ import platform.util.Input;
 import platform.util.Output;
 import platform.util.Vector;
 
+/**
+ * A flip-flop lever signal.
+ */
 public class Lever extends FixedActor implements Signal
 {
     private boolean state = false;

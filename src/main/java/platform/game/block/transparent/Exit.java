@@ -1,19 +1,23 @@
-package platform.game.block;
+package platform.game.block.transparent;
 
 import platform.game.Actor;
 import platform.game.FixedActor;
+import platform.game.level.PlayableLevel;
 import platform.game.util.Damage;
 import platform.game.level.Level;
 import platform.game.signal.ConstantSignal;
 import platform.game.signal.Signal;
 import platform.util.*;
 
+/**
+ * A world exit that leads to another level when a player enters it.
+ */
 public class Exit extends FixedActor
 {
-    private Level level;
+    private PlayableLevel level;
     private Signal signal;
 
-    public Exit(Vector vector, Level level, Signal signal)
+    public Exit(Vector vector, PlayableLevel level, Signal signal)
     {
         super(new Box(vector, vector.add(new Vector(1, 1))));
 
@@ -21,7 +25,7 @@ public class Exit extends FixedActor
         this.signal = signal;
     }
 
-    public Exit(Vector vector, Level level)
+    public Exit(Vector vector, PlayableLevel level)
     {
         this(vector, level, new ConstantSignal(true));
     }
@@ -43,7 +47,8 @@ public class Exit extends FixedActor
     {
         if(signal.isActive() && type == Damage.TOUCH)
         {
-            getWorld().setNextLevel(level);
+            getWorld().addDoneLevel(level);
+            getWorld().setNextLevel(level.getNextLevelOnClear());
             getWorld().nextLevel();
             return true;
         }

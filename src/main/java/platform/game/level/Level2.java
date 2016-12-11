@@ -1,15 +1,15 @@
 package platform.game.level;
 
 import platform.game.World;
-import platform.game.block.Exit;
-import platform.game.block.Jumper;
-import platform.game.block.Lever;
-import platform.game.block.Spike;
+import platform.game.block.transparent.Exit;
+import platform.game.block.transparent.Jumper;
+import platform.game.block.transparent.Lever;
+import platform.game.block.transparent.Spike;
 import platform.game.registry.StoneBlockGenerator;
 import platform.game.util.Direction;
 import platform.util.Vector;
 
-public class Level2 extends Level
+public class Level2 extends PlayableLevel
 {
     @Override
     public void register(World world)
@@ -35,7 +35,13 @@ public class Level2 extends Level
         world.register(new Spike(new Vector(-1, -1), Direction.DOWN));
         world.register(new Spike(new Vector(2, -2), Direction.DOWN));
 
-        world.register(new Exit(new Vector(-4, -1), null, lever));
+        world.register(new Exit(new Vector(-4, -1), this, lever));
+    }
+
+    @Override
+    public Level getNextLevelOnDeath()
+    {
+        return new Level2();
     }
 
     @Override

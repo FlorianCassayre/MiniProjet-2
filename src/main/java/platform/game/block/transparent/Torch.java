@@ -1,11 +1,16 @@
-package platform.game.block;
+package platform.game.block.transparent;
 
 import platform.game.Actor;
 import platform.game.FixedActor;
+import platform.game.entity.particle.Smoke;
 import platform.game.util.Damage;
 import platform.game.signal.Signal;
 import platform.util.*;
 
+/**
+ * A flip-flop torch signal.
+ * It can be activated using a fireball and disabled by blowing on it.
+ */
 public class Torch extends FixedActor implements Signal
 {
     private boolean lit;
@@ -52,6 +57,9 @@ public class Torch extends FixedActor implements Signal
             case AIR:
                 if(lit)
                 {
+                    for(int i = 0; i < 3; i++)
+                        getWorld().register(new Smoke(getPosition().add(new Vector((0.5 - Math.random()) * 0.2, (0.5 - Math.random()) * 0.2))));
+
                     lit = false;
                     return true;
                 }

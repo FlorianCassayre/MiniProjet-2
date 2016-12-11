@@ -1,4 +1,4 @@
-package platform.game.block;
+package platform.game.block.solid;
 
 import platform.game.Actor;
 import platform.game.FixedActor;
@@ -8,7 +8,7 @@ import platform.util.Input;
 import platform.util.Output;
 
 /**
- * Simple solid actor that does nothing.
+ * Simple solid actor that can't be traversed by an entity.
  */
 public class Block extends FixedActor
 {

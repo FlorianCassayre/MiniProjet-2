@@ -10,7 +10,7 @@ public final class Priority
     public static final int PLAYER = 10;
     public static final int OVERLAY = 1000;
 
-    public static final int HEART = 20;
+    public static final int GROUND_ITEM = 20;
     public static final int JUMPER = 50;
     public static final int FIREBALL = 100;
 

@@ -1,4 +1,4 @@
-package platform.game.block;
+package platform.game.block.solid;
 
 import platform.game.signal.Signal;
 import platform.game.util.InterpolationType;
@@ -6,6 +6,10 @@ import platform.util.Box;
 import platform.util.Input;
 import platform.util.Vector;
 
+/**
+ * A moving block depending on a signal.
+ * The path is defined by two points, and a specific interpolation method can be used.
+ */
 public class Mover extends Block
 {
     private final Vector vectorOff, vectorOn, size;

@@ -1,7 +1,7 @@
 package platform.game.entity.living;
 
 import platform.game.Actor;
-import platform.game.entity.Fireball;
+import platform.game.entity.projectile.Fireball;
 import platform.game.util.Damage;
 import platform.game.util.Priority;
 import platform.util.Input;
@@ -10,6 +10,9 @@ import platform.util.Vector;
 
 import java.awt.event.KeyEvent;
 
+/**
+ * A player that can be controlled using a keyboard.
+ */
 public class Player extends LivingEntity
 {
     private static final int HEALTH_MAX = 3;
@@ -148,9 +151,10 @@ public class Player extends LivingEntity
     @Override
     public void setHealth(double health)
     {
-        super.setHealth(health);
+        if(health < getHealth())
+            sadCooldown = 1;
 
-        sadCooldown = 1;
+        super.setHealth(health);
     }
 
     @Override

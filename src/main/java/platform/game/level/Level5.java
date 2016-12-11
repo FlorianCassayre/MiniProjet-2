@@ -1,7 +1,9 @@
 package platform.game.level;
 
 import platform.game.World;
-import platform.game.block.*;
+import platform.game.block.solid.Door;
+import platform.game.block.solid.MetalMover;
+import platform.game.block.transparent.*;
 import platform.game.item.Heart;
 import platform.game.item.Key;
 import platform.game.registry.StoneBlockGenerator;
@@ -12,7 +14,7 @@ import platform.game.util.ColoredItem;
 import platform.game.util.Direction;
 import platform.util.Vector;
 
-public class Level5 extends Level
+public class Level5 extends PlayableLevel
 {
     @Override
     public void register(World world)
@@ -113,7 +115,13 @@ public class Level5 extends Level
 
         world.register(new Door(new Vector(-1, -2), keyRed));
 
-        world.register(new Exit(new Vector(1, -2), null, lever));
+        world.register(new Exit(new Vector(1, -2), this, lever));
+    }
+
+    @Override
+    public Level getNextLevelOnDeath()
+    {
+        return new Level5();
     }
 
     @Override
