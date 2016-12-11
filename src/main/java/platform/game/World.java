@@ -25,7 +25,7 @@ public interface World
     void setView(Vector center, double radius);
 
     /**
-     * Registers an actor this world.
+     * Registers an actor in this world.
      * @param actor the actor to be registered
      */
     void register(Actor actor);
@@ -73,7 +73,7 @@ public interface World
     /**
      * Checks if the specified level has been cleared.
      * @param level the level to check
-     * @return true if the was cleared, false else
+     * @return true if the level was cleared, false else
      */
     boolean isDone(PlayableLevel level);
 }

@@ -5,7 +5,7 @@ import platform.util.Box;
 import platform.util.Vector;
 
 /**
- * Utility class to generate stone blocks by their size.
+ * Utility class to generate stone blocks by specifying their size.
  */
 public enum StoneBlockGenerator
 {

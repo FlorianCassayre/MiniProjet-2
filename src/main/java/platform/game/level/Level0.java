@@ -5,6 +5,7 @@ import platform.game.block.solid.Block;
 import platform.game.block.solid.Door;
 import platform.game.block.solid.Mover;
 import platform.game.block.transparent.*;
+import platform.game.entity.living.Frog;
 import platform.game.item.Key;
 import platform.game.util.ColoredItem;
 import platform.util.Box;
@@ -39,6 +40,8 @@ public class Level0 extends PlayableLevel
         world.register(new Jumper(new Vector(0, 0)));
 
         world.register(new Door(new Vector(2, 0), key));
+
+        world.register (new Frog(new Vector(3,0)));
 
         //world.register(new Fireball(new Vector(0, 1), Vector.ZERO));
 

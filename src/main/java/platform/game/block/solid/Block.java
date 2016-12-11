@@ -8,7 +8,7 @@ import platform.util.Input;
 import platform.util.Output;
 
 /**
- * Simple solid actor that can't be traversed by an entity.
+ * Simple solid actor that an entity cannot cross by.
  */
 public class Block extends FixedActor
 {

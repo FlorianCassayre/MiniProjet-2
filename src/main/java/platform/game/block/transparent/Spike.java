@@ -11,7 +11,7 @@ import platform.util.Output;
 import platform.util.Vector;
 
 /**
- * Spikes that hurt any living entity that gets to close.
+ * Spikes that hurt any living entity that gets too close.
  */
 public class Spike extends Actor
 {

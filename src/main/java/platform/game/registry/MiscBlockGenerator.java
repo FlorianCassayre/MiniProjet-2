@@ -35,7 +35,7 @@ public enum MiscBlockGenerator
 
     /**
      * Creates a new instance of this block, at a given position.
-     * @param position where should the block be
+     * @param position where this block should be
      * @return a new instance of this block
      */
     public Block createBlock(Vector position)

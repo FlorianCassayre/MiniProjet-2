@@ -11,7 +11,7 @@ import platform.util.Vector;
 import java.awt.event.KeyEvent;
 
 /**
- * A player that can be controlled using a keyboard.
+ * A player that can be controlled using the keyboard.
  */
 public class Player extends LivingEntity
 {

@@ -8,7 +8,7 @@ import platform.util.Output;
 
 /**
  * A block that can be hidden by a signal.
- * When hidden, the block becomes invisible and entity can walk through it.
+ * When hidden, the block becomes invisible and entity can cross by.
  */
 public class HideableBlock extends Block
 {
