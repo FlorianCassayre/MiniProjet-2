@@ -3,6 +3,7 @@ package platform.game.entity.projectile;
 import platform.game.Actor;
 import platform.game.entity.Entity;
 import platform.game.entity.particle.Smoke;
+import platform.game.util.ColoredSmoke;
 import platform.game.util.Damage;
 import platform.game.util.Priority;
 import platform.util.Input;
@@ -76,6 +77,6 @@ public class Fireball extends Entity
     {
         super.onDeath();
 
-        getWorld().register(new Smoke(getPosition())); // Smoke effect when the fireball burns
+        getWorld().register(new Smoke(getPosition(), ColoredSmoke.ORANGE)); // Smoke effect when the fireball burns
     }
 }

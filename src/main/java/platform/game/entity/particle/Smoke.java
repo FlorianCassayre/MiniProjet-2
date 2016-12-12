@@ -1,5 +1,7 @@
 package platform.game.entity.particle;
 
+import platform.game.util.ColoredItem;
+import platform.game.util.ColoredSmoke;
 import platform.util.Box;
 import platform.util.Input;
 import platform.util.Output;
@@ -13,8 +15,9 @@ public class Smoke extends Particle
     private final double duration;
     private final double offset;
     private double lifetime;
+    private ColoredSmoke color;
 
-    public Smoke(Vector position)
+    public Smoke(Vector position, ColoredSmoke color)
     {
         super(position, new Vector(0.5, 0.5));
 
@@ -22,7 +25,11 @@ public class Smoke extends Particle
         lifetime = duration;
 
         offset = Math.random() * 2 * Math.PI; // Randomize the rotation offset
+
+        this.color=color;
     }
+
+    public Smoke(Vector position){this(position, ColoredSmoke.WHITE);}
 
     @Override
     public void update(Input input)
@@ -40,7 +47,7 @@ public class Smoke extends Particle
     {
         int step = 3 - ((int) Math.floor(3 * (lifetime / duration)));
         step = Math.min(Math.max(1, step), 3);
-        output.drawSprite(getSprite("smoke.white." + step), getBox(), offset + lifetime / duration);
+        output.drawSprite(getSprite(color.getSmokeSprite() + step), getBox(), offset + lifetime / duration);
     }
 
     @Override
