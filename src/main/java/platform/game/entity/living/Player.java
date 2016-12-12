@@ -53,7 +53,7 @@ public class Player extends LivingEntity
                 }
                 if(delta.getY() != 0.0) // Player hit the ground/ceiling
                 {
-                    setVelocity(new Vector(getVelocity().getX(), getVelocity().getY() * 0.9));
+                    setVelocity(new Vector(getVelocity().getX(), getVelocity().getY() * 0.5));
                     //setVelocity(new Vector(getVelocity().getX(), 0.0));
                     colliding = true;
                 }

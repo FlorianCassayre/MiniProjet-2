@@ -47,10 +47,20 @@ public class Spike extends Actor
     {
         super.interact(other);
 
-        if(other instanceof LivingEntity && getBox().isColliding(other.getBox()) && cooldown <= 0)
+        if(other instanceof LivingEntity && getBox().isColliding(other.getBox()))
         {
-            cooldown = 0.5;
-            other.hurt(other, Damage.PHYSICAL, 0.5, getPosition()); // other.getPosition().add(new Vector(0, -1)
+            double damages;
+            if(cooldown <= 0)
+            {
+                cooldown = 0.5;
+                damages = 0.5;
+            }
+            else
+            {
+                damages = 0.0;
+            }
+
+            other.hurt(other, Damage.PHYSICAL, damages, getPosition()); // other.getPosition().add(new Vector(0, -1)
         }
     }
 
