@@ -16,10 +16,15 @@ public class Lever extends FixedActor implements Signal
 {
     private boolean state = false;
 
-    public Lever(Vector vector)
-    {
-        super(new Box(vector, vector.add(new Vector(1, 1))));
+    public Lever(Vector position, boolean state){
+        super(new Box(position, position.add(new Vector(1, 1))));
+        this.state = state;
     }
+
+    public Lever(Vector position){
+        this(position,false);
+    }
+
 
     @Override
     public void draw(Input input, Output output)

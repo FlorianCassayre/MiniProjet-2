@@ -12,6 +12,6 @@ import platform.util.Vector;
 public class Door extends VariableBlock
 {
     public Door(Vector position, Key key){
-        super(new Box(position, position.add(new Vector(1, 1))), key.getColor().getDoorSprite(), new Not(key), false);
+        super(new Box(position, position.add(new Vector(1, 1))), key.getColor().getDoorSprite(), key, false);
     }
 }
