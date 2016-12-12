@@ -1,7 +1,6 @@
 package platform.game.level;
 
 import platform.game.World;
-import platform.game.environment.Background;
 import platform.game.gui.LevelButton;
 import platform.util.Vector;
 
@@ -30,13 +29,13 @@ public class SelectionLevel extends Level
         super.register(world);
 
         // Register your levels from here
-
-        registerLevel(0, new Level0());
+        
         registerLevel(1, new Level1());
         registerLevel(2, new Level2());
         registerLevel(3, new Level3());
         registerLevel(4, new Level4());
         registerLevel(5, new Level5());
+        registerLevel(6, new Level6());
 
         // Until here
 

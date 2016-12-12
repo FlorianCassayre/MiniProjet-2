@@ -11,7 +11,7 @@ import platform.game.util.ColoredItem;
 import platform.util.Box;
 import platform.util.Vector;
 
-public class Level0 extends PlayableLevel
+public class TestLevel extends PlayableLevel
 {
     @Override
     public void register(World world)
@@ -19,7 +19,7 @@ public class Level0 extends PlayableLevel
         super.register(world);
 
         // Register a new instance, to restart level automatically
-        world.setNextLevel(new Level0());
+        world.setNextLevel(new TestLevel());
 
         // Create blocks
         //world.register(new Block(new Box(new Vector(0, 0), 4, 2), world.getLoader().getSprite("stone.broken.2")));
@@ -63,7 +63,7 @@ public class Level0 extends PlayableLevel
     @Override
     public Level getNextLevelOnDeath()
     {
-        return new Level0();
+        return new TestLevel();
     }
 
     @Override

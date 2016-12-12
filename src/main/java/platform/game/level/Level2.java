@@ -16,6 +16,7 @@ public class Level2 extends PlayableLevel
     {
         super.register(world);
 
+        //creating blocks
         world.register(StoneBlockGenerator.BLOCK_3X1.createBlock(new Vector(-1, 1)));
         world.register(StoneBlockGenerator.BLOCK_2X2.createBlock(new Vector(0, -1)));
         world.register(StoneBlockGenerator.BLOCK_1X3.createBlock(new Vector(2, -1)));
@@ -25,17 +26,21 @@ public class Level2 extends PlayableLevel
         world.register(StoneBlockGenerator.BLOCK_2X3.createBlock(new Vector(5, -3)));
         world.register(StoneBlockGenerator.BLOCK_1X1.createBlock(new Vector(-1, 0)));
 
+        //creating jumpers
         world.register(new Jumper(new Vector(4, -4)));
         world.register(new Jumper(new Vector(6, 0)));
 
+        //creating lever
         final Lever lever = new Lever(new Vector(1, -2));
         world.register(lever);
 
+        //creating spikes
         world.register(new Spike(new Vector(-1, 2)));
         world.register(new Spike(new Vector(-1, -1), Direction.DOWN));
         world.register(new Spike(new Vector(2, -2), Direction.DOWN));
 
-        world.register(new Exit(new Vector(-4, -1), this, lever));
+        //creating exit
+        world.register(new Exit(new Vector(-4, -1), new Level3(), lever));
     }
 
     @Override

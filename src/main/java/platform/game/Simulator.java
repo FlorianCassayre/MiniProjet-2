@@ -55,8 +55,6 @@ public class Simulator implements World
         currentCenter = defaultCenter;
         currentRadius = defaultRadius;
 
-        // =-=-=-= TeStS =-=-=-=
-
         register(Level.createDefaultLevel());
     }
 

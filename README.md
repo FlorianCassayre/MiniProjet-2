@@ -12,38 +12,56 @@
  * **E** : Activer ou désactiver le levier
  * **B** : Souffler
  * **ESPACE** : Lancer des boules de feu
- * **ECHAP** : Quitter le niveau
+ * **ECHAP** : Retour au menu de sélection des niveaux
 
 ## Niveaux
 
-Liste des niveaux sélectionnables depuis le **menu** du jeu. Lorsqu'un niveau est terminé, son icone devient **dorée**.
+Liste des niveaux sélectionnables depuis le **menu** du jeu. Lorsqu'un niveau est terminé, son icône devient **dorée**.
 
 Vous pouvez **revenir** au menu de sélection à tout moment en appuyant sur la touche **ECHAP**.
 
-### Level 0 : "Tests à gogo"
-Des tests et encore des tests.
-
 ### Level 1 : "A l'abordage!"
-Bienvenue dans le monde merveilleux de notre jeu. C'est aussi l'occasion de découvrir le Jumper. :-)
+Bienvenue dans le monde merveilleux de notre jeu. C'est aussi l'occasion de découvrir le Jumper, qui va vous accompagner tout au long de cette aventure. :-)
 
-### Level 2 : "Effet de Levier"
-Tiens, mais à quoi sert donc ce levier? Faites attention à ne pas vous blesser avec les Spikes!
-Comment sortir cette fois-ci? Actionnez le levier et la porte s'ouvre merveilleusement vers le prochain niveau.
+### Level 2 : "Effet de levier"
+Tiens, mais à quoi sert donc ce levier? Essayez de l’activer pour voir. La porte s’ouvre merveilleusement vers le prochain niveau. Un petit détour sera probablement nécessaire si vous souhaitez ne pas vous blesser en chemin.
 
-### Level 3 : "Surprise"
-Surprise! Et oui, vous n'atterissez pas sur la terre ferme cette fois-ci. Et oui, la clé bleue que vous prenez au passage fait disparaitre le bloc bleu! Vous en déduisez que pour faire disparaitre les autres blocs et sortir de ce niveau, il faut prendre les autres clés.
+### Level 3 : "De toutes les couleurs»
+Si vous ne bougez pas, vous prendrez probablement la clé rouge en atterrissant. Et si vous avez l’oeil, vous remarquerez que le bloc rouge disparait aussitôt. Vous en déduisez que pour faire disparaitre les autres blocs et sortir de ce niveau, il vous faut prendre les autres clés. Faites attention en prenant la clé bleue, plusieurs pièges soigneusement préparés sont au rendez-vous. Et n’oubliez pas d’activer le levier pour ouvrir la porte, sinon vous resterez coincé en bas!
 
-### Level 4 : "La Torche Mystérieuse"
+Si vous sortez de ce niveau dès la première fois sans égratignure, vous commencez vraiment à devenir bon. :-)
+
+### Level 4 : "La torche mystérieuse"
 Que se passe-t-il quand vous prenez la clé rouge? Magie, un bloc rouge apparait!
-Mais à quoi sert donc cette torche? Essayez donc de l'allumer en lançant des boules de feu! Tiens, une autre clé, verte cette fois-ci. Que se passe-t-il si on la prend? Un autre bloc vert apparait, évidemment. Il est maintenant temps de voir où ces blocs nous mènent, en faisant attention à ne pas tomber dans le vide. Quoi, la fin du niveau? Finalement, c'est plus simple que ce à quoi on s'attendait. :-)
+Mais à quoi sert donc cette torche? Essayez donc de l'allumer en lançant des boules de feu! Tiens, une autre clé, verte cette fois-ci. Que se passe-t-il si on la prend? Vous l’avez deviné, un autre bloc, vert cette fois-ci, apparait. Il est maintenant temps de voir où ces blocs nous mènent, en faisant attention à ne pas tomber dans le vide. Quoi, la fin du niveau? Finalement, c'est plus simple que ce à quoi on s'attendait. :-)
 
-### Level 5 : "Le casse-tête chinois"
-Les choses commencent à se corser... Dans ce niveau l'observation est de mise ; foncer tête baissée n'est clairement pas la meilleure stratégie ici. Au début du niveau, le joueur n'a qu'une posibilité : utiliser les tremplin pour se propulser jusqu'en haut. Il arrive alors au niveau d'un levier qui semble faire bouger certaines plateformes lorsqu'il est activé. Il redescend alors de l'autre côté et remarque qu'une plateforme lui permet de récupérer la clé orange débloquant le passage vers la sortie. S'il essaie d'activer la torche, le passage se referme devant lui ; il n'a donc d'autre possibilité que de laisser la torche éteinte de reprendre le passage qu'il avait utilisé au début. En réactivant le levier en haut, il remarquera que le passage se referme malgré tout. Cependant, s'il est curieux il laissera ce levier ainsi et redescendra au niveau de la torche et là miracle : en activant la torche, non seulement le passage s'ouvre à nouveau, mais une trappe lui permet de récupérer une clé bleue. Le joueur devra alors refaire un troisième tour afin de réactiver le levier, puis de désactiver la torche pour enfin se placer au niveau du point de départ. A ce moment il devra user de son imagination pour penser à tirer un boule de feu vers la torche tout en restant du côté droit des plateformes. Si la clé bleue n'a pas été récupérée cette opération est impossible à réaliser, les cadenas bleus bloquant toute boule de feu. Le passage s'ouvre sous ses pied : il peut sortir !
+### Level 5 : "Le casse-tête chinois" - niveau officiel 1
+Les choses commencent à se corser... Dans ce château lugubre, l’observation est de mise. Foncer tête baissée n'est clairement pas la meilleure stratégie.
 
-### Level 6 : ""
-//TODO
-//niveau officiel1
+Au début du niveau, vous n'avez qu'une possibilité : utiliser les tremplins pour vous propulser jusqu'en haut. Vous arrivez alors au niveau d'un levier qui semble faire bouger certaines plateformes lorsqu'il est activé, tout en conditionnant l’ouverture de la porte.   Que pouvez-vous bien faire? Une première chose à faire serait de vous ravitailler en allant collecter le cœur présent sur le côté droit de la carte, tout en faisant attention à ne pas vous blesser davantage! Et maintenant?
 
-### Level 7 : ""
-//TODO
-//niveau officiel2
+
+Scénario typique 1: Vous activez le levier.
+Vous prenez la clé orange grâce à la plateforme métallique. Vous vous y attendiez, le bloc orange disparait, vous êtes un peu plus proche de la victoire. Que se passe-t-il si vous allumez la torche avec une boule de feu? Malheur, le passage se referme sur vous! Il ne vous reste plus qu’à éteindre la torche, et à refaire un tour pour désactiver le levier, vu qu’il n’y a aucune autre possibilité. Cette fois-ci, en allumant la torche, comme par magie, la clé bleue devient accessible. Après l’avoir prise, il reste une dernière étape, qui consiste à réactiver le levier, afin d’ouvrir la porte de sortie, puis à rebrousser chemin en faisant attention à ne pas se blesser. Ouf, c’est enfin terminé! 
+
+
+Scénario typique 2: Vous faites le malin et n’activez pas le levier.
+Effectivement, c’était la meilleure chose à faire, bravo! En allumant la torche, vous libérez l’accès aux clés bleue et orange. Après les avoir prises, vous faites comme à la fin du scénario 1, en activant le levier et en rebroussant chemin. Notez que vous aviez été plus rapide que si vous aviez activé le levier.
+
+### Level 6 : «L’alignement final»- niveau officiel 2
+Mais où est donc passée la sortie? Serait-elle derrière ce bloc de pierre, lui-même couvert par une torche? Comment y accéder?
+
+Dans ce niveau final, les blocs droit et gauche se déplacent vers le centre à condition que le levier correspondant pointe vers une torche allumée, on parle alors d’"alignement". Quant au bloc central, il nécessite l’alignement des leviers droit et gauche à la fois. Enfin, il ne faut pas oublier d’éteindre TOUTES les torches afin de pouvoir ouvrir la porte de sortie… alors, vous avez trouvé comment faire?
+
+Une des façons de sortir de ce niveau est la suivante:
+-Allumer les torches droite et gauche
+-Pointer chaque levier vers une torche allumée
+-Allumer la torche centrale
+-Pointer les leviers vers la torche centrale
+-Éteindre les torches droite et gauche
+(Astuce: monter sur les plateformes métalliques)
+-Sauter vers la porte de sortie tout en éteignant la torche centrale… voilà, c’est gagné!
+
+Il existe d’autres façons de sortir de ce niveau, libre à vous de les essayer à vos risques et périls. :-)
+
+

@@ -13,13 +13,15 @@ public class Level1 extends PlayableLevel
     {
         super.register(world);
 
+        //creating blocks
         world.register(StoneBlockGenerator.BLOCK_3X1.createBlock(new Vector(-1, -1), false));
-
         world.register(StoneBlockGenerator.BLOCK_3X2.createBlock(new Vector(2, 2)));
 
+        //creating jumper
         world.register(new Jumper(new Vector(1, 0)));
 
-        world.register(new Exit(new Vector(3, 4), this));
+        //creating exit
+        world.register(new Exit(new Vector(3, 4), new Level2()));
     }
 
     @Override
