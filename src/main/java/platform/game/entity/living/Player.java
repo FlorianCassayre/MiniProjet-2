@@ -3,7 +3,6 @@ package platform.game.entity.living;
 import platform.game.Actor;
 import platform.game.entity.projectile.Fireball;
 import platform.game.util.Damage;
-import platform.game.util.Priority;
 import platform.util.Input;
 import platform.util.Output;
 import platform.util.Vector;
@@ -17,6 +16,7 @@ public class Player extends LivingEntity
 {
     private static final int HEALTH_MAX = 3;
     private static final double SIZE = 0.5;
+    private static final double MAX_SPEED = 4.0;
 
     private double sadCooldown;
 
@@ -53,8 +53,7 @@ public class Player extends LivingEntity
                 }
                 if(delta.getY() != 0.0) // Player hit the ground/ceiling
                 {
-                    setVelocity(new Vector(getVelocity().getX(), getVelocity().getY() * 0.5));
-                    //setVelocity(new Vector(getVelocity().getX(), 0.0));
+                    setVelocity(new Vector(getVelocity().getX(), getVelocity().getY() * 0.5)); // Smooth slowdown
                     colliding = true;
                 }
             }
@@ -72,58 +71,50 @@ public class Player extends LivingEntity
     {
         sadCooldown -= input.getDeltaTime();
 
-        if(colliding)
+        if(colliding) // Ground colliding, we slow him down
         {
             double scale = Math.pow(0.001, input.getDeltaTime());
             setVelocity(getVelocity().mul(scale));
         }
 
-        double maxSpeed = 4.0;
-        if(input.getKeyboardButton(KeyEvent.VK_RIGHT).isDown())
+
+        final boolean keyLeft = input.getKeyboardButton(KeyEvent.VK_LEFT).isDown(), keyRight = input.getKeyboardButton(KeyEvent.VK_RIGHT).isDown();
+        if(keyLeft || keyRight) // The user wants to move
         {
-            if(getVelocity().getX() < maxSpeed)
+            final double coefficient = keyLeft && keyRight ? 0 : (keyLeft ? -1 : 1); // 0 is case the user presses two keys at the same time
+            if(coefficient * getVelocity().getX() < MAX_SPEED)
             {
-                double increase = 60.0 * input.getDeltaTime();
-                double speed = getVelocity().getX() + increase;
-                if(speed > maxSpeed)
-                    speed = maxSpeed;
-                setVelocity(new Vector(speed, getVelocity().getY()));
-            }
-        }
-        else if(input.getKeyboardButton(KeyEvent.VK_LEFT).isDown()) // FIXME redundant
-        {
-            if(-getVelocity().getX() < maxSpeed)
-            {
-                double increase = 60.0 * input.getDeltaTime();
-                double speed = getVelocity().getX() - increase;
-                if(-speed > maxSpeed)
-                    speed = -maxSpeed;
+                final double increase = 30.0 * input.getDeltaTime();
+
+                double speed = getVelocity().getX() + coefficient * increase;
+                if(coefficient * speed > MAX_SPEED)
+                    speed = coefficient * MAX_SPEED;
                 setVelocity(new Vector(speed, getVelocity().getY()));
             }
         }
 
-        if(input.getKeyboardButton(KeyEvent.VK_UP).isPressed() && colliding)
+        if(input.getKeyboardButton(KeyEvent.VK_UP).isPressed() && colliding) // The user wants to jump
         {
             setVelocity(new Vector(getVelocity().getX(), 7.0));
         }
 
-        if(input.getKeyboardButton(KeyEvent.VK_SPACE).isPressed())
+        if(input.getKeyboardButton(KeyEvent.VK_SPACE).isPressed()) // The user wants to throw a fireball
         {
             Vector fireballSpeed = getVelocity().add(getVelocity().resized(2.0));
             getWorld().register(new Fireball(this, getPosition(), fireballSpeed));
         }
 
-        if(input.getKeyboardButton(KeyEvent.VK_B).isPressed())
+        if(input.getKeyboardButton(KeyEvent.VK_B).isPressed()) // The user wants to blow
         {
             getWorld().hurt(getBox(), this, Damage.AIR, 1.0, getPosition());
         }
 
-        getWorld().hurt(getBox(), this, Damage.TOUCH, 1.0, getPosition());
-
-        if(input.getKeyboardButton(KeyEvent.VK_E).isPressed())
+        if(input.getKeyboardButton(KeyEvent.VK_E).isPressed()) // The user wants to activate an object
         {
             getWorld().hurt(getBox(), this, Damage.ACTIVATION, 1.0, getPosition());
         }
+
+        getWorld().hurt(getBox(), this, Damage.TOUCH, 1.0, getPosition());
 
         super.update(input);
     }

@@ -43,6 +43,6 @@ public class Background extends Actor
     @Override
     public boolean hurt(Actor instigator, Damage type, double amount, Vector location)
     {
-        return false; // FIXME: shouldn't be (re)defined here
+        return false;
     }
 }

@@ -15,7 +15,7 @@ public class Simulator implements World
 {
     private static final Vector GRAVITY = new Vector(0, -9.81);
 
-    private Loader loader;
+    private final Loader loader;
 
     private final Vector defaultCenter = Vector.ZERO;
     private final double defaultRadius = 5.0;
@@ -111,9 +111,8 @@ public class Simulator implements World
 
 
         // Add registered actors
-        for(int i = 0; i < registered.size(); ++i)
+        for(Actor actor : registered)
         {
-            Actor actor = registered.get(i);
             if(!actors.contains(actor))
             {
                 actors.add(actor);
@@ -122,9 +121,8 @@ public class Simulator implements World
         registered.clear();
 
         // Remove unregistered actors
-        for(int i = 0; i < unregistered.size(); ++i)
+        for(Actor actor : unregistered)
         {
-            Actor actor = unregistered.get(i);
             actor.unregister();
             actors.remove(actor);
         }

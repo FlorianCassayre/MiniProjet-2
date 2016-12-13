@@ -3,11 +3,13 @@ package platform.game.block.transparent;
 import platform.game.Actor;
 import platform.game.FixedActor;
 import platform.game.level.PlayableLevel;
-import platform.game.util.Damage;
-import platform.game.level.Level;
 import platform.game.signal.ConstantSignal;
 import platform.game.signal.Signal;
-import platform.util.*;
+import platform.game.util.Damage;
+import platform.util.Box;
+import platform.util.Input;
+import platform.util.Output;
+import platform.util.Vector;
 
 import java.util.Objects;
 

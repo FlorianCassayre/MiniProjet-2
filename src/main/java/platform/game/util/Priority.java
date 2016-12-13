@@ -25,5 +25,5 @@ public final class Priority
 
     public static final int LEVEL = Integer.MAX_VALUE;
 
-    private Priority() {} // Prevents this class from being instanciated
+    private Priority() {} // Prevents this class from being instantiated
 }

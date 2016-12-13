@@ -1,6 +1,5 @@
 package platform.game.entity.particle;
 
-import platform.game.util.ColoredItem;
 import platform.game.util.ColoredSmoke;
 import platform.util.Box;
 import platform.util.Input;
@@ -16,8 +15,8 @@ public class Smoke extends Particle
 {
     private final double duration;
     private final double offset;
+    private final ColoredSmoke color;
     private double lifetime;
-    private ColoredSmoke color;
 
     public Smoke(Vector position, ColoredSmoke color)
     {

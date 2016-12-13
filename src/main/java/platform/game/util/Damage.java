@@ -12,5 +12,5 @@ public enum Damage
     TOUCH,
 
     ACTIVATION,
-    HEAL;
+    HEAL
 }

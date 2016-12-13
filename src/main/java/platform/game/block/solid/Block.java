@@ -1,6 +1,5 @@
 package platform.game.block.solid;
 
-import platform.game.Actor;
 import platform.game.FixedActor;
 import platform.game.util.Priority;
 import platform.util.Box;

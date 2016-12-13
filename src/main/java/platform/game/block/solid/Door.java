@@ -1,7 +1,6 @@
 package platform.game.block.solid;
 
 import platform.game.item.Key;
-import platform.game.signal.Not;
 import platform.util.Box;
 import platform.util.Vector;
 

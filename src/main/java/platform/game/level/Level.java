@@ -1,16 +1,10 @@
 package platform.game.level;
 
 import platform.game.Actor;
-import platform.game.World;
-import platform.game.entity.living.Player;
-import platform.game.environment.Background;
-import platform.game.environment.Limits;
 import platform.game.util.Priority;
-import platform.util.*;
-
-import java.awt.event.KeyEvent;
-import java.util.HashSet;
-import java.util.Set;
+import platform.util.Input;
+import platform.util.Output;
+import platform.util.Sprite;
 
 /**
  * Base class for level factories, which provides a fading transition effect.
