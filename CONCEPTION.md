@@ -14,63 +14,63 @@ Ce fichier contient tous les composants du jeu. Vous pouvez obtenir une vue d'en
 
 ## Structure des paquets
 
-### platform.game.block
+### `platform.game.block`
 
-#### solid
+#### `solid`
 
 Contient les objets solides infranchissables (blocs, portes, movers...).
 
-#### transparent
+#### `transparent`
 
 Contient les objets transparents qu'un joueur peut traverser (levier, torche, jumper...).
 
-### platform.game.entity
+### `platform.game.entity`
 
-#### living
+#### `living`
 
 Contient les entités vivantes (joueur, grenouille...), ainsi que le gestionnaire de leur niveau de vie (Overlay).
 
-#### particle
+#### `particle`
 
 Contient les effets physiques (fumée...).
 
-#### projectile
+#### `projectile`
 
 Contient les objets à lancer (boules de feu...).
 
-### platform.game.environment
+### `platform.game.environment`
 
 Contient les éléments liés à l'environnement des acteurs (limites du monde, image de fond...).
 
-### platform.game.gui
+### `platform.game.gui`
 
 Contient les éléments liés à l'interface utilisateur (menu de sélection, boutons de sélection...)..
 
-### platform.game.item
+### `platform.game.item`
 
 Contient les objets à récupérer par le joueur (cœurs, clés...).
 
-### platform.game.level
+### `platform.game.level`
 
 Contient les niveaux de jeu, ainsi qu'un niveau de test.
 
-### platform.game.registry
+### `platform.game.registry`
 
 Contient les générateurs de blocs, utilisés pour concevoir les niveaux.
 
-### platform.game.signal
+### `platform.game.signal`
 
 Contient les signaux logiques (And, Or, Xor...).
 
-### platform.game.util
+### `platform.game.util`
 
 Contient les utilitaires ainsi que les énumérations.
 
-#### Interface World
+#### Interface `World`
 
 "Fonctionnalités des mondes à simuler".
 
-#### Classe Simulator
+#### Classe `Simulator`
 
 "Appelle en boucle la simulation de l'ensemble des acteurs et leur dessin".
 
