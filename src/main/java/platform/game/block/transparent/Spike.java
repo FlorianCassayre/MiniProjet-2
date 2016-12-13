@@ -10,6 +10,8 @@ import platform.util.Input;
 import platform.util.Output;
 import platform.util.Vector;
 
+import java.util.Objects;
+
 /**
  * Spikes that hurt any living entity that gets too close.
  */
@@ -21,8 +23,8 @@ public class Spike extends Actor
 
     public Spike(Vector position, Direction direction)
     {
-        this.position = position;
-        this.direction = direction;
+        this.position = Objects.requireNonNull(position);
+        this.direction = Objects.requireNonNull(direction);
     }
 
     public Spike(Vector position)

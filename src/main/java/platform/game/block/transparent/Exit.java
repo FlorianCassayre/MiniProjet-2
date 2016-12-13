@@ -9,6 +9,8 @@ import platform.game.signal.ConstantSignal;
 import platform.game.signal.Signal;
 import platform.util.*;
 
+import java.util.Objects;
+
 /**
  * A world exit that leads to another level when a player enters it.
  * It also adds the levels in the achieved levels list.
@@ -20,10 +22,10 @@ public class Exit extends FixedActor
 
     public Exit(Vector vector, PlayableLevel level, Signal signal)
     {
-        super(new Box(vector, vector.add(new Vector(1, 1))));
+        super(new Box(Objects.requireNonNull(vector), vector.add(new Vector(1, 1))));
 
-        this.level = level;
-        this.signal = signal;
+        this.level = Objects.requireNonNull(level);
+        this.signal = Objects.requireNonNull(signal);
     }
 
     public Exit(Vector vector, PlayableLevel level)

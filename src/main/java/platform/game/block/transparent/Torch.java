@@ -7,6 +7,8 @@ import platform.game.util.Damage;
 import platform.game.signal.Signal;
 import platform.util.*;
 
+import java.util.Objects;
+
 /**
  * A flip-flop torch signal.
  * It can be activated using a fireball and disabled by blowing on it.
@@ -17,7 +19,7 @@ public class Torch extends FixedActor implements Signal
 
     public Torch(Vector position, boolean isActive)
     {
-        super(new Box(position.add(new Vector(0.25, 0.25)), position.add(new Vector(0.75, 0.75))));
+        super(new Box(Objects.requireNonNull(position).add(new Vector(0.25, 0.25)), position.add(new Vector(0.75, 0.75))));
 
         this.lit = isActive;
     }

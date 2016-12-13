@@ -4,6 +4,8 @@ import platform.game.block.solid.Block;
 import platform.game.level.Level;
 import platform.util.*;
 
+import java.util.Objects;
+
 /**
  * A clickable button that leads to a specified level.
  * Should be used in GUI.
@@ -21,7 +23,7 @@ public class LevelButton extends Block
             throw new NullPointerException("Next level cannot be null!");
 
         this.levelId = levelId;
-        this.next = next;
+        this.next = Objects.requireNonNull(next);
     }
 
     @Override

@@ -1,5 +1,7 @@
 package platform.game.signal;
 
+import java.util.Objects;
+
 public class FlipFlop implements Signal
 {
     private final Signal signal;
@@ -9,7 +11,7 @@ public class FlipFlop implements Signal
     public FlipFlop(boolean initial, Signal signal)
     {
         this.isActive = initial;
-        this.signal = signal;
+        this.signal = Objects.requireNonNull(signal);
     }
 
     @Override

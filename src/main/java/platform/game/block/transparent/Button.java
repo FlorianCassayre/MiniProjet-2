@@ -10,6 +10,8 @@ import platform.util.Input;
 import platform.util.Output;
 import platform.util.Vector;
 
+import java.util.Objects;
+
 /**
  * A ground button signal.
  * When activated, the button stays in its state (one-way switch).
@@ -21,8 +23,8 @@ public class Button extends FixedActor implements Signal
 
     public Button(Vector position, ColoredItem color)
     {
-        super(new Box(position, position.add(new Vector(1, 1))));
-        this.color = color;
+        super(new Box(Objects.requireNonNull(position), position.add(new Vector(1, 1))));
+        this.color = Objects.requireNonNull(color, "You must choose a valid color.");
     }
 
     @Override

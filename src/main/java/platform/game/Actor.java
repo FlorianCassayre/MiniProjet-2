@@ -7,6 +7,8 @@ import platform.util.Vector;
 import platform.util.Output;
 import platform.util.Sprite;
 
+import java.util.Objects;
+
 /**
  * Base class of all simulated actors, attached to a world.
  */
@@ -23,7 +25,7 @@ public abstract class Actor implements Comparable<Actor>
      */
     public void register(World world)
     {
-        this.world = world;
+        this.world = Objects.requireNonNull(world, "The world cannot be null.");
     }
 
     /**

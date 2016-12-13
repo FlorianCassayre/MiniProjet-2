@@ -2,6 +2,8 @@ package platform.game;
 
 import platform.util.Box;
 
+import java.util.Objects;
+
 /**
  * An actor whose position and size is fixed throughout the time.
  */
@@ -11,10 +13,7 @@ public class FixedActor extends Actor
 
     public FixedActor(Box box)
     {
-        if(box == null)
-            throw new IllegalArgumentException("The box cannot be null.");
-
-        this.box = box;
+        this.box = Objects.requireNonNull(box, "The box cannot be null.");
     }
 
     @Override

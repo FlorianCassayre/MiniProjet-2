@@ -7,6 +7,8 @@ import platform.util.Box;
 import platform.util.Input;
 import platform.util.Output;
 
+import java.util.Objects;
+
 /**
  * Simple solid actor that an entity cannot cross by.
  */
@@ -18,10 +20,7 @@ public class Block extends FixedActor
     {
         super(box);
 
-        if(sprite == null)
-            throw new IllegalArgumentException("The sprite cannot be null.");
-
-        this.sprite = sprite;
+        this.sprite = Objects.requireNonNull(sprite, "The sprite cannot be null.");
     }
 
     @Override

@@ -6,9 +6,11 @@ import platform.util.Box;
 import platform.util.Input;
 import platform.util.Output;
 
+import java.util.Objects;
+
 /**
  * A block that can be hidden by a signal.
- * When hidden, the block becomes invisible and entity can walk through it.
+ * When hidden, the block becomes invisible and entities can walk through it.
  */
 public class HideableBlock extends Block
 {
@@ -16,9 +18,9 @@ public class HideableBlock extends Block
 
     public HideableBlock(Box box, String sprite, Signal isVisible)
     {
-        super(box, sprite);
+        super(Objects.requireNonNull(box, "The box cannot be null."), Objects.requireNonNull(sprite, "The sprite cannot be null."));
 
-        this.isVisible = isVisible;
+        this.isVisible = Objects.requireNonNull(isVisible, "The signal cannot be null.");
     }
 
     public HideableBlock(Box box, String sprite)

@@ -5,6 +5,8 @@ import platform.util.Box;
 import platform.util.Input;
 import platform.util.Vector;
 
+import java.util.Objects;
+
 /**
  * Base class of every entity.
  * An entity is an actor defined by a position and a momentum (velocity).
@@ -20,9 +22,9 @@ public abstract class Entity extends Actor
 
     public Entity(Vector position, Vector size, Vector velocity, int maxHealth)
     {
-        this.position = position;
-        this.size = size;
-        this.velocity = velocity;
+        this.position = Objects.requireNonNull(position);
+        this.size = Objects.requireNonNull(size);
+        this.velocity = Objects.requireNonNull(velocity);
         this.maxHealth = maxHealth;
         this.health = maxHealth;
     }

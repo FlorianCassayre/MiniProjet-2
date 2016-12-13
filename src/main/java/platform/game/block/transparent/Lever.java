@@ -9,6 +9,8 @@ import platform.util.Input;
 import platform.util.Output;
 import platform.util.Vector;
 
+import java.util.Objects;
+
 /**
  * A flip-flop lever signal.
  */
@@ -17,14 +19,13 @@ public class Lever extends FixedActor implements Signal
     private boolean state = false;
 
     public Lever(Vector position, boolean state){
-        super(new Box(position, position.add(new Vector(1, 1))));
+        super(new Box(Objects.requireNonNull(position), position.add(new Vector(1, 1))));
         this.state = state;
     }
 
     public Lever(Vector position){
-        this(position,false);
+        this(position, false);
     }
-
 
     @Override
     public void draw(Input input, Output output)

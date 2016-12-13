@@ -1,5 +1,7 @@
 package platform.game.signal;
 
+import java.util.Objects;
+
 /**
  * The logic NOT operator.
  */
@@ -9,9 +11,7 @@ public final class Not implements Signal
 
     public Not(Signal signal)
     {
-        if(signal == null)
-            throw new NullPointerException();
-        this.signal = signal;
+        this.signal = Objects.requireNonNull(signal);
     }
 
     @Override

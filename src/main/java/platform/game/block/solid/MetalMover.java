@@ -3,6 +3,8 @@ package platform.game.block.solid;
 import platform.game.signal.Signal;
 import platform.util.Vector;
 
+import java.util.Objects;
+
 /**
  * A mover that uses a metal texture.
  */

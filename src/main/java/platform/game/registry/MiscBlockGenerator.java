@@ -4,6 +4,8 @@ import platform.game.block.solid.Block;
 import platform.util.Box;
 import platform.util.Vector;
 
+import java.util.Objects;
+
 /**
  * Utility class to generate 1x1 blocks.
  */
@@ -30,6 +32,8 @@ public enum MiscBlockGenerator
 
     MiscBlockGenerator(String sprite)
     {
+        assert sprite != null;
+
         this.sprite = sprite;
     }
 
@@ -40,6 +44,6 @@ public enum MiscBlockGenerator
      */
     public Block createBlock(Vector position)
     {
-        return new Block(new Box(position, position.add(new Vector(1, 1))), sprite);
+        return new Block(new Box(Objects.requireNonNull(position), position.add(new Vector(1, 1))), sprite);
     }
 }

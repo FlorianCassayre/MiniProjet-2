@@ -14,6 +14,8 @@ public enum ColoredItem
 
     ColoredItem(String sprite)
     {
+        assert sprite != null;
+
         this.sprite = sprite;
     }
 

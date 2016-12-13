@@ -10,6 +10,8 @@ import platform.util.Input;
 import platform.util.Output;
 import platform.util.Vector;
 
+import java.util.Objects;
+
 public class Fireball extends Entity
 {
     private static final int MAX_BOUNCES = 10;
@@ -23,7 +25,7 @@ public class Fireball extends Entity
     {
         super(location, new Vector(SIZE, SIZE), speed, MAX_BOUNCES);
 
-        this.owner = owner;
+        this.owner = Objects.requireNonNull(owner);
     }
 
     @Override

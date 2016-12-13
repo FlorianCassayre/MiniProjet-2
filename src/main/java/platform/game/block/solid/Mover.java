@@ -6,6 +6,8 @@ import platform.util.Box;
 import platform.util.Input;
 import platform.util.Vector;
 
+import java.util.Objects;
+
 /**
  * A moving block depending on a signal.
  * The path is defined by two points, and a specific interpolation method can be used.
@@ -20,15 +22,15 @@ public class Mover extends Block
 
     public Mover(String sprite, Vector vectorOff, Vector vectorOn, Vector size, Signal signal, double duration, InterpolationType interpolation)
     {
-        super(new Box(vectorOff, vectorOff.add(size)), sprite);
+        super(new Box(Objects.requireNonNull(vectorOff), Objects.requireNonNull(vectorOff).add(Objects.requireNonNull(size))), Objects.requireNonNull(sprite));
 
         this.vectorOff = vectorOff;
         this.vectorOn = vectorOn;
         this.size = size;
 
-        this.signal = signal;
+        this.signal = Objects.requireNonNull(signal);
 
-        this.interpolation = interpolation;
+        this.interpolation = Objects.requireNonNull(interpolation, "You must choose a valid interpolation mode.");
         this.duration = duration;
     }
 
@@ -50,6 +52,7 @@ public class Mover extends Block
     public void update(Input input)
     {
         super.update(input);
+
         if(signal.isActive())
         {
             current += input.getDeltaTime();

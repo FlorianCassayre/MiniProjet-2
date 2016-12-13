@@ -8,6 +8,8 @@ import platform.util.Input;
 import platform.util.Output;
 import platform.util.Vector;
 
+import java.util.Objects;
+
 /**
  * A background image.
  */
@@ -17,7 +19,7 @@ public class Background extends Actor
 
     public Background(String sprite)
     {
-        this.sprite = sprite;
+        this.sprite = Objects.requireNonNull(sprite);
     }
 
     @Override

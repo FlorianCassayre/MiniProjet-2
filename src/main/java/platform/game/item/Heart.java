@@ -7,6 +7,8 @@ import platform.game.entity.living.Player;
 import platform.game.util.Priority;
 import platform.util.*;
 
+import java.util.Objects;
+
 /**
  * An item that adds one heart to the player who takes it.
  */
@@ -18,7 +20,7 @@ public class Heart extends FixedActor
 
     public Heart(Vector position, boolean respawn)
     {
-        super(new Box(position.add(new Vector(0.25, 0.25)), position.add(new Vector(0.75, 0.75))));
+        super(new Box(Objects.requireNonNull(position).add(new Vector(0.25, 0.25)), position.add(new Vector(0.75, 0.75))));
 
         this.respawn = respawn;
     }

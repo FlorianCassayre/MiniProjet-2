@@ -15,6 +15,8 @@ public enum ColoredSmoke
 
     ColoredSmoke(String sprite)
     {
+        assert sprite != null;
+
         this.sprite = sprite;
     }
 

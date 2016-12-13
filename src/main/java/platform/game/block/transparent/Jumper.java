@@ -6,6 +6,8 @@ import platform.game.util.Damage;
 import platform.game.util.Priority;
 import platform.util.*;
 
+import java.util.Objects;
+
 /**
  * A block that gives some vertical velocity to a player when touched.
  */
@@ -15,7 +17,7 @@ public class Jumper extends FixedActor
 
     public Jumper(Vector position)
     {
-        super(new Box(position, position.add(new Vector(1, 0.5))));
+        super(new Box(Objects.requireNonNull(position), position.add(new Vector(1, 0.5))));
     }
 
     @Override

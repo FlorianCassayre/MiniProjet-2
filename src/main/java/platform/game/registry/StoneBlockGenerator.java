@@ -4,6 +4,8 @@ import platform.game.block.solid.Block;
 import platform.util.Box;
 import platform.util.Vector;
 
+import java.util.Objects;
+
 /**
  * Utility class to generate stone blocks by specifying their size.
  */
@@ -67,7 +69,7 @@ public enum StoneBlockGenerator
      */
     public Block createBlock(Vector position, boolean broken)
     {
-        return new Block(new Box(position, position.add(getSize())), broken ? getBrokenSprite() : getNormalSprite());
+        return new Block(new Box(Objects.requireNonNull(position), position.add(getSize())), broken ? getBrokenSprite() : getNormalSprite());
     }
 
     /**

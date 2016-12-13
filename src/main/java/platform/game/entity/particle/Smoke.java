@@ -7,6 +7,8 @@ import platform.util.Input;
 import platform.util.Output;
 import platform.util.Vector;
 
+import java.util.Objects;
+
 /**
  * An animated white smoke effect.
  */
@@ -26,10 +28,13 @@ public class Smoke extends Particle
 
         offset = Math.random() * 2 * Math.PI; // Randomize the rotation offset
 
-        this.color=color;
+        this.color = Objects.requireNonNull(color);
     }
 
-    public Smoke(Vector position){this(position, ColoredSmoke.WHITE);}
+    public Smoke(Vector position)
+    {
+        this(position, ColoredSmoke.WHITE);
+    }
 
     @Override
     public void update(Input input)

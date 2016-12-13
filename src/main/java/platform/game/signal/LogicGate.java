@@ -1,5 +1,7 @@
 package platform.game.signal;
 
+import java.util.Objects;
+
 /**
  * A logic gate.
  */
@@ -9,8 +11,8 @@ public abstract class LogicGate implements Signal
 
     public LogicGate(Signal left, Signal right)
     {
-        this.left = left;
-        this.right = right;
+        this.left = Objects.requireNonNull(left);
+        this.right = Objects.requireNonNull(right);
     }
 
     protected Signal getLeft()

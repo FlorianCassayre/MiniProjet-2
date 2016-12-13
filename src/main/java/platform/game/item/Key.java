@@ -12,19 +12,21 @@ import platform.util.Input;
 import platform.util.Output;
 import platform.util.Vector;
 
+import java.util.Objects;
+
 /**
  * A colored key returning a signal if it has been taken.
  */
 public class Key extends FixedActor implements Signal
 {
     private ColoredItem color;
-    protected boolean taken;
+    private boolean taken;
 
     public Key(Vector position, ColoredItem color)
     {
         super(new Box(position.add(new Vector(0.25, 0.25)), position.add(new Vector(0.75, 0.75))));
 
-        this.color = color;
+        this.color = Objects.requireNonNull(color);
     }
 
     @Override

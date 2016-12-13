@@ -1,14 +1,12 @@
 package platform.game;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import platform.game.level.Level;
 import platform.game.level.PlayableLevel;
 import platform.game.util.Damage;
 import platform.util.*;
+import platform.util.Vector;
 
 /**
  * Basic implementation of world, managing a complete collection of actors.
@@ -46,12 +44,7 @@ public class Simulator implements World
      */
     public Simulator(Loader loader, String[] args)
     {
-        if(loader == null)
-        {
-            throw new NullPointerException();
-        }
-
-        this.loader = loader;
+        this.loader = Objects.requireNonNull(loader);
         currentCenter = defaultCenter;
         currentRadius = defaultRadius;
 

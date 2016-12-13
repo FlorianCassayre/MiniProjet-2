@@ -1,5 +1,7 @@
 package platform.game.signal;
 
+import java.util.Objects;
+
 public class Flip implements Signal
 {
     private final Signal signal;
@@ -7,7 +9,7 @@ public class Flip implements Signal
 
     public Flip(Signal signal)
     {
-        this.signal = signal;
+        this.signal = Objects.requireNonNull(signal);
     }
 
     @Override

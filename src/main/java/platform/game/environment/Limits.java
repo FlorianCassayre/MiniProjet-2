@@ -6,6 +6,8 @@ import platform.game.util.Priority;
 import platform.util.Box;
 import platform.util.Vector;
 
+import java.util.Objects;
+
 /**
  * A world border.
  */
@@ -15,7 +17,7 @@ public class Limits extends Actor
 
     public Limits(Box box)
     {
-        this.box = box;
+        this.box = Objects.requireNonNull(box);
     }
 
     @Override

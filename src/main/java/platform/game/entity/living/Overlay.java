@@ -5,6 +5,8 @@ import platform.game.entity.Entity;
 import platform.game.util.Priority;
 import platform.util.*;
 
+import java.util.Objects;
+
 /**
  * Displays the current health of the entity.
  */
@@ -14,7 +16,7 @@ public class Overlay extends Actor
 
     public Overlay(Entity entity)
     {
-        this.entity = entity;
+        this.entity = Objects.requireNonNull(entity);
     }
 
     @Override
