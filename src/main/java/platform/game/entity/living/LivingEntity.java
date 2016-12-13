@@ -2,6 +2,7 @@ package platform.game.entity.living;
 
 import platform.game.World;
 import platform.game.entity.Entity;
+import platform.game.util.Priority;
 import platform.util.Vector;
 
 /**
@@ -30,5 +31,11 @@ public class LivingEntity extends Entity
         super.register(world);
 
         getWorld().register(overlay);
+    }
+
+    @Override
+    public int getPriority()
+    {
+        return Priority.ENTITY_LIVING;
     }
 }

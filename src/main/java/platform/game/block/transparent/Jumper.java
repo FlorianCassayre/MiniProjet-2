@@ -21,7 +21,7 @@ public class Jumper extends FixedActor
     @Override
     public int getPriority()
     {
-        return Priority.JUMPER;
+        return Priority.BLOCK_INTERACTION;
     }
 
     @Override

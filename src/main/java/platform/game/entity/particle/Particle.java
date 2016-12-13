@@ -1,7 +1,7 @@
 package platform.game.entity.particle;
 
 import platform.game.entity.Entity;
-import platform.util.Input;
+import platform.game.util.Priority;
 import platform.util.Vector;
 
 /**
@@ -22,6 +22,6 @@ public class Particle extends Entity
     @Override
     public int getPriority()
     {
-        return 500000;
+        return Priority.ENTITY_PARTICLE;
     }
 }

@@ -143,12 +143,6 @@ public class Player extends LivingEntity
     }
 
     @Override
-    public int getPriority()
-    {
-        return Priority.PLAYER;
-    }
-
-    @Override
     public void setHealth(double health)
     {
         if(health < getHealth())

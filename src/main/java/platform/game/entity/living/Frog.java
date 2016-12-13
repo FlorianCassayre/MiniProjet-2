@@ -84,7 +84,7 @@ public class Frog extends LivingEntity
     @Override
     public int getPriority()
     {
-        return Priority.FIREBALL;
+        return Priority.BLOCK_INTERACTION;
     }
 
     @Override

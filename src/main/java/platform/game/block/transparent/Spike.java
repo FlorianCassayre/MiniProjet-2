@@ -4,7 +4,7 @@ import platform.game.Actor;
 import platform.game.entity.living.LivingEntity;
 import platform.game.util.Damage;
 import platform.game.util.Direction;
-import platform.game.entity.living.Player;
+import platform.game.util.Priority;
 import platform.util.Box;
 import platform.util.Input;
 import platform.util.Output;
@@ -88,6 +88,6 @@ public class Spike extends Actor
     @Override
     public int getPriority()
     {
-        return 400;
+        return Priority.BLOCK_INTERACTION;
     }
 }

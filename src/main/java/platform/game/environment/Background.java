@@ -2,6 +2,7 @@ package platform.game.environment;
 
 import platform.game.Actor;
 import platform.game.util.Damage;
+import platform.game.util.Priority;
 import platform.util.Box;
 import platform.util.Input;
 import platform.util.Output;
@@ -28,7 +29,7 @@ public class Background extends Actor
     @Override
     public int getPriority()
     {
-        return Integer.MIN_VALUE;
+        return Priority.BACKGROUND;
     }
 
     @Override

@@ -5,6 +5,7 @@ import platform.game.World;
 import platform.game.entity.living.Player;
 import platform.game.environment.Background;
 import platform.game.environment.Limits;
+import platform.game.util.Priority;
 import platform.util.*;
 
 import java.awt.event.KeyEvent;
@@ -27,7 +28,7 @@ public abstract class Level extends Actor
     @Override
     public int getPriority()
     {
-        return Integer.MAX_VALUE;
+        return Priority.LEVEL;
     }
 
     @Override

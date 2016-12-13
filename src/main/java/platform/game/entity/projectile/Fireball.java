@@ -35,7 +35,7 @@ public class Fireball extends Entity
     @Override
     public int getPriority()
     {
-        return Priority.FIREBALL;
+        return Priority.ENTITY_PROJECTILE;
     }
 
     @Override
