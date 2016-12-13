@@ -2,9 +2,9 @@
 
 
 
-# Mini-Projet 2
+# Mini-projet 2
 
-Groupe : _Florian CASSAYRE_ & _Moussa PRINCE_.
+Réalisé par : _Florian CASSAYRE_ et _Moussa PRINCE_.
 
 ## Composants du jeu
 

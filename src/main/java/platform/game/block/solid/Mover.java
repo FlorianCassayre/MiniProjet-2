@@ -1,9 +1,12 @@
 package platform.game.block.solid;
 
+import platform.game.Actor;
 import platform.game.signal.Signal;
 import platform.game.util.InterpolationType;
+import platform.game.util.Priority;
 import platform.util.Box;
 import platform.util.Input;
+import platform.util.Output;
 import platform.util.Vector;
 
 import java.util.Objects;
@@ -12,8 +15,9 @@ import java.util.Objects;
  * A moving block depending on a signal.
  * The path is defined by two points, and a specific interpolation method can be used.
  */
-public class Mover extends Block
+public class Mover extends Actor
 {
+    private final String sprite;
     private final Vector vectorOff, vectorOn, size;
     private Signal signal;
     private final InterpolationType interpolation;
@@ -22,11 +26,10 @@ public class Mover extends Block
 
     public Mover(String sprite, Vector vectorOff, Vector vectorOn, Vector size, Signal signal, double duration, InterpolationType interpolation)
     {
-        super(new Box(Objects.requireNonNull(vectorOff), Objects.requireNonNull(vectorOff).add(Objects.requireNonNull(size))), Objects.requireNonNull(sprite));
-
-        this.vectorOff = vectorOff;
-        this.vectorOn = vectorOn;
-        this.size = size;
+        this.sprite = Objects.requireNonNull(sprite);
+        this.vectorOff = Objects.requireNonNull(vectorOff);
+        this.vectorOn = Objects.requireNonNull(vectorOn);
+        this.size = Objects.requireNonNull(size);
 
         this.signal = Objects.requireNonNull(signal);
 
@@ -65,5 +68,23 @@ public class Mover extends Block
             if(current < 0.0)
                 current = 0.0;
         }
+    }
+
+    @Override
+    public void draw(Input input, Output output)
+    {
+        output.drawSprite(getSprite(sprite), getBox());
+    }
+
+    @Override
+    public boolean isSolid()
+    {
+        return true;
+    }
+
+    @Override
+    public int getPriority()
+    {
+        return Priority.BLOCK;
     }
 }
