@@ -56,8 +56,8 @@ public class Simulator implements World
     /**
      * Simulate a single step of the simulation.
      *
-     * @param input  input object to use, not null
-     * @param output output object to use, not null
+     * @param input  input block to use, not null
+     * @param output output block to use, not null
      */
     public void update(Input input, Output output)
     {

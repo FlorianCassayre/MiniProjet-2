@@ -1,6 +1,7 @@
 package platform.game.level;
 
 import platform.game.Actor;
+import platform.game.gui.SelectionLevel;
 import platform.game.util.Priority;
 import platform.util.Input;
 import platform.util.Output;

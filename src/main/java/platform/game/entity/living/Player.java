@@ -109,7 +109,7 @@ public class Player extends LivingEntity
             getWorld().hurt(getBox(), this, Damage.AIR, 1.0, getPosition());
         }
 
-        if(input.getKeyboardButton(KeyEvent.VK_E).isPressed()) // The user wants to activate an object
+        if(input.getKeyboardButton(KeyEvent.VK_E).isPressed()) // The user wants to activate an block
         {
             getWorld().hurt(getBox(), this, Damage.ACTIVATION, 1.0, getPosition());
         }

@@ -1,7 +1,8 @@
-package platform.game.level;
+package platform.game.gui;
 
 import platform.game.World;
 import platform.game.gui.LevelButton;
+import platform.game.level.*;
 import platform.util.Vector;
 
 import java.util.ArrayList;
