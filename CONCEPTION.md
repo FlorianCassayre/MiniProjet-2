@@ -10,7 +10,7 @@ Réalisé par : _Florian CASSAYRE_ et _Moussa PRINCE_.
 
 Ce fichier contient tous les composants du jeu. Vous pouvez obtenir une vue d'ensemble de la structure en vous référant au schéma UML ci-dessous :
 
-![alt text](img/diagram_uml.png "Diagramme UML")
+![alt text](diagram_uml.png "Diagramme UML")
 
 ## Structure des paquets
 
