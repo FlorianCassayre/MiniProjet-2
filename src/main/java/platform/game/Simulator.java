@@ -15,6 +15,8 @@ public class Simulator implements World
 {
     private static final Vector GRAVITY = new Vector(0, -9.81);
 
+    private static final double SCREEN_RESIZE_FACTOR = 0.01;
+
     private final Loader loader;
 
     private final Vector defaultCenter = Vector.ZERO;
@@ -59,9 +61,8 @@ public class Simulator implements World
      */
     public void update(Input input, Output output)
     {
-        double factor = 0.001;
-        currentCenter = currentCenter.mul(1.0 - factor).add(expectedCenter.mul(factor));
-        currentRadius = currentRadius * (1.0 - factor) + expectedRadius * factor;
+        currentCenter = currentCenter.mul(1.0 - SCREEN_RESIZE_FACTOR).add(expectedCenter.mul(SCREEN_RESIZE_FACTOR));
+        currentRadius = currentRadius * (1.0 - SCREEN_RESIZE_FACTOR) + expectedRadius * SCREEN_RESIZE_FACTOR;
 
         View view = new View(input, output);
         view.setTarget(currentCenter, currentRadius);
