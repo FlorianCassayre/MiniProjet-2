@@ -1,7 +1,11 @@
 # MiniProjet-2
 
 ## Comment lancer le programme
-Lancer Program.java, et à partir de là le sélecteur de niveaux s’occupe du reste.
+Charger le projet dans votre IDE préféré (Intellij, Eclipse...). Aucun librairie externe n'est nécessaire pour exécuter le jeu.
+Dans le dossier source (`src`), cherchez le fichier `Program.java` se trouvant dans le paquet `platform`.
+Cette classe contient une méthode `main(String)` ; de là votre IDE devrait correctement gérer l'exécution du programme.
+
+Assurez vous de posséder la version java `1.7` (ou supérieure), sans quoi le programme ne pourra pas s'exécuter.
 
 ## Commandes
 
@@ -14,6 +18,8 @@ Lancer Program.java, et à partir de là le sélecteur de niveaux s’occupe du 
  * **ECHAP** : Retour au menu de sélection des niveaux
 
 ## Niveaux
+
+Les niveaux rendus sont **Level 4** et **Level 5**.
 
 Liste des niveaux sélectionnables depuis le **menu** du jeu. Lorsqu'un niveau est terminé, son icône devient **dorée**.
 
