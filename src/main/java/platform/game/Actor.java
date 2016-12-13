@@ -153,6 +153,7 @@ public abstract class Actor implements Comparable<Actor>
      * @param that the actor to compare to this one
      * @return an integer representing the comparison result
      */
+    @Override
     public int compareTo(Actor that)
     {
         if(getPriority() < that.getPriority())
