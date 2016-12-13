@@ -94,7 +94,7 @@ public class Level4 extends PlayableLevel
         world.register(new MetalMover(new Vector(-7, 5), new Vector(-7, 7), 3, false, new And(new Not(lever), torch)));
 
         //creating exit
-        world.register(new Exit(new Vector(1, -2), new Level4(), lever));
+        world.register(new Exit(new Vector(1, -2), this, lever));
     }
 
     @Override

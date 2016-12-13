@@ -11,6 +11,7 @@ import platform.util.*;
 
 /**
  * A world exit that leads to another level when a player enters it.
+ * It also adds the levels in the achieved levels list.
  */
 public class Exit extends FixedActor
 {

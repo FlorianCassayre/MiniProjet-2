@@ -60,7 +60,7 @@ public class Level5 extends PlayableLevel
         world.register(new MetalMover(new Vector(-8, 5), new Vector(-3, 5), 2, true, leftAligned));
 
         //creating exit triggered by night
-        world.register(new Exit(new Vector(0, 8.5), new Level5(), night));
+        world.register(new Exit(new Vector(0, 8.5), this, night));
     }
 
     @Override

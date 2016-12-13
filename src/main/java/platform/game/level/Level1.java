@@ -21,7 +21,7 @@ public class Level1 extends PlayableLevel
         world.register(new Jumper(new Vector(1, 0)));
 
         //creating exit
-        world.register(new Exit(new Vector(3, 4), new Level1()));
+        world.register(new Exit(new Vector(3, 4), this));
     }
 
     @Override
