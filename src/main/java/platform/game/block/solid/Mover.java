@@ -1,5 +1,6 @@
 package platform.game.block.solid;
 
+import platform.game.Actor;
 import platform.game.signal.Signal;
 import platform.game.util.InterpolationType;
 import platform.util.Box;
@@ -12,7 +13,7 @@ import java.util.Objects;
  * A moving block depending on a signal.
  * The path is defined by two points, and a specific interpolation method can be used.
  */
-public class Mover extends Block
+public class Mover extends Actor
 {
     private final Vector vectorOff, vectorOn, size;
     private Signal signal;
