@@ -19,7 +19,7 @@ import java.util.Objects;
  */
 public class Key extends FixedActor implements Signal
 {
-    private ColoredItem color;
+    private final ColoredItem color;
     private boolean taken;
 
     public Key(Vector position, ColoredItem color)

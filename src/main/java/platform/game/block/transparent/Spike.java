@@ -35,7 +35,7 @@ public class Spike extends Actor
     @Override
     public void draw(Input input, Output output)
     {
-        output.drawSprite(getSprite("spikes"), getBox(), (direction.getAngle() - Direction.UP.getAngle()) * Math.PI / 2.0);
+        output.drawSprite(getSprite("spikes"), getDrawingBox(), -(direction.getAngle() - Direction.UP.getAngle()) * Math.PI / 2.0);
     }
 
     @Override
@@ -85,6 +85,29 @@ public class Spike extends Actor
             default:
                 throw new IllegalStateException("Someone is messing with the dimensions!");
         }
+    }
+
+    /**
+     * Method to correctly handle the rotation on drawing.
+     * @return a bow to be used on draw
+     */
+    private Box getDrawingBox()
+    {
+        Vector position = this.position;
+        switch(direction)
+        {
+            case DOWN:
+                position = position.add(new Vector(0, 0.5));
+                break;
+            case LEFT:
+                position = position.add(new Vector(0.25, 0.25));
+                break;
+            case RIGHT:
+                position = position.add(new Vector(-0.25, 0.25));
+                break;
+        }
+
+        return new Box(position, position.add(new Vector(1, 0.5)));
     }
 
     @Override
