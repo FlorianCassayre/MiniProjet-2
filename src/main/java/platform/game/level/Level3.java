@@ -55,7 +55,7 @@ public class Level3 extends PlayableLevel
         world.register(new Spike(new Vector(4.5, 1)));
 
         //creating exit
-        world.register(new Exit(new Vector(2.5, -6), new Level4(), lever));
+        world.register(new Exit(new Vector(2.5, -6), new Level3(), lever));
     }
 
     @Override

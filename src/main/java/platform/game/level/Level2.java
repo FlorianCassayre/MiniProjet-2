@@ -40,7 +40,7 @@ public class Level2 extends PlayableLevel
         world.register(new Spike(new Vector(2, -2), Direction.DOWN));
 
         //creating exit
-        world.register(new Exit(new Vector(-4, -1), new Level3(), lever));
+        world.register(new Exit(new Vector(-4, -1), new Level2(), lever));
     }
 
     @Override

@@ -1,17 +1,13 @@
 package platform.game.level;
 
 import platform.game.World;
-import platform.game.block.solid.Door;
 import platform.game.block.solid.MetalMover;
 import platform.game.block.transparent.*;
-import platform.game.item.Heart;
-import platform.game.item.Key;
-import platform.game.registry.StoneBlockGenerator;
+import platform.game.registry.MiscBlockGenerator;
 import platform.game.signal.And;
 import platform.game.signal.Not;
-import platform.game.signal.Xor;
-import platform.game.util.ColoredItem;
-import platform.game.util.Direction;
+import platform.game.signal.Or;
+import platform.game.signal.Signal;
 import platform.util.Vector;
 
 public class Level5 extends PlayableLevel
@@ -19,82 +15,52 @@ public class Level5 extends PlayableLevel
     @Override
     public void register(World world)
     {
+        //creating grass blocks
         super.register(world);
+        for(int i = -8; i < 9; i++)
+        {
+            world.register(MiscBlockGenerator.GRASS_MIDDLE.createBlock(new Vector(i, 0)));
+        }
+        world.register(MiscBlockGenerator.GRASS_LEFT.createBlock(new Vector(-9, 0)));
+        world.register(MiscBlockGenerator.GRASS_RIGHT.createBlock(new Vector(9, 0)));
 
-        //creating blocks
-        world.register(StoneBlockGenerator.BLOCK_3X1.createBlock(new Vector(-1, -1)));
-        world.register(StoneBlockGenerator.BLOCK_2X3.createBlock(new Vector(2, -3)));
-        world.register(StoneBlockGenerator.BLOCK_1X3.createBlock(new Vector(3, 0)));
-        world.register(StoneBlockGenerator.BLOCK_1X3.createBlock(new Vector(3, 3)));
-        world.register(StoneBlockGenerator.BLOCK_2X3.createBlock(new Vector(3, 6)));
-        world.register(StoneBlockGenerator.BLOCK_2X2.createBlock(new Vector(0, 9)));
-        world.register(StoneBlockGenerator.BLOCK_2X3.createBlock(new Vector(-5, 10)));
-        world.register(StoneBlockGenerator.BLOCK_3X1.createBlock(new Vector(-4, 13)));
-        world.register(StoneBlockGenerator.BLOCK_2X1.createBlock(new Vector(-6, 13)));
-        world.register(StoneBlockGenerator.BLOCK_2X1.createBlock(new Vector(1, 6)));
-        world.register(StoneBlockGenerator.BLOCK_3X1.createBlock(new Vector(-2, 2)));
-        world.register(StoneBlockGenerator.BLOCK_1X1.createBlock(new Vector(-1, 3)));
-        world.register(StoneBlockGenerator.BLOCK_3X1.createBlock(new Vector(-1, -3)));
-        world.register(StoneBlockGenerator.BLOCK_3X1.createBlock(new Vector(-6, -1)));
-        world.register(StoneBlockGenerator.BLOCK_2X3.createBlock(new Vector(-8, 2)));
-        world.register(StoneBlockGenerator.BLOCK_2X2.createBlock(new Vector(-3, 6)));
-        world.register(StoneBlockGenerator.BLOCK_2X1.createBlock(new Vector(-6, 7)));
-        world.register(StoneBlockGenerator.BLOCK_3X2.createBlock(new Vector(-10, 7)));
-        world.register(StoneBlockGenerator.BLOCK_1X2.createBlock(new Vector(-2, 8)));
-        world.register(StoneBlockGenerator.BLOCK_2X2.createBlock(new Vector(5, 3)));
-        world.register(StoneBlockGenerator.BLOCK_2X1.createBlock(new Vector(4, -1)));
-        world.register(StoneBlockGenerator.BLOCK_3X2.createBlock(new Vector(6, -1)));
-        world.register(StoneBlockGenerator.BLOCK_1X3.createBlock(new Vector(-2, 3)));
+        //creating jumpers
+        world.register(new Jumper(new Vector(-5, 1)));
+        world.register(new Jumper(new Vector(5, 1)));
 
-        //creating Spikes
-        world.register(new Spike(new Vector(2, 5), Direction.DOWN));
-        world.register(new Spike(new Vector(1, 5), Direction.DOWN));
-        world.register(new Spike(new Vector(0, 3), Direction.UP));
-        world.register(new Spike(new Vector(-3, 5), Direction.DOWN));
-        world.register(new Spike(new Vector(-6, 8), Direction.UP));
-        world.register(new Spike(new Vector(-10, 9), Direction.UP));
-        world.register(new Spike(new Vector(4, 9), Direction.UP));
-        world.register(new Spike(new Vector(-3, 12), Direction.DOWN));
-        world.register(new Spike(new Vector(-8, 6), Direction.DOWN));
-        world.register(new Spike(new Vector(8, 1), Direction.UP));
+        //creating spikes
+        world.register(new Spike(new Vector(-8.5, 1)));
+        world.register(new Spike(new Vector(8.5, 1)));
 
-        //creating Hearts
-        world.register(new Heart(new Vector(-9, 9)));
-        world.register(new Heart(new Vector(5, 0)));
+        //creating torches
+        Torch torchLeft = new Torch(new Vector(-8, 7));
+        Torch torchRight = new Torch(new Vector(8, 7));
+        Torch torchMiddle = new Torch(new Vector(0, 8.5));
+        world.register(torchLeft);
+        world.register(torchRight);
+        world.register(torchMiddle);
 
-        //creating Jumpers
-        world.register(new Jumper(new Vector(2, 0)));
-        world.register(new Jumper(new Vector(-1, 4)));
-        world.register(new Jumper(new Vector(-4, 0)));
-        world.register(new Jumper(new Vector(4, 0)));
-        world.register(new Jumper(new Vector(6, 5)));
+        //creating levers
+        Lever leverLeft = new Lever(new Vector(-4, 1), true);
+        Lever leverRight = new Lever(new Vector(4, 1));
+        world.register(leverLeft);
+        world.register(leverRight);
 
-        //creating Keys
-        final Key keyBlue = new Key(new Vector(-8, 5), ColoredItem.BLUE);
-        world.register(keyBlue);
-        final Key keyRed = new Key(new Vector(-7, -1), ColoredItem.RED);
-        world.register(keyRed);
+        //verifying that all torches have been turned off before leaving to save energy
+        Signal night = new And(new And(new Not(torchRight), new Not(torchLeft)), new Not(torchMiddle));
 
-        //creating Doors
-        world.register(new Door(new Vector(0, -2), keyBlue));
-        world.register(new Door(new Vector(-1, -2), keyRed));
-
-        //creating Lever
-        final Lever lever = new Lever(new Vector(2, 7));
-        world.register(lever);
-
-        //creating torch
-        final Torch torch = new Torch(new Vector(-6, 0));
-        world.register(torch);
+        //verifying alignment
+        Signal leftAligned = new Or(new And(new Not(leverLeft), torchLeft), new And(leverLeft, torchMiddle));
+        Signal rightAligned = new Or(new And(new Not(leverRight), torchMiddle), new And(leverRight, torchRight));
+        Signal aligned = new And(leftAligned, rightAligned);
 
         //creating movers
-        world.register(new MetalMover(new Vector(-2, -3), new Vector(-2, -5), 3, false, torch));
-        world.register(new MetalMover(new Vector(-3, 0), new Vector(-3, -3), 3, false, new Xor(lever, torch)));
-        world.register(new MetalMover(new Vector(-4, -2), new Vector(-7, -2), 2, true, new Xor(lever, torch)));
-        world.register(new MetalMover(new Vector(-7, 5), new Vector(-7, 7), 3, false, new And(new Not(lever), torch)));
+        world.register(new MetalMover(new Vector(0, 8.5), new Vector(0, 5), 1, false, aligned));
+        world.register(new MetalMover(new Vector(8, 5), new Vector(2, 5), 2, true, rightAligned));
+        world.register(new MetalMover(new Vector(-8, 5), new Vector(-3, 5), 2, true, leftAligned));
 
-        //creating exit
-        world.register(new Exit(new Vector(1, -2), this, lever));
+        //creating exit triggered by night
+        world.register(new Exit(new Vector(0, 8.5), new Level5(), night));
     }
 
     @Override
@@ -112,6 +78,12 @@ public class Level5 extends PlayableLevel
     @Override
     public String getBackgroundSprite()
     {
-        return "background.castle";
+        return "background.sky";
+    }
+
+    @Override
+    public Vector getSpawn()
+    {
+        return new Vector(0.5, 1);
     }
 }

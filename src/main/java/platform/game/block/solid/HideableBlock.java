@@ -29,13 +29,13 @@ public class HideableBlock extends Block
     @Override
     public void draw(Input input, Output output)
     {
-        if(isVisible.isActive())
+        if(!isVisible.isActive())
             super.draw(input, output);
     }
 
     @Override
     public boolean isSolid()
     {
-        return isVisible.isActive();
+        return !isVisible.isActive();
     }
 }

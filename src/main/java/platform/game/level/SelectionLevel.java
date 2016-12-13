@@ -35,7 +35,6 @@ public class SelectionLevel extends Level
         registerLevel(3, new Level3());
         registerLevel(4, new Level4());
         registerLevel(5, new Level5());
-        registerLevel(6, new Level6());
 
         // Until here
 
