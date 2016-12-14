@@ -2,13 +2,13 @@
 
 
 
-# MiniProjet-2
+# Miniprojet2
 
 Réalisé par : _Florian CASSAYRE_ et _Moussa PRINCE_.
 
 ## Installation et exécution
 
-Charger le projet dans votre IDE préféré (Intellij, Eclipse...). Aucun librairie externe n'est nécessaire pour exécuter le jeu.
+Charger le projet dans votre IDE préféré (Intellij, Eclipse...). Aucune librairie externe n'est nécessaire pour exécuter le jeu.
 Dans le dossier source (`src`), cherchez le fichier `Program.java` se trouvant dans le paquet `platform`.
 Cette classe contient une méthode `main(String)` ; de là votre IDE devrait correctement gérer l'exécution du programme.
 
@@ -26,11 +26,11 @@ Assurez vous de posséder la version java `1.7` (ou supérieure), sans quoi le p
 
 ## Niveaux
 
-Les niveaux rendus sont **Level 4** et **Level 5**.
+Les niveaux rendus sont **Level4** et **Level5**.
 
-Liste des niveaux sélectionnables depuis le **menu** du jeu. Lorsqu'un niveau est terminé, son icône devient **dorée**.
+Mais nous vous proposons quand même de commencer par **Level1** et de vous laisser guider, vous ne serez pas déçus. :-)
 
-Vous pouvez **revenir** au menu de sélection à tout moment en appuyant sur la touche **ECHAP**.
+Lorsqu'un niveau est terminé, son icône devient **dorée**. Vous pouvez **revenir** au menu de sélection à tout moment en appuyant sur la touche **ECHAP**.
 
 ### Niveau 1 : "A l'abordage!"
 
@@ -44,7 +44,7 @@ Tiens, mais à quoi sert donc ce levier ? Essayez de l’activer pour voir. La p
 
 Si vous ne bougez pas, vous prendrez probablement la clé rouge en atterrissant. Et si vous avez l’oeil, vous remarquerez que le bloc rouge disparait aussitôt. Vous en déduisez que pour faire disparaitre les autres blocs et sortir de ce niveau, il vous faut prendre les autres clés. Faites attention en prenant la clé bleue, plusieurs pièges soigneusement préparés sont au rendez-vous. Et n’oubliez pas d’activer le levier pour ouvrir la porte, sinon vous resterez coincé en bas !
 
-Vous pouvez recommencer le niveau à tout moment en revenant au menu avec **ECHAP**.
+Notez que vous pouvez recommencer le niveau à tout moment en revenant au menu avec **ECHAP**.
 
 Si vous arrivez à sortir de ce niveau sans égratignure, vous commencez vraiment à devenir bon. :-)
 
@@ -67,15 +67,16 @@ Notez qu’activer le levier initialement est donc un piège, qui ne fait que re
 
 Mais où est donc passée la sortie ? Serait-elle derrière ce bloc de pierre, lui-même couvert par une torche ? Comment y accéder ?
 
-Dans ce niveau final, les blocs droit et gauche se déplacent vers le centre à condition que le levier correspondant pointe vers une torche allumée, on parle alors d’"alignement". Quant au bloc central, il nécessite l’alignement des leviers droit et gauche à la fois. Enfin, il ne faut pas oublier d’éteindre **toutes** les torches, afin de pouvoir ouvrir la porte de sortie… Alors, vous avez trouvé comment faire ?
+Dans ce niveau final, les blocs droit et gauche se déplacent vers le centre à condition que le levier correspondant pointe vers une torche allumée, on parle alors d’**alignement**. Quant au bloc central, il nécessite l’alignement des leviers droit et gauche à la fois. Enfin, il ne faut pas oublier d’éteindre **toutes** les torches, afin de pouvoir ouvrir la porte de sortie… Alors, vous avez trouvé comment faire ?
 
 Une des façons de sortir de ce niveau est la suivante :
- * Allumer les torches droite et gauche
- * Pointer chaque levier vers sa torche allumée
- * Allumer la torche centrale
- * Pointer les leviers vers la torche centrale
- * Éteindre les torches droite et gauche (Astuce: Monter sur les plateformes métalliques !)
- * Sauter vers la porte de sortie tout en éteignant la torche centrale… voilà, c’est gagné !
+ 
+ - Allumer les torches droite et gauche
+ - Pointer chaque levier vers sa torche allumée
+ - Allumer la torche centrale
+ - Pointer les leviers vers la torche centrale
+ - Éteindre les torches droite et gauche (Astuce: Monter sur les plateformes métalliques !)
+ - Sauter vers la porte de sortie tout en éteignant la torche centrale… voilà, c’est gagné !
 
 Il existe d’autres façons de sortir de ce niveau, libre à vous de les essayer à vos risques et périls. :-)
 
