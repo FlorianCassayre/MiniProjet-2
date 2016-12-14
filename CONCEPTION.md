@@ -27,7 +27,7 @@ Voilà, nous espérons ne pas avoir oublié d'autres modifications, en tout cas 
 
 Vous pouvez obtenir une vue d'ensemble de la structure en vous référant au schéma UML ci-dessous :
 
-![alt text](res/img/diagram_uml.png "Diagramme UML")
+![alt text](res/diagram_uml.png "Diagramme UML")
 
 ## Structure des paquets
 
