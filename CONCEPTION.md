@@ -13,7 +13,7 @@ Ce projet nous a permis de mettre en pratique les concepts de la POO vus en cour
 De nombreux ajouts et ajustements ont été faits principalement pour rendre le jeu plus réaliste, plus fluide, ou tout simplement pour répondre à certains de nos caprices parfois, il faut l'avouer.
 
 - Modification du facteur de zoom, plus dynamique
-- Modification d'un bug qui permet au joueur de "s'accorcher" sur le coté d'un bloc
+- Modification d'un bug qui permet au joueur de "s'accrocher" sur le coté d'un bloc
 - `Mover`: n'hérite pas de `Block` dans notre structure, étant donné qu'il n'est pas fixe + mise en place d'une interpolation cubique
 - Pics: possibilité de modifier l'orientation
 - Boules de feu: disparition après un moment + effets de frottement (plus réaliste)
